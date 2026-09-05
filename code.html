@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="description" content="أفضل منصة ذكية لحساب المعدل العام للبكالوريا والمعدل الموزون تلقائياً لجميع الشعب مع احتساب المواد الاختيارية.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة حاسبة المعدل العام والمعدل الموزون الذكية</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --text-main: #fff;
+            --text-sub: #b0bec5;
+            --input-bg: rgba(0, 0, 0, 0.4);
+            --border-color: rgba(0, 198, 255, 0.3);
+            --neon-glow: 0 0 10px rgba(0, 198, 255, 0.5);
+            --badge-bg: linear-gradient(135deg, rgba(0, 198, 255, 0.2), rgba(0, 114, 255, 0.2));
+            --badge-text: #00c6ff;
+            --row-bg: rgba(255, 255, 255, 0.02);
+            --select-bg: #142630;
+        }
+
+        [data-theme="light"] {
+            --bg-gradient: linear-gradient(-45deg, #e0eafc, #cfdef3);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #2c3e50;
+            --text-sub: #5a6c7d;
+            --input-bg: #fff;
+            --border-color: #cbd5e1;
+            --neon-glow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            --badge-bg: #e2e8f0;
+            --badge-text: #0072ff;
+            --row-bg: #f8fafc;
+            --select-bg: #fff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), var(--neon-glow);
+            position: relative;
+        }
+
+        .top-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .control-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .control-btn:hover {
+            box-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
+            border-color: #00c6ff;
+        }
+        .reset-btn { border-color: rgba(248, 113, 113, 0.4); }
+        .reset-btn:hover { box-shadow: 0 0 10px rgba(248, 113, 113, 0.6); border-color: #f87171; }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            background: linear-gradient(to left, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .sub-title {
+            color: var(--text-sub);
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-box {
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 15px;
+            color: #00c6ff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-main);
+            font-family: inherit;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        select:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+        }
+        select option { background: var(--select-bg); color: var(--text-main); }
+
+        #subjectsContainer {
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 5px;
+            margin-bottom: 25px;
+        }
+        #subjectsContainer::-webkit-scrollbar { width: 6px; }
+        #subjectsContainer::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+        .subject-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px 20px;
+            background: var(--row-bg);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+        .subject-row:hover { 
+            transform: translateY(-2px); 
+            border-color: #00c6ff;
+            box-shadow: 0 0 12px rgba(0, 198, 255, 0.3);
+        }
+        
+        .optional-row {
+            border: 1px dashed rgba(234, 179, 8, 0.4);
+        }
+        .optional-row:hover {
+            border-color: #eab308;
+            box-shadow: 0 0 12px rgba(234, 179, 8, 0.3);
+        }
+
+        .subject-info { display: flex; align-items: center; flex: 2; text-align: right; }
+        .subject-name { font-size: 16px; font-weight: 500; }
+        
+        .coefficient-badge {
+            background: var(--badge-bg);
+            border: 1px solid var(--border-color);
+            color: var(--badge-text);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .optional-badge {
+            background: rgba(234, 179, 8, 0.1);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
+        input[type="number"] {
+            width: 85px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--input-bg);
+            color: var(--text-main);
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        input[type="number"]:focus { 
+            border-color: #00ff87; 
+            box-shadow: 0 0 15px rgba(0, 255, 135, 0.6);
+        }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+
+        button {
+            padding: 15px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 114, 255, 0.4);
+        }
+        button:hover { 
+            transform: scale(1.01); 
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.7); 
+        }
+        
+        .share-btn { 
+            background: linear-gradient(90deg, #34d399, #059669); 
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);
+        }
+        .share-btn:hover { box-shadow: 0 0 25px rgba(52, 211, 153, 0.7); }
+
+        #resultContainer {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 14px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: none;
+            text-align: center;
+        }
+        #mainResult { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+        #totalCoeffsBox { font-size: 13px; color: var(--text-sub); margin-bottom: 15px; }
+        #weightedResultBox { margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border-color); text-align: right; }
+        .weighted-title { color: #00c6ff; font-weight: bold; margin-bottom: 12px; font-size: 15px; text-shadow: var(--neon-glow); }
+        .weighted-item { font-size: 14px; margin-bottom: 12px; color: var(--text-main); line-height: 1.5; }
+        .weighted-formula { font-size: 11px; color: var(--text-sub); display: block; margin-top: 2px;}
+
+        .txt-success { color: #00ff87; text-shadow: 0 0 15px rgba(0, 255, 135, 0.6); }
+        .txt-warning { color: #fbbf24; text-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+        .txt-danger { color: #f87171; text-shadow: 0 0 15px rgba(248, 113, 113, 0.4); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-controls">
+        <button class="control-btn" onclick="toggleTheme()">🌓 مظهر</button>
+        <button class="control-btn reset-btn" onclick="clearAllData()">🗑️ تصفير الحقول</button>
+    </div>
+    
+    <h2>حاسبة معدلك العام والمعدل الموزون الذكية</h2>
+    <p class="sub-title">حساب المعدل العام وتوقعات التوجيه بناءً على مادتك الأساسية</p>
+    
+    <div class="section-box">
+        <label for="branchSelect">اختر الشعبة الدراسية:</label>
+        <select id="branchSelect" onchange="loadSubjects()">
+            <option value="science">شعبة العلوم التجريبية</option>
+            <option value="math">شعبة الرياضيات</option>
+            <option value="tech">شعبة التقني رياضي</option>
+            <option value="management">شعبة التسيير والاقتصاد</option>
+            <option value="languages">شعبة اللغات الأجنبية</option>
+            <option value="letters">شعبة الآداب والفلسفة</option>
+        </select>
+    </div>
+
+    <div id="subjectsContainer"></div>
+    
+    <div class="btn-group">
+        <button onclick="calculateEverything()">احسب المعدل </button>
+        <button class="share-btn" onclick="copyReport()">نسخ التقرير</button>
+    </div>
+    
+    <div id="resultContainer">
+        <div id="mainResult"></div>
+        <div id="totalCoeffsBox"></div>
+        <div id="gradeResult"></div>
+        <div id="weightedResultBox"></div>
+    </div>
+</div>
+
+<script>
+const branchesData = {
+    science: [
+        { id:"s_sci", name: "العلوم الطبيعية", coeff: 6 }, { id:"s_phy", name: "الفيزياء", coeff: 5 }, { id:"s_math", name: "الرياضيات", coeff: 5 },
+        { id:"s_ar", name: "الأدب العربي", coeff: 3 }, { id:"s_philo", name: "الفلسفة", coeff: 2 }, { id:"s_hi", name: "التاريخ والجغرافيا", coeff: 2 },
+        { id:"s_en", name: "اللغة الإنجليزية", coeff: 2 }, { id:"s_fr", name: "اللغة الفرنسية", coeff: 2 }, { id:"s_is", name: "العلوم الإسلامية", coeff: 2 }
+    ],
+    math: [
+        { id:"m_math", name: "الرياضيات", coeff: 7 }, { id:"m_phy", name: "الفيزياء", coeff: 6 }, { id:"m_ar", name: "الأدب العربي", coeff: 3 },
+        { id:"m_sci", name: "العلوم الطبيعية", coeff: 2 }, { id:"m_philo", name: "الفلسفة", coeff: 2 }, { id:"m_hi", name: "التاريخ والجغرافيا", coeff: 2 },
+        { id:"m_en", name: "اللغة الإنجليزية", coeff: 2 }, { id:"m_fr", name: "اللغة الفرنسية", coeff: 2 }, { id:"m_is", name: "العلوم الإسلامية", coeff: 2 }
+    ],
+    tech: [
+        { id:"t_tech", name: "التكنولوجيا", coeff: 7 }, { id:"t_math", name: "الرياضيات", coeff: 6 }, { id:"t_phy", name: "الفيزياء", coeff: 6 },
+        { id:"t_ar", name: "الأدب العربي", coeff: 3 }, { id:"t_philo", name: "الفلسفة", coeff: 2 }, { id:"t_hi", name: "التاريخ والجغرافيا", coeff: 2 },
+        { id:"t_en", name: "اللغة الإنجليزية", coeff: 2 }, { id:"t_fr", name: "اللغة الفرنسية", coeff: 2 }, { id:"t_is", name: "العلوم الإسلامية", coeff: 2 }
+    ],
+    management: [
+        { id:"mg1", name: "التسيير المحاسبي والمالي", coeff: 6 }, { id:"mg2", name: "الرياضيات", coeff: 5 }, { id:"mg3", name: "الاقتصاد والمناجمنت", coeff: 5 },
+        { id:"mg4", name: "القانون", coeff: 2 }, { id:"mg5", name: "الأدب العربي", coeff: 3 }, { id:"mg6", name: "التاريخ والجغرافيا", coeff: 4 },
+        { id:"mg7", name: "اللغة الإنجليزية", coeff: 2 }, { id:"mg8", name: "اللغة الفرنسية", coeff: 2 }, { id:"mg9", name: "العلوم الإسلامية", coeff: 2 }
+    ],
+    languages: [
+        { id:"l_l3", name: "اللغة الأجنبية الثالثة", coeff: 5 }, { id:"l_en", name: "اللغة الإنجليزية", coeff: 5 }, { id:"l_fr", name: "اللغة الفرنسية", coeff: 4 },
+        { id:"l_ar", name: "الأدب العربي", coeff: 5 }, { id:"l_hi", name: "التاريخ والجغرافيا", coeff: 2 }, { id:"l_philo", name: "الفلسفة", coeff: 2 },
+        { id:"l_math", name: "الرياضيات", coeff: 2 }, { id:"l_is", name: "العلوم الإسلامية", coeff: 2 }
+    ],
+    letters: [
+        { id:"lt_ar", name: "الأدب العربي", coeff: 6 }, { id:"lt_philo", name: "الفلسفة", coeff: 6 }, { id:"lt_hi", name: "التاريخ والجغرافيا", coeff: 4 },
+        { id:"lt_en", name: "اللغة الإنجليزية", coeff: 2.5 }, { id:"lt_fr", name: "اللغة الفرنسية", coeff: 2.5 }, { id:"lt_math", name: "الرياضيات", coeff: 2 },
+        { id:"lt_is", name: "العلوم الإسلامية", coeff: 2 }
+    ]
+};
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+function loadSubjects() {
+    const selectedBranch = document.getElementById('branchSelect').value;
+    const container = document.getElementById('subjectsContainer');
+    container.innerHTML = "";
+    
+    localStorage.setItem('selectedBranch', selectedBranch);
+    const subjects = branchesData[selectedBranch];
+    
+    // 1. تحميل المواد الأساسية والإجبارية للشعبة
+    subjects.forEach(subject => {
+        const savedScore = localStorage.getItem(`score_${subject.id}`) || "";
+        container.innerHTML += `
+            <div class="subject-row">
+                <div class="subject-info">
+                    <span class="subject-name">${subject.name}</span>
+                    <span class="coefficient-badge">× ${subject.coeff}</span>
+                </div>
+                <input type="number" class="score-input" data-id="${subject.id}" data-coeff="${subject.coeff}" placeholder="--" min="0" max="20" step="0.01" value="${savedScore}" oninput="validateAndSave(this)">
+            </div>
+        `;
+    });
+
+    // 2. مادة التربية البدنية الاختيارية
+    const savedSport = localStorage.getItem(`score_all_sport`) || "";
+    container.innerHTML += `
+        <div class="subject-row optional-row">
+            <div class="subject-info">
+                <span class="subject-name" style="color: #eab308;">🏃‍♂️ التربية البدنية (اختيارية)</span>
+                <span class="coefficient-badge optional-badge">× 1</span>
+            </div>
+            <input type="number" class="score-input" data-id="all_sport" data-coeff="1" data-optional="true" placeholder="اختياري" min="0" max="20" step="0.01" value="${savedSport}" oninput="validateAndSave(this)">
+        </div>
+    `;
+
+    // 3. مادة اللغة الأمازيغية الاختيارية
+    const savedTamazixt = localStorage.getItem(`score_all_tamazixt`) || "";
+    container.innerHTML += `
+        <div class="subject-row optional-row">
+            <div class="subject-info">
+                <span class="subject-name" style="color: #eab308;">♓ اللغة الأمازيغية (اختيارية)</span>
+                <span class="coefficient-badge optional-badge">× 2</span>
+            </div>
+            <input type="number" class="score-input" data-id="all_tamazixt" data-coeff="2" data-optional="true" placeholder="اختياري" min="0" max="20" step="0.01" value="${savedTamazixt}" oninput="validateAndSave(this)">
+        </div>
+    `;
+
+    document.getElementById('resultContainer').style.display = "none";
+}
+
+function validateAndSave(input) {
+    let val = parseFloat(input.value);
+    if (val > 20) input.value = 20;
+    if (val < 0) input.value = 0;
+    
+    if (input.value === "") {
+        localStorage.removeItem(`score_${input.getAttribute('data-id')}`);
+    } else {
+        localStorage.setItem(`score_${input.getAttribute('data-id')}`, input.value);
+    }
+}
+
+function clearAllData() {
+    if(confirm("هل أنت متأكد من رغبتك في مسح كافة الدرجات المسجلة؟")) {
+        const inputs = document.querySelectorAll('.score-input');
+        inputs.forEach(input => {
+            input.value = "";
+            localStorage.removeItem(`score_${input.getAttribute('data-id')}`);
+        });
+        document.getElementById('resultContainer').style.display = "none";
+    }
+}
+
+function calculateEverything() {
+    const inputs = document.querySelectorAll('.score-input');
+    const selectedBranch = document.getElementById('branchSelect').value;
+    
+    let totalWeightedScore = 0;
+    let totalCoefficients = 0;
+    let scoresMap = {}; 
+
+    inputs.forEach(input => {
+        let isOptional = input.getAttribute('data-optional') === "true";
+        let rawValue = input.value;
+
+        // إذا كانت المادة اختيارية والحقل فارغ، يتم تجاوزها وإسقاط معاملها تماماً
+        if (isOptional && rawValue.trim() === "") {
+            return; 
+        }
+
+        let score = parseFloat(rawValue) || 0;
+        let coeff = parseFloat(input.getAttribute('data-coeff'));
+        let id = input.getAttribute('data-id');
+
+        let cleanId = id.includes('_') ? id.split('_')[1] : id; 
+        scoresMap[cleanId] = score;
+
+        totalWeightedScore += (score * coeff);
+        totalCoefficients += coeff;
+    });
+
+    let finalAverage = totalWeightedScore / totalCoefficients;
+
+    const resContainer = document.getElementById('resultContainer');
+    const mainRes = document.getElementById('mainResult');
+    const totalCoeffsBox = document.getElementById('totalCoeffsBox');
+    const gradeRes = document.getElementById('gradeResult');
+    const weightedBox = document.getElementById('weightedResultBox');
+    
+    resContainer.style.display = "block";
+    mainRes.className = finalAverage >= 10 ? "txt-success" : "txt-danger";
+    mainRes.innerHTML = `المعدل العام للبكالوريا: ${finalAverage.toFixed(2)} / 20`;
+    
+    totalCoeffsBox.innerHTML = `مجموع المعاملات المحسوبة: <b>${totalCoefficients}</b>`;
+
+    if (finalAverage >= 18) gradeRes.innerHTML = "🏆 التقدير: ممتاز";
+     else if (finalAverage >= 16) gradeRes.innerHTML =  "⭐ التقدير:  جيد جدا" ;
+    else if (finalAverage >= 14) gradeRes.innerHTML = "⭐ التقدير: جيد" ;
+    else if (finalAverage >= 12) gradeRes.innerHTML = "✨ التقدير: قريب من الحسن";
+    else if (finalAverage >= 10) gradeRes.innerHTML = "✔️ التقدير: مقبول";
+    else gradeRes.innerHTML = "📉 التقدير: راسب";
+
+    let weightedHTML = `<div class="weighted-title">📋 حساب المعدل الموزون حسب التخصصات والمواد الأساسية:</div>`;
+    
+    if (selectedBranch === 'science' || selectedBranch === 'math' || selectedBranch === 'tech') {
+        let sciScore = scoresMap['sci'] || 0;
+        let mathScore = scoresMap['math'] || 0;
+        let phyScore = scoresMap['phy'] || 0;
+        let techScore = scoresMap['tech'] || 0;
+
+        let medicalAvg = ((finalAverage * 2) + sciScore) / 3;
+        let techAvg = ((finalAverage * 2) + mathScore) / 3;
+        let primaryPhyOrTech = (selectedBranch === 'tech') ? techScore : phyScore;
+        let primaryName = (selectedBranch === 'tech') ? "التكنولوجيا" : "الفيزياء";
+        let architectureAvg = ((finalAverage * 2) + primaryPhyOrTech) / 3;
+
+        weightedHTML += `
+            <div class="weighted-item">🩺 التخصصات الطبية (طب، صيدلة، طب أسنان): <b class="txt-success">${medicalAvg.toFixed(2)}</b>
+                <span class="weighted-formula">(المعدل العام × 2 + مادة العلوم) ÷ 3</span>
+            </div>
+            <div class="weighted-item">💻 تخصصات الإعلام الآلي، والذكاء الاصطناعي، والهندسة: <b class="txt-success">${techAvg.toFixed(2)}</b>
+                <span class="weighted-formula">(المعدل العام × 2 + مادة الرياضيات) ÷ 3</span>
+            </div>
+            <div class="weighted-item">📐 تخصصات الهندسة المعمارية والعلوم والتقنيات: <b class="txt-success">${architectureAvg.toFixed(2)}</b>
+                <span class="weighted-formula">(المعدل العام × 2 + مادة ${primaryName}) ÷ 3</span>
+            </div>
+        `;
+    } else if (selectedBranch === 'languages' || selectedBranch === 'letters') {
+        let enScore = scoresMap['en'] || 0;
+        let frScore = scoresMap['fr'] || 0;
+        let arScore = scoresMap['ar'] || 0;
+
+        let englishBranchAvg = ((finalAverage * 2) + enScore) / 3;
+        let frenchBranchAvg = ((finalAverage * 2) + frScore) / 3;
+        let lawAvg = ((finalAverage * 2) + arScore) / 3;
+
+        weightedHTML += `
+            <div class="weighted-item">🇬🇧 تخصص لغة إنجليزية وترجمة: <b class="txt-success">${englishBranchAvg.toFixed(2)}</b>
+                <span class="weighted-formula">(المعدل العام × 2 + مادة الإنجليزية) ÷ 3</span>
+            </div>
+            <div class="weighted-item">🇫🇷 تخصص لغة فرنسية: <b class="txt-success">${frenchBranchAvg.toFixed(2)}</b>
+                <span class="weighted-formula">(المعدل العام × 2 + مادة الفرنسية) ÷ 3</span>
+            </div>
+            <div class="weighted-item">⚖️ تخصص الحقوق، العلوم السياسية والأدب العربي: <b class="txt-success">${lawAvg.toFixed(2)}</b>
+                <span class="weighted-formula">(المعدل العام × 2 + مادة الأدب العربي) ÷ 3</span>
+            </div>
+        `;
+    } else {
+        weightedHTML += `<div class="weighted-item" style="color:var(--text-sub)">شعبة التسيير واقتصاد تعتمد على المعدل العام مباشرة للالتحاق بالمدارس العليا للتجارة دون مادة موزونة منفصلة.</div>`;
+    }
+
+    weightedBox.innerHTML = weightedHTML;
+}
+
+function copyReport() {
+    const mainResultText = document.getElementById('mainResult').innerText;
+    if(!mainResultText) { alert("احسب المعدل أولاً!"); return; }
+    
+    const branchName = document.getElementById('branchSelect').options[document.getElementById('branchSelect').selectedIndex].text;
+    const report = `📊 تقرير الدرجات والموزون الذكي:\n🔹 الشعبة: ${branchName}\n🔹 ${mainResultText}`;
+    navigator.clipboard.writeText(report);
+    alert("📋 تم نسخ التقرير بنجاح لمشاركته!");
+}
+
+window.onload = function() {
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    document.getElementById('branchSelect').value = localStorage.getItem('selectedBranch') || 'science';
+    loadSubjects();
+};
+</script>
+
+</body>
+</html>
