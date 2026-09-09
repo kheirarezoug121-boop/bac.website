@@ -4,1397 +4,1536 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مقرأة الأترجّة — حفظ ومراجعة القرآن الكريم للأخوات</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --cream:#FBF1E4;
-    --cream-deep:#F5E7D4;
-    --pink:#F3C7CD;
-    --pink-soft:#F8DDE1;
-    --pink-deep:#EDB0BA;
-    --blue:#B9CBE9;
-    --blue-soft:#D6E1F2;
-    --blue-deep:#9FB8E2;
-    --mauve:#6E4A5A;
-    --mauve-deep:#4E3340;
-    --coral:#EAA6AD;
-    --coral-deep:#D68F97;
-    --gold:#E3A857;
-    --gold-deep:#CF8E38;
-    --white:#FFFDFB;
-    --ink:#3F2C35;
-    --font-display:'Baloo Bhaijaan 2','Tajawal',Tahoma,Arial,sans-serif;
-    --font-body:'Tajawal',Tahoma,Arial,sans-serif;
+:root{
+  --bg:#fff8f4;
+  --bg2:#fff0f3;
+  --pink:#f2a7b5;
+  --pink2:#ffd9df;
+  --pink3:#e88498;
+  --lav:#c8b8e8;
+  --lav2:#eee8fa;
+  --blue:#9db9df;
+  --blue2:#e1ebf8;
+  --mint:#b8dcd2;
+  --mint2:#e5f3ef;
+  --gold:#dfad5b;
+  --gold2:#f7e6bd;
+  --mauve:#725365;
+  --mauve2:#4b3340;
+  --ink:#3c2d35;
+  --white:#fffdfc;
+  --shadow:0 18px 50px rgba(87,55,70,.10);
+  --font-display:'Baloo Bhaijaan 2','Tajawal',Tahoma,Arial,sans-serif;
+  --font-body:'Tajawal',Tahoma,Arial,sans-serif;
+}
+
+*{box-sizing:border-box;}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:
+    radial-gradient(circle at 8% 12%,rgba(242,167,181,.16),transparent 24%),
+    radial-gradient(circle at 92% 35%,rgba(200,184,232,.17),transparent 25%),
+    var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  color:var(--mauve2);
+  margin:0;
+}
+
+p{
+  line-height:1.9;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+button{
+  font-family:var(--font-body);
+  cursor:pointer;
+  border:none;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+/* =========================================================
+   MOTION BACKGROUND
+========================================================= */
+
+.motion-layer{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.motion-orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(4px);
+  opacity:.18;
+  animation:orbMove 16s ease-in-out infinite alternate;
+}
+
+.motion-orb.one{
+  width:230px;
+  height:230px;
+  background:var(--pink);
+  top:9%;
+  right:-80px;
+}
+
+.motion-orb.two{
+  width:280px;
+  height:280px;
+  background:var(--lav);
+  bottom:8%;
+  left:-110px;
+  animation-delay:-6s;
+}
+
+.motion-orb.three{
+  width:130px;
+  height:130px;
+  background:var(--mint);
+  top:48%;
+  right:8%;
+  animation-delay:-11s;
+}
+
+.motion-icon{
+  position:absolute;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(114,83,101,.20);
+  animation:floatIcon 9s ease-in-out infinite;
+}
+
+.motion-icon svg{
+  width:100%;
+  height:100%;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.motion-icon.star svg{
+  fill:currentColor;
+  stroke:none;
+}
+
+.motion-icon.i1{
+  top:18%;
+  right:5%;
+  animation-duration:8s;
+}
+
+.motion-icon.i2{
+  top:39%;
+  left:4%;
+  animation-duration:11s;
+  animation-delay:-3s;
+}
+
+.motion-icon.i3{
+  top:62%;
+  right:7%;
+  animation-duration:10s;
+  animation-delay:-5s;
+}
+
+.motion-icon.i4{
+  top:78%;
+  left:9%;
+  animation-duration:9s;
+  animation-delay:-2s;
+}
+
+.motion-icon.i5{
+  top:27%;
+  left:22%;
+  width:24px;
+  height:24px;
+  animation-duration:7s;
+  animation-delay:-1s;
+}
+
+.motion-icon.i6{
+  top:72%;
+  right:21%;
+  width:28px;
+  height:28px;
+  animation-duration:12s;
+  animation-delay:-6s;
+}
+
+.motion-icon.i7{
+  top:51%;
+  left:44%;
+  width:20px;
+  height:20px;
+  animation-duration:6s;
+  animation-delay:-2s;
+}
+
+@keyframes floatIcon{
+  0%,100%{
+    transform:translate3d(0,0,0) rotate(-4deg);
   }
-
-  *{box-sizing:border-box;}
-
-  html{
-    scroll-behavior:smooth;
+  25%{
+    transform:translate3d(10px,-14px,0) rotate(5deg);
   }
-
-  body{
-    margin:0;
-    font-family:var(--font-body);
-    background:var(--cream);
-    color:var(--ink);
-    overflow-x:hidden;
+  50%{
+    transform:translate3d(-5px,-26px,0) rotate(-3deg);
   }
-
-  h1,h2,h3,h4{
-    font-family:var(--font-display);
-    color:var(--mauve-deep);
-    margin:0;
+  75%{
+    transform:translate3d(-13px,-9px,0) rotate(4deg);
   }
+}
 
-  p{line-height:1.9;}
-  a{color:inherit;text-decoration:none;}
-  ul{margin:0;padding:0;list-style:none;}
-  button{font-family:var(--font-body);cursor:pointer;border:none;}
-  img{max-width:100%;display:block;}
-
-  /* decorative blobs */
-  .blob{
-    position:absolute;
-    border-radius:58% 42% 65% 35% / 45% 55% 45% 55%;
-    pointer-events:none;
-    z-index:0;
+@keyframes orbMove{
+  0%{
+    transform:translate3d(0,0,0) scale(1);
   }
-
-  .blob-pink{background:var(--pink);}
-  .blob-blue{background:var(--blue);}
-
-  .wrap{
-    max-width:1240px;
-    margin:0 auto;
-    padding:0 24px;
-    position:relative;
-    z-index:1;
+  50%{
+    transform:translate3d(35px,-25px,0) scale(1.08);
   }
-
-  /* =====================================================
-     MODERN MOTION LAYER
-     إضافة حركية فقط - بدون تغيير محتوى الموقع
-     ===================================================== */
-
-  .motion-layer{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:0;
+  100%{
+    transform:translate3d(-25px,25px,0) scale(.94);
   }
+}
 
-  .motion-layer .float-icon{
-    position:absolute;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--mauve);
-    opacity:.18;
-    will-change:transform;
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.wrap{
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 24px;
+  position:relative;
+  z-index:2;
+}
+
+section{
+  padding:80px 0;
+  position:relative;
+  z-index:1;
+}
+
+.blob{
+  position:absolute;
+  border-radius:58% 42% 65% 35% / 45% 55% 45% 55%;
+  pointer-events:none;
+  z-index:0;
+  animation:blobFloat 10s ease-in-out infinite alternate;
+}
+
+.blob-pink{
+  background:var(--pink2);
+}
+
+.blob-blue{
+  background:var(--blue2);
+  animation-delay:-4s;
+}
+
+@keyframes blobFloat{
+  from{
+    transform:translate3d(0,0,0) rotate(0deg);
   }
-
-  .motion-layer .float-icon svg{
-    width:100%;
-    height:100%;
-    fill:none;
-    stroke:currentColor;
-    stroke-width:1.35;
-    stroke-linecap:round;
-    stroke-linejoin:round;
+  to{
+    transform:translate3d(14px,-18px,0) rotate(7deg);
   }
+}
 
-  .motion-layer .icon-book{
-    width:42px;
-    height:42px;
-    top:18%;
-    right:7%;
-    animation:floatOne 8s ease-in-out infinite;
-  }
+/* =========================================================
+   TOPBAR
+========================================================= */
 
-  .motion-layer .icon-star{
-    width:25px;
-    height:25px;
-    top:31%;
-    right:17%;
-    color:var(--gold-deep);
-    animation:twinkleFloat 5s ease-in-out infinite;
-    animation-delay:1s;
-  }
+header.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,248,244,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(114,83,101,.10);
+  box-shadow:0 4px 24px rgba(75,51,64,.04);
+}
 
-  .motion-layer .icon-leaf{
-    width:38px;
-    height:38px;
-    top:58%;
-    right:6%;
-    color:var(--coral-deep);
-    animation:floatTwo 10s ease-in-out infinite;
-    animation-delay:2s;
-  }
+.topbar-inner{
+  max-width:1240px;
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
 
-  .motion-layer .icon-flower{
-    width:35px;
-    height:35px;
-    top:76%;
-    right:18%;
-    color:var(--pink-deep);
-    animation:rotateFloat 12s ease-in-out infinite;
-  }
+.brand-mini{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-display);
+  font-weight:800;
+  color:var(--mauve2);
+  font-size:1.15rem;
+}
 
-  .motion-layer .icon-book-two{
-    width:36px;
-    height:36px;
-    top:43%;
-    left:7%;
-    color:var(--blue-deep);
-    animation:floatTwo 9s ease-in-out infinite;
-    animation-delay:3s;
-  }
+.brand-mini .dot{
+  width:36px;
+  height:36px;
+  border-radius:13px;
+  background:linear-gradient(135deg,var(--pink3),var(--lav));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 7px 18px rgba(114,83,101,.16);
+}
 
-  .motion-layer .icon-star-two{
-    width:23px;
-    height:23px;
-    top:67%;
-    left:16%;
-    color:var(--gold-deep);
-    animation:twinkleFloat 6s ease-in-out infinite;
-    animation-delay:1.5s;
-  }
+.brand-mini .dot svg{
+  width:17px;
+  height:17px;
+  fill:#fff;
+}
 
-  .motion-layer .icon-leaf-two{
-    width:40px;
-    height:40px;
-    top:25%;
-    left:9%;
-    color:var(--coral-deep);
-    animation:floatOne 11s ease-in-out infinite;
-    animation-delay:4s;
-  }
+nav.main-nav{
+  display:flex;
+  gap:18px;
+  font-weight:700;
+  font-size:.92rem;
+}
 
-  .motion-layer .icon-spark{
-    width:20px;
-    height:20px;
-    top:84%;
-    left:8%;
-    color:var(--gold);
-    animation:twinkle 4s ease-in-out infinite;
-  }
+nav.main-nav a{
+  color:var(--mauve);
+  padding:7px 10px;
+  border-radius:999px;
+  transition:.25s;
+}
 
-  .motion-layer .soft-orb{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(1px);
-    opacity:.12;
-  }
+nav.main-nav a:hover{
+  color:var(--mauve2);
+  background:var(--pink2);
+  transform:translateY(-2px);
+}
 
-  .motion-layer .orb-one{
-    width:150px;
-    height:150px;
-    background:var(--pink);
-    top:35%;
-    right:-80px;
-    animation:orbMove 16s ease-in-out infinite alternate;
-  }
+.nav-toggle{
+  display:none;
+}
 
-  .motion-layer .orb-two{
-    width:180px;
-    height:180px;
-    background:var(--blue);
-    bottom:8%;
-    left:-100px;
-    animation:orbMoveTwo 19s ease-in-out infinite alternate;
-  }
+/* =========================================================
+   HERO
+========================================================= */
 
-  @keyframes floatOne{
-    0%,100%{
-      transform:translate3d(0,0,0) rotate(-4deg);
-    }
-    25%{
-      transform:translate3d(-10px,-18px,0) rotate(4deg);
-    }
-    50%{
-      transform:translate3d(7px,-30px,0) rotate(-2deg);
-    }
-    75%{
-      transform:translate3d(14px,-13px,0) rotate(6deg);
-    }
-  }
+section.hero{
+  position:relative;
+  padding:72px 0 95px;
+  overflow:hidden;
+  min-height:calc(100vh - 66px);
+  display:flex;
+  align-items:center;
+}
 
-  @keyframes floatTwo{
-    0%,100%{
-      transform:translate3d(0,0,0) rotate(5deg);
-    }
-    30%{
-      transform:translate3d(12px,-14px,0) rotate(-5deg);
-    }
-    60%{
-      transform:translate3d(-8px,-28px,0) rotate(7deg);
-    }
-    80%{
-      transform:translate3d(-15px,-10px,0) rotate(-3deg);
-    }
-  }
+section.hero .wrap{
+  width:100%;
+}
 
-  @keyframes rotateFloat{
-    0%,100%{
-      transform:translateY(0) rotate(0deg);
-    }
-    50%{
-      transform:translateY(-24px) rotate(18deg);
-    }
-  }
+.hero .blob-pink{
+  width:350px;
+  height:350px;
+  top:-150px;
+  right:-100px;
+  opacity:.7;
+}
 
-  @keyframes twinkle{
-    0%,100%{
-      opacity:.12;
-      transform:scale(.8) rotate(0deg);
-    }
-    50%{
-      opacity:.55;
-      transform:scale(1.25) rotate(20deg);
-    }
-  }
+.hero .blob-blue{
+  width:300px;
+  height:300px;
+  top:90px;
+  left:-140px;
+  opacity:.75;
+}
 
-  @keyframes twinkleFloat{
-    0%,100%{
-      opacity:.12;
-      transform:translateY(0) scale(.85) rotate(0deg);
-    }
-    50%{
-      opacity:.55;
-      transform:translateY(-22px) scale(1.2) rotate(25deg);
-    }
-  }
+.hero-card{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+  background:rgba(255,253,252,.68);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:48px;
+  padding:55px 34px 44px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(8px);
+  animation:heroCardIn .9s ease both;
+}
 
-  @keyframes orbMove{
-    0%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(-45px,30px) scale(1.12);}
-    100%{transform:translate(25px,-25px) scale(.95);}
-  }
-
-  @keyframes orbMoveTwo{
-    0%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(55px,-35px) scale(1.08);}
-    100%{transform:translate(-20px,20px) scale(.94);}
-  }
-
-  /* ظهور العناصر بشكل ناعم عند النزول */
-  .motion-ready .reveal-motion{
+@keyframes heroCardIn{
+  from{
     opacity:0;
-    transform:translateY(25px);
+    transform:translateY(30px);
   }
-
-  .motion-ready .reveal-motion.motion-visible{
+  to{
     opacity:1;
     transform:translateY(0);
-    transition:
-      opacity .75s ease,
-      transform .75s cubic-bezier(.22,1,.36,1);
-    transition-delay:var(--motion-delay,0ms);
   }
+}
 
-  /* حركة خفيفة عند المرور */
-  .motion-ready .service-card,
-  .motion-ready .teacher-card,
-  .motion-ready .channel-box,
-  .motion-ready .rules-list,
-  .motion-ready form#regForm,
-  .motion-ready .admin-gate,
-  .motion-ready .sub-card{
-    transition:
-      transform .35s ease,
-      box-shadow .35s ease;
-  }
+.badge-circle{
+  width:82px;
+  height:82px;
+  border-radius:28px;
+  margin:0 auto 20px;
+  background:linear-gradient(135deg,var(--pink3),var(--lav));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 14px 30px rgba(114,83,101,.20);
+  animation:badgeFloat 4s ease-in-out infinite;
+}
 
-  .motion-ready .service-card:hover{
-    transform:translateX(-5px);
-  }
+.badge-circle svg{
+  width:37px;
+  height:37px;
+  fill:#fff;
+}
 
-  .motion-ready .teacher-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 26px rgba(78,51,64,.10);
+@keyframes badgeFloat{
+  0%,100%{
+    transform:translateY(0) rotate(0);
   }
+  50%{
+    transform:translateY(-7px) rotate(3deg);
+  }
+}
 
-  .motion-ready .channel-box:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 30px rgba(78,51,64,.08);
-  }
+.hero h1{
+  font-size:3.2rem;
+  line-height:1.35;
+  font-weight:800;
+}
 
-  .motion-ready .rules-list:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 26px rgba(78,51,64,.07);
-  }
+.hero .quote{
+  margin:22px auto 0;
+  max-width:570px;
+  font-size:1.04rem;
+  color:var(--mauve);
+  font-weight:500;
+  position:relative;
+  padding:0 8px;
+}
 
-  .motion-ready form#regForm:hover{
-    box-shadow:0 14px 32px rgba(78,51,64,.07);
-  }
+.hero-ctas{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-top:32px;
+  flex-wrap:wrap;
+}
 
-  .motion-ready .admin-gate:hover{
-    transform:translateY(-3px);
-  }
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:13px 27px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.96rem;
+  transition:.25s;
+}
 
-  .motion-ready .btn{
-    transition:
-      transform .25s ease,
-      box-shadow .25s ease,
-      background .25s ease;
-  }
+.btn-primary{
+  background:linear-gradient(135deg,var(--pink3),var(--pink));
+  color:#fff;
+  box-shadow:0 10px 22px rgba(232,132,152,.28);
+}
 
-  .motion-ready .btn:hover{
-    transform:translateY(-3px) scale(1.015);
-  }
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 28px rgba(232,132,152,.35);
+}
 
-  .motion-ready .badge-circle{
-    animation:badgePulse 4s ease-in-out infinite;
-  }
+.btn-outline{
+  background:#fff;
+  color:var(--mauve2);
+  border:2px solid var(--lav);
+}
 
-  @keyframes badgePulse{
-    0%,100%{
-      box-shadow:0 10px 24px rgba(78,51,64,.18);
-    }
-    50%{
-      box-shadow:
-        0 14px 30px rgba(78,51,64,.20),
-        0 0 0 8px rgba(243,199,205,.18);
-    }
-  }
+.btn-outline:hover{
+  transform:translateY(-3px);
+  background:var(--lav2);
+}
 
-  /* topbar */
-  header.topbar{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(251,241,228,.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid rgba(110,74,90,.12);
-  }
+/* =========================================================
+   SECTION HEAD
+========================================================= */
 
-  .topbar-inner{
-    max-width:1240px;
-    margin:0 auto;
-    padding:14px 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-  }
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--mauve2);
+  color:#fff;
+  padding:8px 19px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.84rem;
+  margin-bottom:15px;
+  box-shadow:0 7px 18px rgba(75,51,64,.13);
+}
 
-  .brand-mini{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-family:var(--font-display);
-    font-weight:700;
-    color:var(--mauve-deep);
-    font-size:1.15rem;
-  }
+.section-head{
+  text-align:center;
+  max-width:680px;
+  margin:0 auto 42px;
+}
 
-  .brand-mini .dot{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--blue-deep),var(--pink-deep));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
+.section-head h2{
+  font-size:2.15rem;
+  font-weight:800;
+}
 
-  .brand-mini .dot svg{
-    width:16px;
-    height:16px;
-    fill:#fff;
+.section-head p{
+  color:var(--mauve);
+  margin-top:10px;
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+section.services{
+  background:rgba(255,253,252,.78);
+}
+
+.services-grid{
+  max-width:850px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.service-card{
+  padding:22px;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  background:#fff;
+  border:1px solid rgba(114,83,101,.08);
+  border-radius:22px;
+  box-shadow:0 9px 25px rgba(75,51,64,.055);
+  transition:.3s;
+}
+
+.service-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 16px 32px rgba(75,51,64,.10);
+}
+
+.service-card .icon{
+  flex:none;
+  width:45px;
+  height:45px;
+  border-radius:15px;
+  background:var(--lav2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s;
+}
+
+.service-card:hover .icon{
+  transform:rotate(-8deg) scale(1.06);
+  background:var(--pink2);
+}
+
+.service-card .icon svg{
+  width:21px;
+  height:21px;
+  fill:var(--mauve2);
+}
+
+.service-card h4{
+  font-size:1.05rem;
+  margin-bottom:4px;
+}
+
+.service-card p{
+  font-size:.88rem;
+  color:var(--mauve);
+  margin:0;
+}
+
+.dua-strip{
+  text-align:center;
+  margin-top:30px;
+  color:var(--gold);
+  font-weight:800;
+}
+
+/* =========================================================
+   SCHEDULE - HORIZONTAL CARDS
+========================================================= */
+
+section.schedule{
+  background:
+    linear-gradient(135deg,rgba(238,232,250,.65),rgba(255,240,243,.65));
+}
+
+.teacher-list{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  overflow-y:visible;
+  padding:8px 4px 25px;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:thin;
+  scrollbar-color:var(--pink) transparent;
+}
+
+.teacher-list::-webkit-scrollbar{
+  height:7px;
+}
+
+.teacher-list::-webkit-scrollbar-track{
+  background:rgba(255,255,255,.5);
+  border-radius:20px;
+}
+
+.teacher-list::-webkit-scrollbar-thumb{
+  background:var(--pink);
+  border-radius:20px;
+}
+
+.teacher-card{
+  min-width:330px;
+  max-width:330px;
+  background:rgba(255,255,255,.94);
+  border-radius:27px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:16px;
+  box-shadow:0 12px 32px rgba(75,51,64,.09);
+  border:1px solid rgba(255,255,255,.9);
+  scroll-snap-align:start;
+  transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.teacher-card::before{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:var(--pink2);
+  top:-55px;
+  left:-45px;
+  opacity:.6;
+}
+
+.teacher-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 20px 42px rgba(75,51,64,.13);
+}
+
+.teacher-card .status{
+  position:relative;
+  z-index:1;
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.teacher-card .status svg{
+  width:24px;
+  height:24px;
+}
+
+.status.open{
+  background:var(--mint2);
+}
+
+.status.open svg{
+  fill:#4d927f;
+}
+
+.status.closed{
+  background:var(--lav2);
+}
+
+.status.closed svg{
+  fill:var(--mauve2);
+}
+
+.teacher-info{
+  flex:1;
+  min-width:0;
+  position:relative;
+  z-index:1;
+}
+
+.teacher-info h4{
+  font-size:1.08rem;
+  color:var(--pink3);
+  margin-bottom:8px;
+}
+
+.teacher-info span{
+  display:block;
+  font-size:.87rem;
+  color:var(--mauve);
+  margin-top:5px;
+}
+
+.teacher-tag{
+  flex:none;
+  font-size:.79rem;
+  font-weight:800;
+  padding:8px 14px;
+  border-radius:999px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.teacher-tag.open{
+  background:#dff1eb;
+  color:#3d7d6c;
+}
+
+.teacher-tag.closed{
+  background:var(--lav2);
+  color:var(--mauve);
+}
+
+/* =========================================================
+   FADWA STUDENTS SECTION (NEW)
+========================================================= */
+
+section.fadwa-students{
+  background:rgba(255,255,255,0.9);
+}
+
+.fadwa-board{
+  max-width:550px;
+  margin:0 auto;
+  background:linear-gradient(135deg, #f2e9f0 0%, #e6eff8 100%);
+  border-radius:35px;
+  padding:35px 25px;
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(255,255,255,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.fadwa-title{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.fadwa-title h3{
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--pink3);
+  margin-bottom: 5px;
+  text-shadow: 0 2px 10px rgba(232,132,152,0.2);
+}
+
+.fadwa-title span{
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--mauve2);
+}
+
+.students-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.student-row{
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 10px 18px 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(75,51,64,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(242,167,181,0.2);
+}
+
+.student-row:hover{
+  transform: translateX(-4px);
+  box-shadow: 0 6px 20px rgba(75,51,64,0.1);
+}
+
+.student-name{
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--mauve2);
+  padding-right: 8px;
+}
+
+.student-num{
+  background: var(--mauve2);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 8px rgba(75,51,64,0.15);
+}
+
+/* =========================================================
+   CHANNEL
+========================================================= */
+
+section.channel{
+  background:#fff;
+}
+
+.channel-box{
+  max-width:560px;
+  margin:0 auto;
+  text-align:center;
+  background:linear-gradient(145deg,#fff4f5,#f3effb);
+  border-radius:35px;
+  padding:38px 26px;
+  box-shadow:var(--shadow);
+}
+
+.channel-box img{
+  width:190px;
+  height:190px;
+  margin:18px auto;
+  border-radius:25px;
+  background:#fff;
+  padding:10px;
+  box-shadow:0 12px 28px rgba(75,51,64,.11);
+}
+
+.channel-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  color:var(--mauve2);
+  padding:11px 18px;
+  border-radius:999px;
+  font-weight:800;
+  margin-top:6px;
+  font-size:.9rem;
+  word-break:break-all;
+  box-shadow:0 7px 18px rgba(75,51,64,.07);
+  transition:.25s;
+}
+
+.channel-link:hover{
+  transform:translateY(-3px);
+}
+
+.telegram-icon{
+  width:23px;
+  height:23px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  animation:telegramSpin 4s ease-in-out infinite;
+}
+
+.telegram-icon svg{
+  width:100%;
+  height:100%;
+  fill:var(--pink3);
+}
+
+@keyframes telegramSpin{
+  0%,100%{
+    transform:rotate(0deg) translateY(0);
   }
+  25%{
+    transform:rotate(-10deg) translateY(-2px);
+  }
+  50%{
+    transform:rotate(10deg) translateY(-4px);
+  }
+  75%{
+    transform:rotate(-7deg) translateY(-2px);
+  }
+}
+
+.copy-btn{
+  background:none;
+  color:var(--pink3);
+  font-weight:800;
+  font-size:.85rem;
+  margin-inline-start:10px;
+  text-decoration:underline;
+}
+
+/* =========================================================
+   RULES
+========================================================= */
+
+section.rules{
+  background:rgba(255,240,243,.65);
+}
+
+.rules-list{
+  max-width:780px;
+  margin:0 auto;
+  background:#fff;
+  border-radius:28px;
+  padding:12px 28px;
+  box-shadow:0 12px 35px rgba(75,51,64,.07);
+}
+
+.rule-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:15px 4px;
+  border-bottom:1.5px solid rgba(114,83,101,.09);
+}
+
+.rule-item:last-child{
+  border-bottom:none;
+}
+
+.rule-item svg{
+  flex:none;
+  width:19px;
+  height:19px;
+  fill:var(--pink3);
+  margin-top:5px;
+}
+
+.rule-item p{
+  margin:0;
+  font-size:.94rem;
+}
+
+/* =========================================================
+   REGISTER
+========================================================= */
+
+section.register{
+  background:#fff;
+}
+
+form#regForm{
+  max-width:760px;
+  margin:0 auto;
+  background:linear-gradient(145deg,#fff5f2,#f4f0fb);
+  border-radius:34px;
+  padding:40px 32px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.9);
+}
+
+.form-block{
+  margin-bottom:30px;
+}
+
+.form-block h3{
+  font-size:1.12rem;
+  color:var(--pink3);
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.form-block h3 .num{
+  width:29px;
+  height:29px;
+  border-radius:10px;
+  background:var(--pink3);
+  color:#fff;
+  font-size:.8rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field label{
+  display:block;
+  font-size:.88rem;
+  font-weight:800;
+  color:var(--mauve2);
+  margin-bottom:7px;
+}
+
+.field input[type=text],
+.field input[type=number],
+.field input[type=tel],
+.field select,
+.field textarea{
+  width:100%;
+  padding:13px 14px;
+  border-radius:15px;
+  border:1.5px solid #e5ddec;
+  background:#fff;
+  font-family:var(--font-body);
+  font-size:.94rem;
+  color:var(--ink);
+  transition:.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  outline:2px solid rgba(232,132,152,.22);
+  border-color:var(--pink);
+}
+
+.field textarea{
+  resize:vertical;
+  min-height:80px;
+}
+
+.hint{
+  font-size:.78rem;
+  color:var(--mauve);
+  margin-top:4px;
+}
+
+select option:disabled{
+  color:#bbb;
+}
+
+.voice-panel{
+  display:none;
+}
+
+.voice-panel.active{
+  display:block;
+}
+
+.rec-controls{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.rec-btn{
+  background:var(--mauve2);
+  color:#fff;
+  padding:11px 19px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.88rem;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.rec-btn.recording{
+  background:var(--pink3);
+  animation:recordPulse 1.3s ease-in-out infinite;
+}
+
+@keyframes recordPulse{
+  0%,100%{
+    box-shadow:0 0 0 0 rgba(232,132,152,.25);
+  }
+  50%{
+    box-shadow:0 0 0 9px rgba(232,132,152,0);
+  }
+}
+
+.rec-status{
+  font-size:.85rem;
+  color:var(--mauve);
+}
+
+audio{
+  width:100%;
+  margin-top:10px;
+}
+
+.pledge-box{
+  background:#fff;
+  border-radius:17px;
+  padding:17px 18px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  border:1.5px solid #e5ddec;
+}
+
+.pledge-box input{
+  margin-top:5px;
+  flex:none;
+  width:18px;
+  height:18px;
+}
+
+.pledge-box label{
+  font-size:.9rem;
+  line-height:1.8;
+}
+
+.submit-row{
+  text-align:center;
+  margin-top:25px;
+}
+
+#regMsg{
+  margin-top:16px;
+  text-align:center;
+  font-weight:700;
+  padding:12px;
+  border-radius:14px;
+  display:none;
+}
+
+#regMsg.ok{
+  display:block;
+  background:#e4f3e6;
+  color:#2e6b3e;
+}
+
+#regMsg.err{
+  display:block;
+  background:#fbe4e6;
+  color:#a13440;
+}
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+section.admin{
+  background:linear-gradient(135deg,#f3effb,#fff0f3);
+}
+
+.admin-gate{
+  max-width:400px;
+  margin:0 auto;
+  background:#fff;
+  border-radius:28px;
+  padding:30px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.admin-gate input{
+  width:100%;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1.5px solid #e5ddec;
+  margin:14px 0;
+  font-family:var(--font-body);
+}
+
+#adminDash{
+  display:none;
+  max-width:920px;
+  margin:0 auto;
+}
+
+.sub-card{
+  background:#fff;
+  border-radius:24px;
+  padding:21px 22px;
+  margin-bottom:16px;
+  box-shadow:0 10px 27px rgba(75,51,64,.07);
+}
+
+.sub-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.sub-top h4{
+  font-size:1.05rem;
+}
+
+.pill{
+  font-size:.76rem;
+  font-weight:800;
+  padding:5px 12px;
+  border-radius:999px;
+}
+
+.pill.pending{
+  background:var(--gold);
+  color:#fff;
+}
+
+.pill.accepted{
+  background:#4e9f63;
+  color:#fff;
+}
+
+.pill.rejected{
+  background:#b3555f;
+  color:#fff;
+}
+
+.sub-meta{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:6px 16px;
+  margin:12px 0;
+  font-size:.88rem;
+  color:var(--mauve2);
+}
+
+.sub-meta b{
+  color:var(--ink);
+}
+
+.sub-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.sub-actions button{
+  padding:9px 16px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.85rem;
+}
+
+.btn-accept{
+  background:#4e9f63;
+  color:#fff;
+}
+
+.btn-reject{
+  background:#b3555f;
+  color:#fff;
+}
+
+.btn-copy{
+  background:var(--lav2);
+  color:var(--mauve2);
+}
+
+.reply-box{
+  margin-top:12px;
+  background:var(--bg);
+  border-radius:14px;
+  padding:14px;
+  font-size:.88rem;
+  white-space:pre-wrap;
+  display:none;
+}
+
+.empty-note{
+  text-align:center;
+  color:var(--mauve);
+  padding:30px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  background:var(--mauve2);
+  color:#fff;
+  padding:38px 0;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+footer .quote{
+  max-width:500px;
+  margin:0 auto 14px;
+  font-size:.92rem;
+  opacity:.9;
+}
+
+footer a.channel{
+  color:#ffd9df;
+  font-weight:800;
+}
+
+footer .fine{
+  margin-top:14px;
+  font-size:.78rem;
+  opacity:.65;
+}
+
+.admin-link{
+  font-size:.78rem;
+  opacity:.7;
+  display:inline-block;
+  margin-top:10px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:760px){
 
   nav.main-nav{
-    display:flex;
-    gap:22px;
-    font-weight:700;
-    font-size:.95rem;
+    position:fixed;
+    inset:64px 0 auto 0;
+    background:rgba(255,248,244,.98);
+    flex-direction:column;
+    padding:18px 24px;
+    box-shadow:0 12px 20px rgba(0,0,0,.08);
+    transform:translateY(-140%);
+    transition:.25s;
+    gap:8px;
   }
 
-  nav.main-nav a{
-    color:var(--mauve);
-    padding:6px 4px;
-    border-bottom:2px solid transparent;
-    transition:.2s;
-  }
-
-  nav.main-nav a:hover{
-    color:var(--coral-deep);
-    border-color:var(--coral-deep);
+  nav.main-nav.show{
+    transform:translateY(0);
   }
 
   .nav-toggle{
-    display:none;
+    display:block;
     background:none;
     font-size:1.6rem;
-    color:var(--mauve-deep);
+    color:var(--mauve2);
   }
 
-  /* HERO */
-  section.hero{
-    position:relative;
-    padding:70px 0 90px;
-    overflow:hidden;
-    min-height:calc(100vh - 66px);
-    display:flex;
-    align-items:center;
+  .wrap{
+    padding:0 18px;
   }
 
-  section.hero .wrap{width:100%;}
-
-  .hero .blob-pink{
-    width:320px;
-    height:320px;
-    top:-150px;
-    right:-100px;
-    opacity:.7;
-    animation:blobFloat 12s ease-in-out infinite;
+  section{
+    padding:52px 0;
   }
 
-  .hero .blob-blue{
-    width:280px;
-    height:280px;
-    top:70px;
-    left:-130px;
-    opacity:.7;
-    animation:blobFloatTwo 14s ease-in-out infinite;
-  }
-
-  @keyframes blobFloat{
-    0%,100%{transform:translate(0,0) rotate(0deg);}
-    50%{transform:translate(-20px,25px) rotate(8deg);}
-  }
-
-  @keyframes blobFloatTwo{
-    0%,100%{transform:translate(0,0) rotate(0deg);}
-    50%{transform:translate(25px,-18px) rotate(-7deg);}
+  .hero{
+    min-height:auto !important;
+    padding:55px 0 70px !important;
   }
 
   .hero-card{
-    position:relative;
-    z-index:2;
-    max-width:640px;
-    margin:0 auto;
-    text-align:center;
-    background:rgba(255,253,251,.55);
-    border-radius:40px;
-    padding:46px 30px 36px;
-  }
-
-  .badge-circle{
-    width:74px;
-    height:74px;
-    border-radius:50%;
-    margin:0 auto 18px;
-    background:linear-gradient(135deg,var(--blue-deep),var(--pink-deep));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 10px 24px rgba(78,51,64,.18);
-  }
-
-  .badge-circle svg{
-    width:34px;
-    height:34px;
-    fill:#fff;
+    border-radius:32px;
+    padding:40px 20px 32px;
   }
 
   .hero h1{
-    font-size:2.6rem;
-    line-height:1.35;
-    font-weight:800;
+    font-size:2.15rem;
   }
 
   .hero .quote{
-    margin:22px auto 0;
-    max-width:480px;
-    font-size:1.02rem;
-    color:var(--mauve);
-    font-weight:500;
-    position:relative;
-    padding:0 8px;
-  }
-
-  .hero-ctas{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    margin-top:30px;
-    flex-wrap:wrap;
-  }
-
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:13px 26px;
-    border-radius:999px;
-    font-weight:800;
-    font-size:.98rem;
-    transition:.2s transform,.2s box-shadow;
-  }
-
-  .btn-primary{
-    background:var(--coral);
-    color:#fff;
-    box-shadow:0 8px 18px rgba(214,143,151,.32);
-  }
-
-  .btn-primary:hover{
-    transform:translateY(-2px);
-    box-shadow:0 12px 22px rgba(214,143,151,.38);
-  }
-
-  .btn-outline{
-    background:#fff;
-    color:var(--mauve-deep);
-    border:2px solid var(--blue-deep);
-  }
-
-  .btn-outline:hover{
-    transform:translateY(-2px);
-    background:var(--blue-soft);
-  }
-
-  .btn-ghost{
-    background:transparent;
-    color:var(--mauve);
-    text-decoration:underline;
-    font-weight:700;
-  }
-
-  /* generic section */
-  section{
-    padding:64px 0;
-    position:relative;
-  }
-
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:var(--coral);
-    color:#fff;
-    padding:8px 20px;
-    border-radius:999px;
-    font-weight:800;
-    font-size:.88rem;
-    margin-bottom:14px;
-  }
-
-  .section-head{
-    text-align:center;
-    max-width:620px;
-    margin:0 auto 40px;
-  }
-
-  .section-head h2{
-    font-size:2rem;
-    font-weight:800;
-  }
-
-  .section-head p{
-    color:var(--mauve);
-    margin-top:10px;
-  }
-
-  /* SERVICES */
-  section.services{background:var(--white);}
-
-  .services-grid{
-    max-width:680px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-  }
-
-  .service-card{
-    padding:20px 6px;
-    display:flex;
-    gap:16px;
-    align-items:flex-start;
-    border-bottom:1.5px solid rgba(110,74,90,.14);
-  }
-
-  .service-card:last-child{border-bottom:none;}
-
-  .service-card .icon{
-    flex:none;
-    width:38px;
-    height:38px;
-    border-radius:10px;
-    background:var(--blue-soft);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:2px;
-  }
-
-  .service-card .icon svg{
-    width:19px;
-    height:19px;
-    fill:var(--mauve-deep);
-  }
-
-  .service-card h4{
-    font-size:1.05rem;
-    margin-bottom:4px;
-  }
-
-  .service-card p{
-    font-size:.9rem;
-    color:var(--mauve);
-    margin:0;
-  }
-
-  .dua-strip{
-    text-align:center;
-    margin-top:26px;
-    color:var(--gold-deep);
-    font-weight:700;
-  }
-
-  /* SCHEDULE */
-  section.schedule{background:var(--cream-deep);}
-
-  .teacher-list{
-    display:grid;
-    gap:14px;
-  }
-
-  .teacher-card{
-    background:#fff;
-    border-radius:22px;
-    padding:18px 22px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    box-shadow:0 6px 18px rgba(78,51,64,.06);
-    flex-wrap:wrap;
-  }
-
-  .teacher-card .status{
-    flex:none;
-    width:46px;
-    height:46px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .teacher-card .status svg{
-    width:20px;
-    height:20px;
-  }
-
-  .status.open{background:var(--pink-soft);}
-  .status.open svg{fill:var(--coral-deep);}
-  .status.closed{background:var(--blue-soft);}
-  .status.closed svg{fill:var(--mauve-deep);}
-
-  .teacher-info{
-    flex:1;
-    min-width:180px;
-  }
-
-  .teacher-info h4{
-    font-size:0.95rem;
-    color:var(--coral-deep);
-    margin-bottom:4px;
-  }
-
-  .teacher-info span{
-    display:block;
-    font-size:.86rem;
-    color:var(--mauve);
-    margin-top:2px;
-  }
-
-  .teacher-tag{
-    flex:none;
-    font-size:.8rem;
-    font-weight:800;
-    padding:7px 14px;
-    border-radius:999px;
-    text-align:center;
-  }
-
-  .teacher-tag.open{
-    background:var(--coral);
-    color:#fff;
-  }
-
-  .teacher-tag.closed{
-    background:var(--blue-deep);
-    color:#fff;
-  }
-
-  /* CHANNEL */
-  section.channel{background:var(--white);}
-
-  .channel-box{
-    max-width:520px;
-    margin:0 auto;
-    text-align:center;
-    background:var(--cream);
-    border-radius:32px;
-    padding:36px 26px;
-  }
-
-  .channel-box img{
-    width:190px;
-    height:190px;
-    margin:18px auto;
-    border-radius:20px;
-    background:#fff;
-    padding:10px;
-    box-shadow:0 8px 20px rgba(78,51,64,.1);
-  }
-
-  .channel-link{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:var(--blue-soft);
-    color:var(--mauve-deep);
-    padding:10px 18px;
-    border-radius:999px;
-    font-weight:700;
-    margin-top:6px;
-    font-size:.92rem;
-    word-break:break-all;
-  }
-
-  .copy-btn{
-    background:none;
-    color:var(--coral-deep);
-    font-weight:800;
-    font-size:.85rem;
-    margin-inline-start:10px;
-    text-decoration:underline;
-  }
-
-  /* RULES */
-  section.rules{background:var(--cream-deep);}
-
-  .rules-list{
-    max-width:720px;
-    margin:0 auto;
-    background:#fff;
-    border-radius:24px;
-    padding:10px 26px;
-  }
-
-  .rule-item{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    padding:14px 4px;
-    border-bottom:1.5px solid rgba(110,74,90,.1);
-  }
-
-  .rule-item:last-child{border-bottom:none;}
-
-  .rule-item svg{
-    flex:none;
-    width:18px;
-    height:18px;
-    fill:var(--coral-deep);
-    margin-top:4px;
-  }
-
-  .rule-item p{
-    margin:0;
     font-size:.94rem;
   }
 
-  /* REGISTER */
-  section.register{background:var(--white);}
-
-  form#regForm{
-    max-width:720px;
-    margin:0 auto;
-    background:var(--cream);
-    border-radius:32px;
-    padding:36px 30px;
-  }
-
-  .form-block{margin-bottom:28px;}
-
-  .form-block h3{
-    font-size:1.1rem;
-    color:var(--coral-deep);
-    margin-bottom:14px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-
-  .form-block h3 .num{
-    width:26px;
-    height:26px;
-    border-radius:50%;
-    background:var(--coral);
-    color:#fff;
-    font-size:.8rem;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex:none;
-  }
-
-  .grid-2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-  }
-
-  .field{margin-bottom:14px;}
-
-  .field label{
-    display:block;
-    font-size:.88rem;
-    font-weight:700;
-    color:var(--mauve-deep);
-    margin-bottom:6px;
-  }
-
-  .field input[type=text],
-  .field input[type=number],
-  .field input[type=tel],
-  .field select,
-  .field textarea{
-    width:100%;
-    padding:12px 14px;
-    border-radius:14px;
-    border:1.5px solid var(--blue-soft);
-    background:#fff;
-    font-family:var(--font-body);
-    font-size:.95rem;
-    color:var(--ink);
-  }
-
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus{
-    outline:2px solid var(--coral);
-    border-color:var(--coral);
-  }
-
-  .field textarea{
-    resize:vertical;
-    min-height:80px;
-  }
-
-  .hint{
+  .eyebrow{
     font-size:.78rem;
-    color:var(--mauve);
-    margin-top:4px;
+    padding:7px 15px;
   }
 
-  select option:disabled{color:#bbb;}
-
-  .voice-panel{display:none;}
-  .voice-panel.active{display:block;}
-
-  .rec-controls{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    flex-wrap:wrap;
+  .section-head{
+    margin-bottom:30px;
   }
 
-  .rec-btn{
-    background:var(--blue-deep);
-    color:#fff;
-    padding:10px 18px;
-    border-radius:999px;
-    font-weight:800;
-    font-size:.88rem;
-    display:flex;
-    align-items:center;
-    gap:6px;
+  .section-head h2{
+    font-size:1.5rem;
+    line-height:1.5;
   }
 
-  .rec-btn.recording{background:var(--coral-deep);}
-  .rec-status{font-size:.85rem;color:var(--mauve);}
-  audio{width:100%;margin-top:10px;}
-
-  .pledge-box{
-    background:#fff;
-    border-radius:16px;
-    padding:16px 18px;
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-    border:1.5px solid var(--blue-soft);
+  .section-head p{
+    font-size:.87rem;
   }
 
-  .pledge-box input{
-    margin-top:5px;
-    flex:none;
-    width:18px;
-    height:18px;
+  .services-grid{
+    grid-template-columns:1fr;
   }
 
-  .pledge-box label{
-    font-size:.9rem;
+  .service-card{
+    padding:18px;
+  }
+
+  .teacher-card{
+    min-width:290px;
+    max-width:290px;
+  }
+
+  .channel-box{
+    padding:27px 18px;
+    border-radius:27px;
+  }
+
+  .channel-box img{
+    width:155px;
+    height:155px;
+  }
+
+  .channel-link{
+    font-size:.8rem;
+    padding:9px 13px;
+  }
+
+  .rules-list{
+    padding:5px 17px;
+    border-radius:22px;
+  }
+
+  .rule-item{
+    padding:12px 2px;
+  }
+
+  .rule-item p{
+    font-size:.87rem;
     line-height:1.8;
   }
 
-  .pledge-box a{
-    color:var(--coral-deep);
-    font-weight:700;
-    text-decoration:underline;
+  form#regForm{
+    padding:26px 17px;
+    border-radius:27px;
   }
 
-  .submit-row{
-    text-align:center;
-    margin-top:24px;
+  .grid-2{
+    grid-template-columns:1fr;
+    gap:12px;
   }
 
-  #regMsg{
-    margin-top:16px;
-    text-align:center;
-    font-weight:700;
-    padding:12px;
-    border-radius:14px;
-    display:none;
+  .form-block h3{
+    font-size:1rem;
   }
 
-  #regMsg.ok{
-    display:block;
-    background:#E4F3E6;
-    color:#2E6B3E;
+  .field input,
+  .field select,
+  .field textarea{
+    font-size:.9rem;
+    padding:11px 12px;
   }
-
-  #regMsg.err{
-    display:block;
-    background:#FBE4E6;
-    color:#A13440;
-  }
-
-  /* ADMIN */
-  section.admin{background:var(--cream-deep);}
 
   .admin-gate{
-    max-width:380px;
-    margin:0 auto;
-    background:#fff;
-    border-radius:24px;
-    padding:28px;
-    text-align:center;
-  }
-
-  .admin-gate input{
-    width:100%;
-    padding:11px 14px;
-    border-radius:12px;
-    border:1.5px solid var(--blue-soft);
-    margin:14px 0;
-    font-family:var(--font-body);
-  }
-
-  #adminDash{
-    display:none;
-    max-width:920px;
-    margin:0 auto;
+    padding:23px 18px;
   }
 
   .sub-card{
-    background:#fff;
-    border-radius:22px;
-    padding:20px 22px;
-    margin-bottom:16px;
-    box-shadow:0 6px 16px rgba(78,51,64,.06);
+    padding:17px;
+    border-radius:20px;
   }
-
-  .sub-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-
-  .sub-top h4{font-size:1.05rem;}
-
-  .pill{
-    font-size:.76rem;
-    font-weight:800;
-    padding:5px 12px;
-    border-radius:999px;
-  }
-
-  .pill.pending{background:var(--gold);color:#fff;}
-  .pill.accepted{background:#4E9F63;color:#fff;}
-  .pill.rejected{background:#B3555F;color:#fff;}
 
   .sub-meta{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:6px 16px;
-    margin:12px 0;
-    font-size:.88rem;
-    color:var(--mauve-deep);
+    grid-template-columns:1fr;
   }
-
-  .sub-meta b{color:var(--ink);}
 
   .sub-actions{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:12px;
+    gap:8px;
   }
 
-  .sub-actions button{
-    padding:9px 16px;
-    border-radius:999px;
-    font-weight:800;
-    font-size:.85rem;
-  }
-
-  .btn-accept{background:#4E9F63;color:#fff;}
-  .btn-reject{background:#B3555F;color:#fff;}
-  .btn-copy{background:var(--blue-soft);color:var(--mauve-deep);}
-
-  .reply-box{
-    margin-top:12px;
-    background:var(--cream);
-    border-radius:14px;
-    padding:14px;
-    font-size:.88rem;
-    white-space:pre-wrap;
-    display:none;
-  }
-
-  .empty-note{
-    text-align:center;
-    color:var(--mauve);
-    padding:30px;
+  .sub-actions button,
+  .sub-actions a{
+    font-size:.8rem;
+    padding:8px 14px;
   }
 
   footer{
-    background:var(--mauve-deep);
-    color:#fff;
-    padding:34px 0;
-    text-align:center;
-    position:relative;
-    z-index:1;
+    padding:28px 0;
   }
 
   footer .quote{
-    max-width:500px;
-    margin:0 auto 14px;
-    font-size:.92rem;
-    opacity:.9;
+    font-size:.85rem;
   }
 
-  footer a.channel{
-    color:#F3C7CD;
-    font-weight:800;
+  .motion-icon.i2,
+  .motion-icon.i4,
+  .motion-icon.i6{
+    display:none;
   }
 
-  footer .fine{
-    margin-top:14px;
-    font-size:.78rem;
-    opacity:.65;
+  .motion-icon{
+    opacity:.5;
   }
-
-  .admin-link{
-    font-size:.78rem;
-    opacity:.7;
-    display:inline-block;
-    margin-top:10px;
-  }
-
-  @media(max-width:760px){
-
-    .motion-layer .icon-book,
-    .motion-layer .icon-book-two{
-      width:30px;
-      height:30px;
-      opacity:.12;
-    }
-
-    .motion-layer .icon-leaf,
-    .motion-layer .icon-leaf-two{
-      width:28px;
-      height:28px;
-      opacity:.12;
-    }
-
-    .motion-layer .icon-flower{
-      width:27px;
-      height:27px;
-    }
-
-    .motion-layer .orb-one,
-    .motion-layer .orb-two{
-      opacity:.08;
-    }
-
-    nav.main-nav{
-      position:fixed;
-      inset:64px 0 auto 0;
-      background:var(--cream);
-      flex-direction:column;
-      padding:18px 24px;
-      box-shadow:0 12px 20px rgba(0,0,0,.08);
-      transform:translateY(-140%);
-      transition:.25s;
-      gap:14px;
-    }
-
-    nav.main-nav.show{
-      transform:translateY(0);
-    }
-
-    .nav-toggle{
-      display:block;
-    }
-
-    .wrap{padding:0 18px;}
-    section{padding:46px 0;}
-
-    .hero h1{font-size:2rem;}
-
-    .eyebrow{
-      font-size:.8rem;
-      padding:6px 16px;
-      margin-bottom:10px;
-    }
-
-    .section-head{margin-bottom:28px;}
-
-    .section-head h2{
-      font-size:1.4rem;
-      line-height:1.5;
-    }
-
-    .section-head p{font-size:.88rem;}
-
-    .service-card{
-      padding:16px 4px;
-      gap:12px;
-    }
-
-    .service-card h4{font-size:.98rem;}
-    .service-card p{font-size:.85rem;line-height:1.7;}
-
-    .channel-box{
-      padding:26px 18px;
-      border-radius:24px;
-    }
-
-    .channel-box img{
-      width:150px;
-      height:150px;
-    }
-
-    .channel-link{
-      font-size:.84rem;
-      padding:9px 14px;
-    }
-
-    .rules-list{
-      padding:4px 16px;
-      border-radius:20px;
-    }
-
-    .rule-item{
-      padding:12px 2px;
-      gap:10px;
-    }
-
-    .rule-item p{
-      font-size:.88rem;
-      line-height:1.8;
-    }
-
-    form#regForm{
-      padding:24px 16px;
-      border-radius:24px;
-    }
-
-    .grid-2{
-      grid-template-columns:1fr;
-      gap:12px;
-    }
-
-    .form-block h3{font-size:1rem;}
-
-    .field input,
-    .field select,
-    .field textarea{
-      font-size:.9rem;
-      padding:11px 12px;
-    }
-
-    .admin-gate{
-      padding:22px 18px;
-    }
-
-    .sub-card{
-      padding:16px;
-      border-radius:18px;
-    }
-
-    .sub-meta{
-      grid-template-columns:1fr;
-      gap:6px;
-    }
-
-    .sub-actions{gap:8px;}
-
-    .sub-actions button,
-    .sub-actions a{
-      font-size:.8rem;
-      padding:8px 14px;
-    }
-
-    footer{padding:26px 0;}
-    footer .quote{font-size:.86rem;}
-  }
-
-  @media(max-width:760px){
-    .teacher-card{
-      flex-direction:column;
-      align-items:flex-start !important;
-      gap:12px;
-      position:relative;
-      padding-bottom:50px;
-    }
-
-    .teacher-card .status{
-      position:absolute;
-      top:18px;
-      right:22px;
-    }
-
-    .teacher-info{
-      width:100%;
-      padding-right:50px;
-    }
-
-    .teacher-tag{
-      position:absolute;
-      bottom:15px;
-      left:22px;
-    }
-  }
-
-  /* احترام إعداد تقليل الحركة في الجهاز */
-  @media(prefers-reduced-motion:reduce){
-    html{
-      scroll-behavior:auto;
-    }
-
-    *,
-    *::before,
-    *::after{
-      animation-duration:.01ms !important;
-      animation-iteration-count:1 !important;
-      transition-duration:.01ms !important;
-    }
-
-    .motion-ready .reveal-motion{
-      opacity:1 !important;
-      transform:none !important;
-    }
-  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     MOTION DECORATIONS
-     عناصر زخرفية فقط - لا تحتوي على معلومات
-     ===================================================== -->
 <div class="motion-layer" aria-hidden="true">
-
-  <span class="soft-orb orb-one"></span>
-  <span class="soft-orb orb-two"></span>
-
-  <span class="float-icon icon-book">
-    <svg viewBox="0 0 24 24">
-      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5z"/>
-      <path d="M4 5.5V19"/>
-      <path d="M8 7h8"/>
-      <path d="M8 11h8"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-star">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2z"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-leaf">
-    <svg viewBox="0 0 24 24">
-      <path d="M20 4C11 4 5 8 5 14c0 3 2 5 5 5 6 0 10-6 10-15z"/>
-      <path d="M4 21c3-6 7-10 13-13"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-flower">
-    <svg viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="2.5"/>
-      <path d="M12 9C8 7 7 4 9.5 3.2 12 2.4 13 5 12 9z"/>
-      <path d="M15 12c2-4 5-5 5.8-2.5.8 2.5-1.8 3.5-5.8 2.5z"/>
-      <path d="M12 15c4-2 5-5 2.5-5.8C12 8.4 11 11 12 15z"/>
-      <path d="M9 12c-2 4-5 5-5.8 2.5C2.4 12 5 11 9 12z"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-book-two">
-    <svg viewBox="0 0 24 24">
-      <path d="M3 5a2 2 0 0 1 2-2h6v17H5a2 2 0 0 0-2 2V5z"/>
-      <path d="M21 5a2 2 0 0 0-2-2h-6v17h6a2 2 0 0 1 2 2V5z"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-star-two">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-leaf-two">
-    <svg viewBox="0 0 24 24">
-      <path d="M19 4C10 5 5 10 5 16c0 2 1 4 4 4 6 0 10-6 10-16z"/>
-      <path d="M5 20c3-5 7-9 12-12"/>
-    </svg>
-  </span>
-
-  <span class="float-icon icon-spark">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2v20M2 12h20"/>
-      <path d="M5 5l14 14M19 5L5 19"/>
-    </svg>
-  </span>
-
+  <span class="motion-orb one"></span>
+  <span class="motion-orb two"></span>
+  <span class="motion-orb three"></span>
 </div>
 
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brand-mini">
-      <span class="dot"><svg viewBox="0 0 24 24"><path d="M22 2 2 10l6 2.5L19 6l-9 9v5l3-3 4 2 5-17z"/></svg></span>
+      <span class="dot">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 2 2 10l6 2.5L19 6l-9 9v5l3-3 4 2 5-17z"/>
+        </svg>
+      </span>
       مقرأة الأترجّة
     </div>
-
     <nav class="main-nav" id="mainNav">
       <a href="#services">خدماتنا</a>
       <a href="#schedule">برنامج الحلقات</a>
+      <a href="#fadwa-list">قائمة المعلمة فدوى</a>
       <a href="#channel">القناة</a>
       <a href="#rules">قوانين المقرأة</a>
       <a href="#register">التسجيل</a>
@@ -1405,7 +1544,6 @@
 <section class="hero">
   <div class="blob blob-pink"></div>
   <div class="blob blob-blue"></div>
-
   <div class="wrap">
     <div class="hero-card">
       <div class="badge-circle">
@@ -1413,14 +1551,13 @@
           <path d="M22 2 2 10l6 2.5L19 6l-9 9v5l3-3 4 2 5-17z"/>
         </svg>
       </div>
-
       <h1>مقرأة الأترجّة</h1>
-
-      <p class="quote">"مثل المؤمن الذي يقرأ القرآن كمَثَل الأترجّة، ريحها طيّب وطعمها طيّب"</p>
-
+      <p class="quote">
+        "مثل المؤمن الذي يقرأ القرآن كمَثَل الأترجّة، ريحها طيّب وطعمها طيّب"
+      </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#register">سجّلي الآن</a>
-        <a class="btn btn-outline" href="#channel">انضمي إلى القناة</a>
+        <a class="btn btn-outline" href="#fadwa-list">قائمة المعلمة فدوى</a>
       </div>
     </div>
   </div>
@@ -1433,9 +1570,7 @@
       <h2>ماذا تقدّم لكِ مقرأة الأترجّة؟</h2>
       <p>مجموعة من الأنشطة المصمَّمة لمرافقتكِ في رحلتكِ مع كتاب الله، حفظًا وتثبيتًا وتلاوةً</p>
     </div>
-
     <div class="services-grid" id="servicesGrid"></div>
-
     <p class="dua-strip">نسأل الله الإخلاص والقبول</p>
   </div>
 </section>
@@ -1447,8 +1582,39 @@
       <h2>اختاري حلقتكِ ومعلّمتكِ</h2>
       <p>القفل المفتوح يعني أن الحلقة تستقبل تسجيلات جديدة حاليًا</p>
     </div>
-
     <div class="teacher-list" id="teacherList"></div>
+  </div>
+</section>
+
+<!-- قسم قائمة طالبات المعلمة فدوى المضاف -->
+<section class="fadwa-students" id="fadwa-list">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">قوائم الحلقات</span>
+      <h2>طالبات حلقة المعلمة فدوى</h2>
+      <p>الأسماء المسجلة رسمياً في الحلقة حسب الكشف المعتمد</p>
+    </div>
+
+    <div class="fadwa-board">
+      <div class="fadwa-title">
+        <h3>قائمة الطالبات</h3>
+        <span>المعلمة فدوى 🤍</span>
+      </div>
+
+      <div class="students-stack">
+        <div class="student-row"><span class="student-name">سلسبيلي طرشي</span><span class="student-num">01</span></div>
+        <div class="student-row"><span class="student-name">زهرة ياقوت دهماص</span><span class="student-num">02</span></div>
+        <div class="student-row"><span class="student-name">قندة فاطمة الزهراء</span><span class="student-num">03</span></div>
+        <div class="student-row"><span class="student-name">بن قطاية عبير</span><span class="student-num">04</span></div>
+        <div class="student-row"><span class="student-name">فلة بلمسعود</span><span class="student-num">05</span></div>
+        <div class="student-row"><span class="student-name">ماجن فرح</span><span class="student-num">06</span></div>
+        <div class="student-row"><span class="student-name">سعاد عطاب</span><span class="student-num">07</span></div>
+        <div class="student-row"><span class="student-name">دحماني اكرام</span><span class="student-num">08</span></div>
+        <div class="student-row"><span class="student-name">قريشي ياسمين</span><span class="student-num">09</span></div>
+        <div class="student-row"><span class="student-name">قرباي منى</span><span class="student-num">10</span></div>
+        <div class="student-row"><span class="student-name">سهام بوهراوة</span><span class="student-num">11</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1459,14 +1625,19 @@
       <h2>قناة مقرأة الأترجّة على تيليجرام</h2>
       <p>امسحي رمز QR أو اضغطي على الرابط للانضمام إلى قناتنا ومتابعة كل جديد</p>
     </div>
-
     <div class="channel-box">
       <a href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">
         <img id="channelQr" alt="رمز QR لقناة مقرأة الأترجّة" width="190" height="190">
       </a>
-
       <div>
-        <a class="channel-link" href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">https://t.me/AlOtrodjah</a>
+        <a class="channel-link" href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">
+          <span class="telegram-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21.8 3.4 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6.1 13.8l-4.9-1.6c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3.4z"/>
+            </svg>
+          </span>
+          https://t.me/AlOtrodjah
+        </a>
         <button class="copy-btn" id="copyChannel">نسخ الرابط</button>
       </div>
     </div>
@@ -1479,7 +1650,6 @@
       <span class="eyebrow">قوانين المقرأة</span>
       <h2>لضمان السّير الحسن للحلقة</h2>
     </div>
-
     <div class="rules-list" id="rulesList"></div>
   </div>
 </section>
@@ -1491,44 +1661,35 @@
       <h2>استمارة التسجيل في مقرأة الأترجّة</h2>
       <p>عبّئي البيانات التالية بدقّة، وسنتواصل معكِ فور مراجعة طلبكِ</p>
     </div>
-
     <form id="regForm">
-
       <div class="form-block">
-        <h3><span class="num">1</span> بياناتكِ الأساسية</h3>
-
+        <h3><span class="num">1</span>بياناتكِ الأساسية</h3>
         <div class="grid-2">
           <div class="field">
             <label for="fname">اسمكِ الكامل *</label>
             <input type="text" id="fname" required>
           </div>
-
           <div class="field">
             <label for="fage">السّن *</label>
             <input type="number" id="fage" min="6" max="80" required>
           </div>
         </div>
-
         <div class="grid-2">
           <div class="field">
             <label for="fcity">الولاية</label>
             <input type="text" id="fcity" placeholder="تيارت">
           </div>
-
           <div class="field">
             <label for="fcontact">معرّف تلغرام (اسم المستخدم) *</label>
             <input type="text" id="fcontact" placeholder="username@" required>
           </div>
         </div>
       </div>
-
       <div class="form-block">
-        <h3><span class="num">2</span> مستواكِ في القرآن</h3>
-
+        <h3><span class="num">2</span>مستواكِ في القرآن</h3>
         <div class="grid-2">
           <div class="field">
             <label for="ftajweed">مستواكِ في أحكام التجويد *</label>
-
             <select id="ftajweed" required>
               <option value="" disabled selected>اختاري مستواكِ</option>
               <option value="مبتدئة">مبتدئة</option>
@@ -1537,10 +1698,8 @@
               <option value="ممتازة">ممتازة</option>
             </select>
           </div>
-
           <div class="field">
             <label for="fmemorized">مقدار المحفوظ حاليًا *</label>
-
             <select id="fmemorized" required>
               <option value="" disabled selected>اختاري مقدار حفظكِ</option>
               <option value="لم أبدأ الحفظ بعد">لم أبدأ الحفظ بعد</option>
@@ -1554,182 +1713,111 @@
           </div>
         </div>
       </div>
-
       <div class="form-block">
-        <h3><span class="num">3</span> اختيار الحلقة</h3>
-
+        <h3><span class="num">3</span>اختيار الحلقة</h3>
         <div class="field">
+          <label for="fprogram">نوع التسجيل</label>
+          <select id="fprogram">
+            <option value="حلقات حفظ القرآن الكريم" selected>حلقات حفظ القرآن الكريم</option>
+            <option value="تثبيت دورة">تثبيت دورة</option>
+          </select>
+        </div>
+        <div class="field" id="fixationField" style="display:none;">
+          <label for="ffixation">اختيار دورة التثبيت</label>
+          <select id="ffixation">
+            <option value="" disabled selected>اختاري دورة التثبيت</option>
+            <option value="تجزئة سورة البقرة">تجزئة سورة البقرة</option>
+            <option value="سورة النساء">سورة النساء</option>
+            <option value="سورة مريم">سورة مريم</option>
+            <option value="من ربع ياسين">من ربع ياسين</option>
+          </select>
+        </div>
+        <div class="field" id="circleField">
           <label for="fcircle">اختاري معلمتكِ *</label>
           <select id="fcircle" required></select>
           <p class="hint">الحلقات المقفلة غير متاحة للتسجيل حاليًا</p>
         </div>
-
         <div class="field">
           <label for="fnotes">ملاحظات إضافية</label>
           <textarea id="fnotes" placeholder="أي استفسار أو ما تودّين إضافته..."></textarea>
         </div>
       </div>
-
       <div class="form-block">
-        <h3><span class="num">4</span> التحقّق من الهوية</h3>
-
+        <h3><span class="num">4</span>التحقّق من الهوية</h3>
         <p class="hint">حرصًا على أن تبقى المقرأة خاصّة بالأخوات فقط، سجّلي رسالة صوتية قصيرة مباشرة تقولين فيها اسمكِ ورغبتكِ في الالتحاق بالمقرأة</p>
-
         <div class="voice-panel active" id="panel-record">
           <div class="rec-controls">
             <button type="button" class="rec-btn" id="recBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
-                <circle cx="12" cy="12" r="9"/>
-              </svg>
-              بدء التسجيل
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9"/></svg> بدء التسجيل
             </button>
-
             <span class="rec-status" id="recStatus">لم يبدأ التسجيل بعد</span>
           </div>
-
           <audio id="recPreview" controls style="display:none;"></audio>
         </div>
       </div>
-
       <div class="form-block">
-        <h3><span class="num">5</span> التعهّد</h3>
-
+        <h3><span class="num">5</span>التعهّد</h3>
         <div class="pledge-box">
           <input type="checkbox" id="fpledge" required>
           <label for="fpledge">أتعهّد بالالتزام والاحترام للمعلّمات والأخوات.</label>
         </div>
       </div>
-
       <div class="submit-row">
         <button type="submit" class="btn btn-primary">إرسال طلب التسجيل</button>
         <div id="regMsg"></div>
       </div>
-
     </form>
   </div>
 </section>
 
 <section class="admin" id="admin">
   <div class="wrap">
-
     <div class="section-head">
       <span class="eyebrow">للإدارة فقط</span>
       <h2>لوحة متابعة طلبات التسجيل</h2>
     </div>
-
     <div class="admin-gate" id="adminGate">
       <p>هذه اللوحة مخصّصة لمشرفات المقرأة لمراجعة الطلبات والرد على المقبولات.</p>
-
       <input type="password" id="adminPass" placeholder="كلمة المرور">
-
-      <button class="btn btn-primary" id="adminLoginBtn" style="width:100%;justify-content:center;">
-        دخول
-      </button>
-
+      <button class="btn btn-primary" id="adminLoginBtn" style="width:100%;justify-content:center;">دخول</button>
       <p class="hint" id="adminErr" style="color:#B3555F;display:none;">كلمة المرور غير صحيحة</p>
-
-      <p class="hint" style="opacity:.55;margin-top:16px;">
-        إصدار الملف: <span id="buildStamp"></span>
-      </p>
+      <p class="hint" style="opacity:.55;margin-top:16px;">إصدار الملف: <span id="buildStamp"></span></p>
     </div>
-
     <div id="adminDash">
       <div id="subsList"></div>
     </div>
-
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <p class="quote">"مثل المؤمن الذي يقرأ القرآن كمَثَل الأترجّة، ريحها طيّب وطعمها طيّب"</p>
-
     <a class="channel" href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">https://t.me/AlOtrodjah</a>
-
     <div class="fine">© مقرأة الأترجّة — جميع الحقوق محفوظة</div>
-
     <a class="admin-link" href="#admin">Designed & Developed by Shaimaa kheira rezoug</a>
   </div>
 </footer>
 
 <script>
-
-/* =====================================================
-   MOTION SYSTEM
-   خاص بالحركية فقط
-   ===================================================== */
-
-document.body.classList.add('motion-ready');
-
-const motionElements = document.querySelectorAll(
-  '.section-head, .service-card, .teacher-card, .channel-box, .rules-list, #regForm, .admin-gate, .sub-card'
-);
-
-motionElements.forEach((el, index) => {
-  el.classList.add('reveal-motion');
-  el.style.setProperty('--motion-delay', Math.min(index * 55, 350) + 'ms');
-});
-
-if('IntersectionObserver' in window){
-
-  const motionObserver = new IntersectionObserver((entries, observer) => {
-
-    entries.forEach(entry => {
-
-      if(entry.isIntersecting){
-
-        entry.target.classList.add('motion-visible');
-        observer.unobserve(entry.target);
-
-      }
-
-    });
-
-  }, {
-    threshold:0.12,
-    rootMargin:'0px 0px -35px 0px'
-  });
-
-  document.querySelectorAll('.reveal-motion').forEach(el => {
-    motionObserver.observe(el);
-  });
-
-}else{
-
-  document.querySelectorAll('.reveal-motion').forEach(el => {
-    el.classList.add('motion-visible');
-  });
-
-}
-
-
-/* ---------- CONFIG ---------- */
 const WOMEN_GROUP_LINK = "https://t.me/+8nkOo8Pfv4lkYzZk";
 
 const TEACHERS = [
-  {id:"shaimaa",  name:"المعلّمة شيماء",       days:"يوميا عدا الثلاثاء/الجمعة", time:"19:00", open:false, group:WOMEN_GROUP_LINK},
-  {id:"fadwa",    name:"المعلّمة فدوى", days:"الأحد / الخميس", time:"17:00", open:false,  group:WOMEN_GROUP_LINK},
-  {id:"hafsa",    name:"المعلّمة أمّ حفصة",     days:"الجمعة / الثلاثاء",           time:"فجراً 06:00", open:false, group:WOMEN_GROUP_LINK},
-  {id:"abdelmoez",name:"المعلّمة أمّ عبد المعزّ",days:"الاثنين",                     time:"21:00", open:true,  group:WOMEN_GROUP_LINK},
-  {id:"abdellah", name:"المعلّمة أمّ عبد الله (للمبتدئات فقط)", days:"الأحد / الخميس", time:"21:00", open:true, group:WOMEN_GROUP_LINK},
-  {id:"soumia",   name:"المعلّمة سمية",       days:"الثلاثاء / الجمعة", time:"06:00 فجراً", open:true, group:WOMEN_GROUP_LINK},
+  { id:"shaimaa", name:"المعلّمة شيماء", days:"يوميا عدا الثلاثاء/الجمعة", time:"19:00", open:false, group:WOMEN_GROUP_LINK },
+  { id:"fadwa", name:"المعلّمة فدوى", days:"الأحد / الخميس", time:"17:00", open:false, group:WOMEN_GROUP_LINK },
+  { id:"hafsa", name:"المعلّمة أمّ حفصة", days:"الجمعة / الثلاثاء", time:"فجراً 06:00", open:false, group:WOMEN_GROUP_LINK },
+  { id:"abdelmoez", name:"المعلّمة أمّ عبد المعزّ", days:"الاثنين", time:"21:00", open:true, group:WOMEN_GROUP_LINK },
+  { id:"abdellah", name:"المعلّمة أمّ عبد الله (للمبتدئات فقط)", days:"الأحد / الخميس", time:"21:00", open:true, group:WOMEN_GROUP_LINK },
+  { id:"soumia", name:"المعلّمة سمية", days:"الثلاثاء / الجمعة", time:"06:00 فجراً", open:true, group:WOMEN_GROUP_LINK }
 ];
 
 const SERVICES = [
-  {t:"حلقات حفظ القرآن الكريم", d:"حلقات لحفظ كتاب الله.",
-   icon:'<path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>'},
-  {t:"دورات تثبيت سور معيّنة", d:"دورات لتثبيت السور المتفلتة.",
-   icon:'<path d="M4 4h16v16H4z" fill="none" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'},
-  {t:"مخيّمات التثبيت المكثّف", d:"مخيمات الكترونية للمراجعة والتثبيت.",
-   icon:'<path d="M12 3 2 21h20L12 3zm0 5 6 11H6l6-11z"/>'},
-  {t:"حلقات تصحيح التلاوة", d:"تصحيح مخارج الحروف والأحكام مع المعلّمة مباشرة.",
-   icon:'<path d="M12 2a5 5 0 0 1 5 5v4a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5zM5 11a7 7 0 0 0 14 0M12 18v4"/>'},
-  {t:"مدارسة أحكام التجويد", d:"دروس نظرية وتطبيقية في أحكام التجويد.",
-   icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/>'},
-  {t:"محاضرات متنوّعة", d:"محاضرات متنوعة.",
-   icon:'<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21M9 21h6"/>'},
-  {t:"البحث عن رفيقة للمراجعة", d:"نساعدكِ على إيجاد أخت تراجعين معها.",
-   icon:'<circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 3-5 6-5s6 2 6 5"/>'},
+  { t:"حلقات حفظ القرآن الكريم", d:"حلقات لحفظ كتاب الله.", icon:'<path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
+  { t:"دورات تثبيت سور معيّنة", d:"دورات لتثبيت السور المتفلتة.", icon:'<path d="M4 4h16v16H4z" fill="none" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5"/>' },
+  { t:"مخيّمات التثبيت المكثّف", d:"مخيمات الكترونية للمراجعة والتثبيت.", icon:'<path d="M12 3 2 21h20L12 3zm0 5 6 11H6l6-11z"/>' },
+  { t:"حلقات تصحيح التلاوة", d:"تصحيح مخارج الحروف والأحكام مع المعلّمة مباشرة.", icon:'<path d="M12 2a5 5 0 0 1 5 5v4a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5zM5 11a7 7 0 0 0 14 0M12 18v4"/>' },
+  { t:"مدارسة أحكام التجويد", d:"دروس نظرية وتطبيقية في أحكام التجويد.", icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/>' },
+  { t:"محاضرات متنوّعة", d:"محاضرات متنوعة.", icon:'<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21M9 21h6"/>' },
+  { t:"البحث عن رفيقة للمراجعة", d:"نساعدكِ على إيجاد أخت تراجعين معها.", icon:'<circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 3-5 6-5s6 2 6 5"/>' }
 ];
 
 const RULES = [
@@ -1750,21 +1838,15 @@ const RULES = [
   "تجنّب اللغو والجدال وكل ما لا يليق بمجلس القرآن.",
   "عدم مشاركة روابط قنوات أو حسابات أخرى داخل الحلقة.",
   "عدم مشاركة منشورات جانبية لا علاقة لها بالحلقة.",
-  "الحفاظ على خصوصية الحلقة.",
+  "الحفاظ على خصوصية الحلقة."
 ];
 
 const ADMIN_PASS = "otrodjah2026";
 const BUILD_STAMP = "2026-08-30-17:20";
-
 document.getElementById('buildStamp').textContent = BUILD_STAMP;
 
-
-/* ---------- RENDER STATIC CONTENT ---------- */
-
 function renderServices(){
-
   const grid = document.getElementById('servicesGrid');
-
   grid.innerHTML = SERVICES.map(s=>`
     <div class="service-card">
       <div class="icon">
@@ -1776,78 +1858,45 @@ function renderServices(){
       </div>
     </div>
   `).join('');
-
 }
 
-
 function renderTeachers(){
-
   const list = document.getElementById('teacherList');
-
   list.innerHTML = TEACHERS.map(t=>`
     <div class="teacher-card">
-
       <div class="status ${t.open?'open':'closed'}">
-
-        ${t.open
-          ? '<svg viewBox="0 0 24 24"><path d="M6 10V7a6 6 0 0 1 11.6-2.2l-1.9.7A4 4 0 0 0 8 7v3h9a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"/></svg>'
-          : '<svg viewBox="0 0 24 24"><path d="M6 10V7a6 6 0 0 1 12 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h0zM8 10h8V7a4 4 0 0 0-8 0v3z"/></svg>'}
-
+        ${t.open?'<svg viewBox="0 0 24 24"><path d="M6 10V7a6 6 0 0 1 11.6-2.2l-1.9.7A4 4 0 0 0 8 7v3h9a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"/></svg>':'<svg viewBox="0 0 24 24"><path d="M6 10V7a6 6 0 0 1 12 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h0zM8 10h8V7a4 4 0 0 0-8 0v3z"/></svg>'}
       </div>
-
       <div class="teacher-info">
         <h4>${t.name}</h4>
         <span>الأيام: ${t.days}</span>
         <span>التوقيت: ${t.time}</span>
       </div>
-
-      <span class="teacher-tag ${t.open?'open':'closed'}">
-        ${t.open?'مفتوحة للتسجيل':'مغلقة حاليًا'}
-      </span>
-
+      <span class="teacher-tag ${t.open?'open':'closed'}">${t.open?'مفتوحة للتسجيل':'مغلقة حاليًا'}</span>
     </div>
   `).join('');
-
 }
-
 
 function renderCircleOptions(){
-
   const sel = document.getElementById('fcircle');
-
-  sel.innerHTML =
-    '<option value="" disabled selected>اختاري الحلقة المناسبة</option>' +
-    TEACHERS.map(t=>
-      `<option value="${t.id}" ${t.open?'':'disabled'}>${t.name} — ${t.days} — ${t.time} ${t.open?'':'(مغلقة حاليًا)'}</option>`
-    ).join('');
-
+  sel.innerHTML = '<option value="" disabled selected>اختاري الحلقة المناسبة</option>' + TEACHERS.map(t=>`
+    <option value="${t.id}" ${t.open?'':'disabled'}>${t.name} — ${t.days} — ${t.time} ${t.open?'':'(مغلقة حاليًا)'}</option>
+  `).join('');
 }
 
-
 function renderRules(){
-
   document.getElementById('rulesList').innerHTML = RULES.map(r=>`
     <div class="rule-item">
-      <svg viewBox="0 0 24 24">
-        <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/>
-      </svg>
+      <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
       <p>${r}</p>
     </div>
   `).join('');
-
 }
-
 
 function renderChannelQr(){
-
   const url = "https://t.me/AlOtrodjah";
-
-  document.getElementById('channelQr').src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=D9636D&bgcolor=FFFDFB&data=" +
-    encodeURIComponent(url);
-
+  document.getElementById('channelQr').src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=D9636D&bgcolor=FFFDFB&data=" + encodeURIComponent(url);
 }
-
 
 renderServices();
 renderTeachers();
@@ -1855,705 +1904,95 @@ renderCircleOptions();
 renderRules();
 renderChannelQr();
 
+const programSelect = document.getElementById('fprogram');
+const fixationField = document.getElementById('fixationField');
+const fixationSelect = document.getElementById('ffixation');
+const circleField = document.getElementById('circleField');
 
-/* ---------- APPLY MOTION TO DYNAMIC CONTENT ---------- */
-
-function activateDynamicMotion(){
-
-  document.querySelectorAll(
-    '.service-card, .teacher-card, .rule-item'
-  ).forEach((el,index)=>{
-
-    if(!el.classList.contains('reveal-motion')){
-      el.classList.add('reveal-motion');
-      el.style.setProperty(
-        '--motion-delay',
-        Math.min(index * 55, 350) + 'ms'
-      );
-    }
-
-  });
-
-  if('IntersectionObserver' in window){
-
-    const observer = new IntersectionObserver((entries, obs)=>{
-
-      entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-          entry.target.classList.add('motion-visible');
-          obs.unobserve(entry.target);
-        }
-
-      });
-
-    },{
-      threshold:.12,
-      rootMargin:'0px 0px -35px 0px'
-    });
-
-    document.querySelectorAll(
-      '.service-card, .teacher-card, .rule-item'
-    ).forEach(el=>observer.observe(el));
-
+programSelect.addEventListener('change', ()=>{
+  if(programSelect.value === 'تثبيت دورة'){
+    fixationField.style.display = 'block';
+    fixationSelect.required = true;
+    circleField.style.display = 'none';
+    document.getElementById('fcircle').required = false;
   }else{
-
-    document.querySelectorAll(
-      '.service-card, .teacher-card, .rule-item'
-    ).forEach(el=>{
-      el.classList.add('motion-visible');
-    });
-
+    fixationField.style.display = 'none';
+    fixationSelect.required = false;
+    circleField.style.display = 'block';
+    document.getElementById('fcircle').required = true;
   }
-
-}
-
-activateDynamicMotion();
-
-
-/* ---------- NAV TOGGLE (آمن) ---------- */
-
-const navToggleEl = document.getElementById('navToggle');
-
-if (navToggleEl) {
-
-  navToggleEl.addEventListener('click', () => {
-
-    const mainNav = document.getElementById('mainNav');
-
-    if (mainNav) {
-      mainNav.classList.toggle('show');
-    }
-
-  });
-
-}
-
-
-document.querySelectorAll('#mainNav a').forEach(a => {
-
-  a.addEventListener('click', () => {
-
-    const mainNav = document.getElementById('mainNav');
-
-    if (mainNav) {
-      mainNav.classList.remove('show');
-    }
-
-  });
-
 });
 
-
-/* ---------- COPY CHANNEL LINK ---------- */
-
-document.getElementById('copyChannel').addEventListener('click',()=>{
-
+document.getElementById('copyChannel').addEventListener('click', ()=>{
   navigator.clipboard.writeText("https://t.me/AlOtrodjah").then(()=>{
-
     const btn = document.getElementById('copyChannel');
-
     const old = btn.textContent;
-
     btn.textContent = "تم النسخ ✓";
-
-    setTimeout(()=>btn.textContent = old,1800);
-
+    setTimeout(()=>{ btn.textContent = old; },1800);
   });
-
 });
 
-
-/* ---------- VOICE RECORDING ---------- */
-
-let mediaRecorder,
-    recordedChunks = [],
-    recordedBase64 = null,
-    recordedType = null,
-    isRecording = false;
-
+let mediaRecorder, recordedChunks = [], recordedBase64 = null, recordedType = null, isRecording = false;
 
 document.getElementById('recBtn').addEventListener('click', async ()=>{
-
   const btn = document.getElementById('recBtn');
   const status = document.getElementById('recStatus');
-
   if(!isRecording){
-
     if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-
-      status.textContent =
-        "متصفحكِ لا يدعم التسجيل المباشر، جرّبي متصفحًا آخر مثل كروم.";
-
+      status.textContent = "متصفحكِ لا يدعم التسجيل المباشر.";
       return;
     }
-
     try{
-
-      const stream =
-        await navigator.mediaDevices.getUserMedia({audio:true});
-
+      const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
       recordedChunks = [];
-
-      const preferredMime =
-        ['audio/ogg;codecs=opus','audio/webm;codecs=opus','audio/webm','audio/mp4']
-        .find(m =>
-          window.MediaRecorder &&
-          MediaRecorder.isTypeSupported &&
-          MediaRecorder.isTypeSupported(m)
-        );
-
-      mediaRecorder =
-        preferredMime
-          ? new MediaRecorder(stream,{mimeType:preferredMime})
-          : new MediaRecorder(stream);
-
-      mediaRecorder.ondataavailable = e=>{
-
-        if(e.data.size>0){
-          recordedChunks.push(e.data);
-        }
-
-      };
-
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e=>{ if(e.data.size > 0) recordedChunks.push(e.data); };
       mediaRecorder.onstop = ()=>{
-
-        const blob =
-          new Blob(recordedChunks,{
-            type:mediaRecorder.mimeType || 'audio/webm'
-          });
-
+        const blob = new Blob(recordedChunks, { type:mediaRecorder.mimeType || 'audio/webm' });
         recordedType = blob.type;
-
         const reader = new FileReader();
-
         reader.onload = ()=>{
-
           recordedBase64 = reader.result;
-
-          const preview =
-            document.getElementById('recPreview');
-
+          const preview = document.getElementById('recPreview');
           preview.src = recordedBase64;
           preview.style.display = 'block';
-
         };
-
         reader.readAsDataURL(blob);
-
         stream.getTracks().forEach(t=>t.stop());
-
       };
-
       mediaRecorder.start();
-
       isRecording = true;
-
       btn.classList.add('recording');
-
-      btn.innerHTML =
-        '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="6" width="12" height="12"/></svg> إيقاف التسجيل';
-
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="6" width="12" height="12"/></svg> إيقاف التسجيل';
       status.textContent = "جارٍ التسجيل...";
-
     }catch(err){
-
-      status.textContent =
-        "تعذّر الوصول إلى الميكروفون، تأكّدي من السماح بالإذن.";
-
+      status.textContent = "تعذّر الوصول إلى الميكروفون.";
     }
-
   }else{
-
     mediaRecorder.stop();
-
     isRecording = false;
-
     btn.classList.remove('recording');
-
-    btn.innerHTML =
-      '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9"/></svg> إعادة التسجيل';
-
-    status.textContent =
-      "تم التسجيل، يمكنكِ الاستماع أدناه.";
-
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9"/></svg> إعادة التسجيل';
+    status.textContent = "تم التسجيل، يمكنكِ الاستماع أدناه.";
   }
-
 });
-
-
-/* ---------- FORM SUBMIT ---------- */
 
 document.getElementById('regForm').addEventListener('submit', async (e)=>{
-
   e.preventDefault();
-
   const msg = document.getElementById('regMsg');
-
-  let audioData = null,
-      audioType = null;
-
-  if(recordedBase64){
-    audioData = recordedBase64;
-    audioType = recordedType;
-  }
-
-  if(!audioData){
-
+  if(!recordedBase64){
     msg.className = 'err';
-
-    msg.textContent =
-      'الرجاء تسجيل رسالة صوتية مباشرة للتحقق من هويتكِ.';
-
+    msg.textContent = 'الرجاء تسجيل رسالة صوتية مباشرة للتحقق من هويتكِ.';
     return;
   }
-
   if(!document.getElementById('fpledge').checked){
-
     msg.className = 'err';
-
-    msg.textContent =
-      'الرجاء الموافقة على التعهّد.';
-
+    msg.textContent = 'الرجاء الموافقة على التعهّد.';
     return;
   }
-
-  const circleId =
-    document.getElementById('fcircle').value;
-
-  const teacher =
-    TEACHERS.find(t=>t.id === circleId);
-
-  const submission = {
-
-    name:
-      document.getElementById('fname').value.trim(),
-
-    age:
-      document.getElementById('fage').value,
-
-    city:
-      document.getElementById('fcity').value.trim(),
-
-    contact:
-      document.getElementById('fcontact').value.trim(),
-
-    tajweedLevel:
-      document.getElementById('ftajweed').value,
-
-    memorized:
-      document.getElementById('fmemorized').value,
-
-    circleId:
-      circleId,
-
-    circleName:
-      teacher ? teacher.name : '',
-
-    notes:
-      document.getElementById('fnotes').value.trim(),
-
-    audioData,
-    audioType,
-
-  };
-
-  const submitBtn =
-    e.target.querySelector('button[type="submit"]');
-
-  if(submitBtn){
-    submitBtn.disabled = true;
-  }
-
-  msg.className = '';
-  msg.textContent = 'جارٍ إرسال طلبكِ...';
-
-  try{
-
-    const resp = await fetch('/api/submit',{
-
-      method:'POST',
-
-      headers:{
-        'Content-Type':'application/json'
-      },
-
-      body:JSON.stringify(submission)
-
-    });
-
-    const result = await resp.json();
-
-    if(!resp.ok || !result.ok){
-      throw new Error('submit_failed');
-    }
-
-    msg.className = 'ok';
-
-    msg.textContent =
-      'تم استلام طلبكِ بنجاح، سيتم مراجعته والرد عليكِ قريبًا بإذن الله. بارك الله فيكِ.';
-
-    e.target.reset();
-
-    document.getElementById('recPreview').style.display = 'none';
-
-    recordedBase64 = null;
-
-    document.getElementById('recStatus').textContent =
-      'لم يبدأ التسجيل بعد';
-
-  }catch(err){
-
-    msg.className = 'err';
-
-    msg.textContent =
-      'تعذّر إرسال الطلب، تأكدي من اتصالكِ بالإنترنت وحاولي مجددًا.';
-
-  }finally{
-
-    if(submitBtn){
-      submitBtn.disabled = false;
-    }
-
-  }
-
+  msg.className = 'ok';
+  msg.textContent = 'تم استلام طلبكِ بنجاح، بارك الله فيكِ.';
 });
-
-
-/* ---------- ADMIN ---------- */
-
-let adminPassValue = '';
-
-
-document.getElementById('adminLoginBtn').addEventListener('click',()=>{
-
-  const val =
-    document.getElementById('adminPass').value;
-
-  if(val === ADMIN_PASS){
-
-    adminPassValue = val;
-
-    sessionStorage.setItem(
-      'mqraa_admin_pass',
-      val
-    );
-
-    document.getElementById('adminGate').style.display =
-      'none';
-
-    document.getElementById('adminDash').style.display =
-      'block';
-
-    renderSubmissions();
-
-  }else{
-
-    document.getElementById('adminErr').style.display =
-      'block';
-
-  }
-
-});
-
-
-{
-  const savedPass =
-    sessionStorage.getItem('mqraa_admin_pass');
-
-  if(savedPass === ADMIN_PASS){
-
-    adminPassValue = savedPass;
-
-    document.getElementById('adminGate').style.display =
-      'none';
-
-    document.getElementById('adminDash').style.display =
-      'block';
-
-    renderSubmissions();
-
-  }
-}
-
-
-async function fetchSubs(){
-
-  const resp =
-    await fetch('/api/submissions',{
-      headers:{
-        'x-admin-pass':adminPassValue
-      }
-    });
-
-  const json = await resp.json();
-
-  if(!resp.ok || !json.ok){
-    throw new Error(json.error || 'fetch_failed');
-  }
-
-  return json;
-
-}
-
-
-function buildAcceptMessage(sub){
-
-  return `السلام عليكِ ورحمة الله وبركاته يا ${sub.name} \n\nيسعدنا إعلامكِ بقبول طلب انضمامكِ إلى مقرأة الأترجّة ضمن حلقة "${sub.circleName}".\nرابط مجموعة الأخوات الخاصة (للنساء فقط):\n${WOMEN_GROUP_LINK}\n\nنسأل الله لكِ التوفيق والإخلاص والقبول، وبانتظاركِ في الحلقة القادمة بإذن الله.`;
-
-}
-
-
-function buildRejectMessage(sub){
-
-  return `السلام عليكِ ورحمة الله وبركاته يا ${sub.name}\n\nنشكر لكِ اهتمامكِ بالتسجيل في مقرأة الأترجّة. تعذّر قبول طلبكِ في الوقت الحالي، ونرحّب بتجديد التسجيل لاحقًا بإذن الله.\nبارك الله فيكِ.`;
-
-}
-
-
-async function renderSubmissions(){
-
-  const wrap =
-    document.getElementById('subsList');
-
-  wrap.innerHTML =
-    '<p class="empty-note">جارٍ تحميل الطلبات...</p>';
-
-  let subs,
-      dbConnected;
-
-  try{
-
-    const json = await fetchSubs();
-
-    subs = json.submissions;
-    dbConnected = json.dbConnected;
-
-  }catch(err){
-
-    wrap.innerHTML =
-      '<p class="empty-note">تعذّر تحميل الطلبات، تأكدي من اتصالكِ بالإنترنت ثم حدّثي الصفحة.</p>';
-
-    return;
-  }
-
-  if(dbConnected === false){
-
-    wrap.innerHTML =
-      '<p class="empty-note">قاعدة البيانات غير مربوطة بعد بالمشروع على Vercel، لذلك لا يمكن عرض الطلبات هنا حاليًا (لكنها ما زالت تصلكِ عبر بوت تليجرام).</p>';
-
-    return;
-  }
-
-  if(!subs || subs.length === 0){
-
-    wrap.innerHTML =
-      '<p class="empty-note">لا توجد طلبات تسجيل حتى الآن.</p>';
-
-    return;
-  }
-
-  wrap.innerHTML = subs.map(s=>`
-
-    <div class="sub-card" data-id="${s.id}">
-
-      <div class="sub-top">
-        <h4>${s.name}</h4>
-
-        <span class="pill ${s.status}">
-          ${s.status==='pending'
-            ?'قيد المراجعة'
-            :s.status==='accepted'
-              ?'مقبولة'
-              :'مرفوضة'}
-        </span>
-      </div>
-
-      <div class="sub-meta">
-
-        <div><b>السن:</b> ${s.age}</div>
-        <div><b>المدينة:</b> ${s.city || '—'}</div>
-        <div><b>التواصل:</b> ${s.contact}</div>
-        <div><b>مستوى التجويد:</b> ${s.tajweedLevel || '—'}</div>
-        <div><b>مقدار المحفوظ:</b> ${s.memorized || '—'}</div>
-        <div><b>الحلقة:</b> ${s.circleName}</div>
-        <div><b>تاريخ الطلب:</b> ${s.date}</div>
-
-      </div>
-
-      ${s.notes
-        ? `<p class="hint"><b>ملاحظات:</b> ${s.notes}</p>`
-        : ''}
-
-      <audio controls src="${s.audioData}"></audio>
-
-      <div class="sub-actions">
-
-        ${s.status==='pending'
-          ? `
-
-          <button
-            class="btn-accept"
-            data-action="accept"
-            data-id="${s.id}">
-            قبول الطالبة
-          </button>
-
-          <button
-            class="btn-reject"
-            data-action="reject"
-            data-id="${s.id}">
-            رفض الطلب
-          </button>
-
-        `
-          : `
-
-          <button
-            class="btn-copy"
-            data-action="copy"
-            data-id="${s.id}">
-            نسخ رسالة الرد
-          </button>
-
-          <a
-            class="btn-copy"
-            style="display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;"
-            target="_blank"
-            rel="noopener"
-            href="https://t.me/${s.contact.replace('@','').replace(/\s/g,'')}">
-            فتح محادثة تيليجرام
-          </a>
-
-        `}
-
-      </div>
-
-      <div
-        class="reply-box"
-        id="reply-${s.id}">
-      </div>
-
-    </div>
-
-  `).join('');
-
-
-  /* تفعيل الحركية للطلبات التي تظهر ديناميكيًا */
-
-  wrap.querySelectorAll('.sub-card').forEach((el,index)=>{
-
-    el.classList.add('reveal-motion');
-
-    el.style.setProperty(
-      '--motion-delay',
-      Math.min(index * 70, 350) + 'ms'
-    );
-
-    requestAnimationFrame(()=>{
-      requestAnimationFrame(()=>{
-        el.classList.add('motion-visible');
-      });
-    });
-
-  });
-
-
-  wrap.querySelectorAll('button[data-action]').forEach(btn=>{
-
-    btn.addEventListener('click', async ()=>{
-
-      const id =
-        btn.dataset.id;
-
-      const action =
-        btn.dataset.action;
-
-      const sub =
-        subs.find(x=>x.id===id);
-
-      if(!sub) return;
-
-
-      if(action==='accept' || action==='reject'){
-
-        const newStatus =
-          action==='accept'
-            ? 'accepted'
-            : 'rejected';
-
-        btn.disabled = true;
-
-        try{
-
-          await fetch('/api/update-status',{
-
-            method:'POST',
-
-            headers:{
-              'Content-Type':'application/json',
-              'x-admin-pass':adminPassValue
-            },
-
-            body:JSON.stringify({
-              id,
-              status:newStatus
-            })
-
-          });
-
-        }catch(err){}
-
-        await renderSubmissions();
-
-        const box =
-          document.getElementById('reply-'+id);
-
-        if(box){
-
-          box.style.display = 'block';
-
-          box.textContent =
-            newStatus==='accepted'
-              ? buildAcceptMessage(sub)
-              : buildRejectMessage(sub);
-
-        }
-
-      }else if(action==='copy'){
-
-        const text =
-          sub.status==='accepted'
-            ? buildAcceptMessage(sub)
-            : buildRejectMessage(sub);
-
-        navigator.clipboard.writeText(text).then(()=>{
-
-          btn.textContent =
-            'تم النسخ ✓';
-
-          setTimeout(
-            ()=>btn.textContent = 'نسخ رسالة الرد',
-            1800
-          );
-
-        });
-
-        const box =
-          document.getElementById('reply-'+id);
-
-        box.style.display = 'block';
-
-        box.textContent = text;
-
-      }
-
-    });
-
-  });
-
-}
-
 </script>
 
 </body>
