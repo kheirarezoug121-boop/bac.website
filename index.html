@@ -3,77 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوائم الطالبات والحلقات القرآنية</title>
+    <title>قوائم الطالبات والحلقات</title>
     <style>
         :root {
             --dark-color: #463030;
-            --medium-rose: #876B6B;
-            --light-rose: #C6A9A8;
-            --soft-rose: #A98886;
-            --bg-color: #fcf6f6;
+            --medium-color: #7A6161;
+            --light-rose: #B18B8B;
+            --bg-color-start: #876B6B;
+            --bg-color-end: #C6A9A8;
+            --glass-bg: rgba(255, 255, 255, 0.85);
             --white: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, var(--bg-color-start), var(--bg-color-end));
             color: var(--dark-color);
             margin: 0;
-            padding: 20px;
+            padding: 25px;
             scroll-behavior: smooth;
+            min-height: 100vh;
         }
 
-        h1, h2 {
+        h1 {
             text-align: center;
-            color: var(--dark-color);
+            color: var(--white);
+            font-size: 28px;
+            text-shadow: 0 2px 4px rgba(70, 48, 48, 0.3);
+            margin-bottom: 30px;
         }
 
         h2 {
+            text-align: center;
+            color: var(--white);
+            font-size: 22px;
             margin-top: 40px;
-            font-size: 24px;
-            position: relative;
+            text-shadow: 0 1px 3px rgba(70, 48, 48, 0.2);
         }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--soft-rose);
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        /* حاوية العناصر بجانب بعضها */
+        /* حاوية العناصر بجانب بعضها مع حركية خفيفة */
         .container-flex {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .card-section {
-            background-color: var(--white);
-            border: 2px solid var(--light-rose);
-            border-radius: 12px;
-            padding: 25px;
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 22px;
             width: 45%;
             min-width: 280px;
-            box-shadow: 0 6px 12px rgba(70, 48, 48, 0.08);
-            transition: transform 0.2s ease;
+            box-shadow: 0 8px 20px rgba(70, 48, 48, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card-section:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(70, 48, 48, 0.25);
         }
 
         .card-section h3 {
-            color: var(--medium-rose);
+            color: var(--dark-color);
             border-bottom: 2px solid var(--light-rose);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             margin-top: 0;
-            font-size: 20px;
+            font-size: 19px;
         }
 
         ul, ol {
@@ -83,31 +82,31 @@
         li {
             margin: 10px 0;
             color: var(--dark-color);
-            line-height: 1.6;
+            font-size: 15px;
         }
 
-        /* زر العودة إلى الأعلى */
+        /* زر العودة إلى الأعلى بتصميم عصري وحركية */
         #topBtn {
             position: fixed;
             bottom: 25px;
             left: 25px;
             background-color: var(--dark-color);
             color: var(--white);
-            border: none;
+            border: 2px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             font-size: 22px;
             cursor: pointer;
             display: none;
-            box-shadow: 0 4px 10px rgba(70, 48, 48, 0.3);
-            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
             z-index: 1000;
         }
 
         #topBtn:hover {
-            background-color: var(--medium-rose);
-            transform: scale(1.05);
+            background-color: var(--light-rose);
+            transform: scale(1.1) rotate(5deg);
         }
     </style>
 </head>
@@ -115,7 +114,7 @@
 
     <h1>لوحة متابعة الحلقات وقوائم الطالبات</h1>
 
-    <!-- قسم الحلقات القرآنية (جنب بعض) -->
+    <!-- قسم الحلقات (مغلقة ومفتوحة جنب بعض) -->
     <h2>الحلقات القرآنية</h2>
     <div class="container-flex">
         <div class="card-section">
@@ -156,7 +155,7 @@
     </div>
 
     <!-- قسم معلومات التسجيل والقوانين المقررة (جنب بعض) -->
-    <h2>التنظيم والقوانين</h2>
+    <h2>معلومات التسجيل والقوانين</h2>
     <div class="container-flex">
         <div class="card-section">
             <h3>معلومات التسجيل</h3>
