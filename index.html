@@ -749,7 +749,7 @@ section.schedule{
 }
 
 /* =========================================================
-   STUDENTS BOARDS SECTION (ALL CIRCLES SIDE BY SIDE)
+   STUDENTS BOARDS SECTION (ALL CIRCLES SIDE BY SIDE - FLEX GRID)
 ========================================================= */
 
 section.students-section{
@@ -757,17 +757,14 @@ section.students-section{
 }
 
 .all-boards-container{
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 25px;
   justify-content: center;
   align-items: stretch;
 }
 
 .fadwa-board{
-  flex: 1;
-  min-width: 320px;
-  max-width: 360px;
   background: linear-gradient(135deg, #fcf0f3 0%, #f4e3e8 100%);
   border-radius: 35px;
   padding: 35px 25px;
@@ -775,6 +772,11 @@ section.students-section{
   border: 2px solid rgba(255,255,255,0.8);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.fadwa-board:hover {
+  transform: translateY(-5px);
 }
 
 .fadwa-title{
