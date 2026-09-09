@@ -10,24 +10,22 @@
 
 <style>
 :root{
-  --bg:#fff8f4;
-  --bg2:#fff0f3;
-  --pink:#f2a7b5;
-  --pink2:#ffd9df;
-  --pink3:#e88498;
-  --lav:#c8b8e8;
-  --lav2:#eee8fa;
-  --blue:#9db9df;
-  --blue2:#e1ebf8;
+  --bg:#f4f7fb;
+  --bg2:#eaf1f8;
+  --blue:#3a7bd5;
+  --blue2:#d0e1f9;
+  --blue3:#1b4f9c;
+  --lav:#b8d0e8;
+  --lav2:#e3edf8;
   --mint:#b8dcd2;
   --mint2:#e5f3ef;
   --gold:#dfad5b;
   --gold2:#f7e6bd;
-  --mauve:#725365;
-  --mauve2:#4b3340;
-  --ink:#3c2d35;
+  --mauve:#3a4a5c;
+  --mauve2:#22303f;
+  --ink:#2c3e50;
   --white:#fffdfc;
-  --shadow:0 18px 50px rgba(87,55,70,.10);
+  --shadow:0 18px 50px rgba(58,123,213,.10);
   --font-display:'Baloo Bhaijaan 2','Tajawal',Tahoma,Arial,sans-serif;
   --font-body:'Tajawal',Tahoma,Arial,sans-serif;
 }
@@ -42,8 +40,8 @@ body{
   margin:0;
   font-family:var(--font-body);
   background:
-    radial-gradient(circle at 8% 12%,rgba(242,167,181,.16),transparent 24%),
-    radial-gradient(circle at 92% 35%,rgba(200,184,232,.17),transparent 25%),
+    radial-gradient(circle at 8% 12%,rgba(58,123,213,.12),transparent 24%),
+    radial-gradient(circle at 92% 35%,rgba(184,208,232,.15),transparent 25%),
     var(--bg);
   color:var(--ink);
   overflow-x:hidden;
@@ -104,7 +102,7 @@ img{
 .motion-orb.one{
   width:230px;
   height:230px;
-  background:var(--pink);
+  background:var(--blue);
   top:9%;
   right:-80px;
 }
@@ -134,7 +132,7 @@ img{
   display:flex;
   align-items:center;
   justify-content:center;
-  color:rgba(114,83,101,.20);
+  color:rgba(58,74,92,.20);
   animation:floatIcon 9s ease-in-out infinite;
 }
 
@@ -260,12 +258,12 @@ section{
   animation:blobFloat 10s ease-in-out infinite alternate;
 }
 
-.blob-pink{
-  background:var(--pink2);
-}
-
 .blob-blue{
   background:var(--blue2);
+}
+
+.blob-lav{
+  background:var(--lav2);
   animation-delay:-4s;
 }
 
@@ -286,10 +284,10 @@ header.topbar{
   position:sticky;
   top:0;
   z-index:50;
-  background:rgba(255,248,244,.88);
+  background:rgba(244,247,251,.88);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(114,83,101,.10);
-  box-shadow:0 4px 24px rgba(75,51,64,.04);
+  border-bottom:1px solid rgba(58,74,92,.10);
+  box-shadow:0 4px 24px rgba(34,48,63,.04);
 }
 
 .topbar-inner{
@@ -316,11 +314,11 @@ header.topbar{
   width:36px;
   height:36px;
   border-radius:13px;
-  background:linear-gradient(135deg,var(--pink3),var(--lav));
+  background:linear-gradient(135deg,var(--blue),var(--blue3));
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 7px 18px rgba(114,83,101,.16);
+  box-shadow:0 7px 18px rgba(58,123,213,.16);
 }
 
 .brand-mini .dot svg{
@@ -345,7 +343,7 @@ nav.main-nav a{
 
 nav.main-nav a:hover{
   color:var(--mauve2);
-  background:var(--pink2);
+  background:var(--blue2);
   transform:translateY(-2px);
 }
 
@@ -370,7 +368,7 @@ section.hero .wrap{
   width:100%;
 }
 
-.hero .blob-pink{
+.hero .blob-blue{
   width:350px;
   height:350px;
   top:-150px;
@@ -378,7 +376,7 @@ section.hero .wrap{
   opacity:.7;
 }
 
-.hero .blob-blue{
+.hero .blob-lav{
   width:300px;
   height:300px;
   top:90px;
@@ -417,11 +415,11 @@ section.hero .wrap{
   height:82px;
   border-radius:28px;
   margin:0 auto 20px;
-  background:linear-gradient(135deg,var(--pink3),var(--lav));
+  background:linear-gradient(135deg,var(--blue),var(--blue3));
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 14px 30px rgba(114,83,101,.20);
+  box-shadow:0 14px 30px rgba(58,123,213,.20);
   animation:badgeFloat 4s ease-in-out infinite;
 }
 
@@ -477,25 +475,25 @@ section.hero .wrap{
 }
 
 .btn-primary{
-  background:linear-gradient(135deg,var(--pink3),var(--pink));
+  background:linear-gradient(135deg,var(--blue),var(--blue3));
   color:#fff;
-  box-shadow:0 10px 22px rgba(232,132,152,.28);
+  box-shadow:0 10px 22px rgba(58,123,213,.28);
 }
 
 .btn-primary:hover{
   transform:translateY(-3px);
-  box-shadow:0 15px 28px rgba(232,132,152,.35);
+  box-shadow:0 15px 28px rgba(58,123,213,.35);
 }
 
 .btn-outline{
   background:#fff;
   color:var(--mauve2);
-  border:2px solid var(--lav);
+  border:2px solid var(--blue2);
 }
 
 .btn-outline:hover{
   transform:translateY(-3px);
-  background:var(--lav2);
+  background:var(--blue2);
 }
 
 /* =========================================================
@@ -513,7 +511,7 @@ section.hero .wrap{
   font-weight:800;
   font-size:.84rem;
   margin-bottom:15px;
-  box-shadow:0 7px 18px rgba(75,51,64,.13);
+  box-shadow:0 7px 18px rgba(34,48,63,.13);
 }
 
 .section-head{
@@ -554,15 +552,15 @@ section.services{
   gap:16px;
   align-items:flex-start;
   background:#fff;
-  border:1px solid rgba(114,83,101,.08);
+  border:1px solid rgba(58,74,92,.08);
   border-radius:22px;
-  box-shadow:0 9px 25px rgba(75,51,64,.055);
+  box-shadow:0 9px 25px rgba(34,48,63,.055);
   transition:.3s;
 }
 
 .service-card:hover{
   transform:translateY(-5px);
-  box-shadow:0 16px 32px rgba(75,51,64,.10);
+  box-shadow:0 16px 32px rgba(34,48,63,.10);
 }
 
 .service-card .icon{
@@ -570,7 +568,7 @@ section.services{
   width:45px;
   height:45px;
   border-radius:15px;
-  background:var(--lav2);
+  background:var(--blue2);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -579,7 +577,7 @@ section.services{
 
 .service-card:hover .icon{
   transform:rotate(-8deg) scale(1.06);
-  background:var(--pink2);
+  background:var(--lav2);
 }
 
 .service-card .icon svg{
@@ -612,7 +610,7 @@ section.services{
 
 section.schedule{
   background:
-    linear-gradient(135deg,rgba(238,232,250,.65),rgba(255,240,243,.65));
+    linear-gradient(135deg,rgba(227,237,248,.65),rgba(208,225,249,.65));
 }
 
 .teacher-list{
@@ -623,7 +621,7 @@ section.schedule{
   padding:8px 4px 25px;
   scroll-snap-type:x mandatory;
   scrollbar-width:thin;
-  scrollbar-color:var(--pink) transparent;
+  scrollbar-color:var(--blue) transparent;
 }
 
 .teacher-list::-webkit-scrollbar{
@@ -636,7 +634,7 @@ section.schedule{
 }
 
 .teacher-list::-webkit-scrollbar-thumb{
-  background:var(--pink);
+  background:var(--blue);
   border-radius:20px;
 }
 
@@ -650,7 +648,7 @@ section.schedule{
   flex-direction:column;
   align-items:stretch;
   gap:16px;
-  box-shadow:0 12px 32px rgba(75,51,64,.09);
+  box-shadow:0 12px 32px rgba(34,48,63,.09);
   border:1px solid rgba(255,255,255,.9);
   scroll-snap-align:start;
   transition:.3s;
@@ -664,7 +662,7 @@ section.schedule{
   width:100px;
   height:100px;
   border-radius:50%;
-  background:var(--pink2);
+  background:var(--blue2);
   top:-55px;
   left:-45px;
   opacity:.6;
@@ -672,7 +670,7 @@ section.schedule{
 
 .teacher-card:hover{
   transform:translateY(-7px);
-  box-shadow:0 20px 42px rgba(75,51,64,.13);
+  box-shadow:0 20px 42px rgba(34,48,63,.13);
 }
 
 .teacher-card .status{
@@ -700,7 +698,7 @@ section.schedule{
 }
 
 .status.closed{
-  background:var(--lav2);
+  background:var(--blue2);
 }
 
 .status.closed svg{
@@ -716,7 +714,7 @@ section.schedule{
 
 .teacher-info h4{
   font-size:1.08rem;
-  color:var(--pink3);
+  color:var(--blue);
   margin-bottom:8px;
 }
 
@@ -744,24 +742,33 @@ section.schedule{
 }
 
 .teacher-tag.closed{
-  background:var(--lav2);
+  background:var(--blue2);
   color:var(--mauve);
 }
 
 /* =========================================================
-   FADWA STUDENTS SECTION (NEW)
+   STUDENTS BOARDS SECTION (ALL CIRCLES SIDE BY SIDE)
 ========================================================= */
 
-section.fadwa-students{
+section.students-section{
   background:rgba(255,255,255,0.9);
 }
 
+.all-boards-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  align-items: stretch;
+}
+
 .fadwa-board{
-  max-width:550px;
-  margin:0 auto;
-  background:linear-gradient(135deg, #f2e9f0 0%, #e6eff8 100%);
-  border-radius:35px;
-  padding:35px 25px;
+  flex: 1;
+  min-width: 320px;
+  max-width: 360px;
+  background: linear-gradient(135deg, #eaf1f8 0%, #dce7f5 100%);
+  border-radius: 35px;
+  padding: 35px 25px;
   box-shadow: var(--shadow);
   border: 2px solid rgba(255,255,255,0.8);
   position: relative;
@@ -774,16 +781,16 @@ section.fadwa-students{
 }
 
 .fadwa-title h3{
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: var(--pink3);
+  color: var(--blue);
   margin-bottom: 5px;
-  text-shadow: 0 2px 10px rgba(232,132,152,0.2);
+  text-shadow: 0 2px 10px rgba(58,123,213,0.15);
 }
 
 .fadwa-title span{
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--mauve2);
 }
@@ -801,14 +808,14 @@ section.fadwa-students{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 15px rgba(75,51,64,0.06);
+  box-shadow: 0 4px 15px rgba(34,48,63,0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid rgba(242,167,181,0.2);
+  border: 1px solid rgba(58,123,213,0.15);
 }
 
 .student-row:hover{
   transform: translateX(-4px);
-  box-shadow: 0 6px 20px rgba(75,51,64,0.1);
+  box-shadow: 0 6px 20px rgba(34,48,63,0.1);
 }
 
 .student-name{
@@ -830,7 +837,7 @@ section.fadwa-students{
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.95rem;
-  box-shadow: 0 3px 8px rgba(75,51,64,0.15);
+  box-shadow: 0 3px 8px rgba(34,48,63,0.15);
 }
 
 /* =========================================================
@@ -845,7 +852,7 @@ section.channel{
   max-width:560px;
   margin:0 auto;
   text-align:center;
-  background:linear-gradient(145deg,#fff4f5,#f3effb);
+  background:linear-gradient(145deg,#eef4fb,#e3edf8);
   border-radius:35px;
   padding:38px 26px;
   box-shadow:var(--shadow);
@@ -858,7 +865,7 @@ section.channel{
   border-radius:25px;
   background:#fff;
   padding:10px;
-  box-shadow:0 12px 28px rgba(75,51,64,.11);
+  box-shadow:0 12px 28px rgba(34,48,63,.11);
 }
 
 .channel-link{
@@ -873,7 +880,7 @@ section.channel{
   margin-top:6px;
   font-size:.9rem;
   word-break:break-all;
-  box-shadow:0 7px 18px rgba(75,51,64,.07);
+  box-shadow:0 7px 18px rgba(34,48,63,.07);
   transition:.25s;
 }
 
@@ -893,7 +900,7 @@ section.channel{
 .telegram-icon svg{
   width:100%;
   height:100%;
-  fill:var(--pink3);
+  fill:var(--blue);
 }
 
 @keyframes telegramSpin{
@@ -913,7 +920,7 @@ section.channel{
 
 .copy-btn{
   background:none;
-  color:var(--pink3);
+  color:var(--blue);
   font-weight:800;
   font-size:.85rem;
   margin-inline-start:10px;
@@ -925,7 +932,7 @@ section.channel{
 ========================================================= */
 
 section.rules{
-  background:rgba(255,240,243,.65);
+  background:rgba(227,237,248,.65);
 }
 
 .rules-list{
@@ -934,7 +941,7 @@ section.rules{
   background:#fff;
   border-radius:28px;
   padding:12px 28px;
-  box-shadow:0 12px 35px rgba(75,51,64,.07);
+  box-shadow:0 12px 35px rgba(34,48,63,.07);
 }
 
 .rule-item{
@@ -942,7 +949,7 @@ section.rules{
   align-items:flex-start;
   gap:12px;
   padding:15px 4px;
-  border-bottom:1.5px solid rgba(114,83,101,.09);
+  border-bottom:1.5px solid rgba(58,74,92,.09);
 }
 
 .rule-item:last-child{
@@ -953,7 +960,7 @@ section.rules{
   flex:none;
   width:19px;
   height:19px;
-  fill:var(--pink3);
+  fill:var(--blue);
   margin-top:5px;
 }
 
@@ -973,7 +980,7 @@ section.register{
 form#regForm{
   max-width:760px;
   margin:0 auto;
-  background:linear-gradient(145deg,#fff5f2,#f4f0fb);
+  background:linear-gradient(145deg,#eef4fb,#e3edf8);
   border-radius:34px;
   padding:40px 32px;
   box-shadow:var(--shadow);
@@ -986,7 +993,7 @@ form#regForm{
 
 .form-block h3{
   font-size:1.12rem;
-  color:var(--pink3);
+  color:var(--blue);
   margin-bottom:15px;
   display:flex;
   align-items:center;
@@ -997,7 +1004,7 @@ form#regForm{
   width:29px;
   height:29px;
   border-radius:10px;
-  background:var(--pink3);
+  background:var(--blue);
   color:#fff;
   font-size:.8rem;
   display:flex;
@@ -1032,7 +1039,7 @@ form#regForm{
   width:100%;
   padding:13px 14px;
   border-radius:15px;
-  border:1.5px solid #e5ddec;
+  border:1.5px solid #d0e1f9;
   background:#fff;
   font-family:var(--font-body);
   font-size:.94rem;
@@ -1043,8 +1050,8 @@ form#regForm{
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
-  outline:2px solid rgba(232,132,152,.22);
-  border-color:var(--pink);
+  outline:2px solid rgba(58,123,213,.22);
+  border-color:var(--blue);
 }
 
 .field textarea{
@@ -1090,16 +1097,16 @@ select option:disabled{
 }
 
 .rec-btn.recording{
-  background:var(--pink3);
+  background:var(--blue);
   animation:recordPulse 1.3s ease-in-out infinite;
 }
 
 @keyframes recordPulse{
   0%,100%{
-    box-shadow:0 0 0 0 rgba(232,132,152,.25);
+    box-shadow:0 0 0 0 rgba(58,123,213,.25);
   }
   50%{
-    box-shadow:0 0 0 9px rgba(232,132,152,0);
+    box-shadow:0 0 0 9px rgba(58,123,213,0);
   }
 }
 
@@ -1120,7 +1127,7 @@ audio{
   display:flex;
   gap:10px;
   align-items:flex-start;
-  border:1.5px solid #e5ddec;
+  border:1.5px solid #d0e1f9;
 }
 
 .pledge-box input{
@@ -1166,7 +1173,7 @@ audio{
 ========================================================= */
 
 section.admin{
-  background:linear-gradient(135deg,#f3effb,#fff0f3);
+  background:linear-gradient(135deg,#e3edf8,#f4f7fb);
 }
 
 .admin-gate{
@@ -1183,7 +1190,7 @@ section.admin{
   width:100%;
   padding:12px 14px;
   border-radius:14px;
-  border:1.5px solid #e5ddec;
+  border:1.5px solid #d0e1f9;
   margin:14px 0;
   font-family:var(--font-body);
 }
@@ -1199,7 +1206,7 @@ section.admin{
   border-radius:24px;
   padding:21px 22px;
   margin-bottom:16px;
-  box-shadow:0 10px 27px rgba(75,51,64,.07);
+  box-shadow:0 10px 27px rgba(34,48,63,.07);
 }
 
 .sub-top{
@@ -1315,7 +1322,7 @@ footer .quote{
 }
 
 footer a.channel{
-  color:#ffd9df;
+  color:#d0e1f9;
   font-weight:800;
 }
 
@@ -1341,7 +1348,7 @@ footer .fine{
   nav.main-nav{
     position:fixed;
     inset:64px 0 auto 0;
-    background:rgba(255,248,244,.98);
+    background:rgba(244,247,251,.98);
     flex-direction:column;
     padding:18px 24px;
     box-shadow:0 12px 20px rgba(0,0,0,.08);
@@ -1533,7 +1540,7 @@ footer .fine{
     <nav class="main-nav" id="mainNav">
       <a href="#services">خدماتنا</a>
       <a href="#schedule">برنامج الحلقات</a>
-      <a href="#fadwa-list">قائمة المعلمة فدوى</a>
+      <a href="#students-lists">قوائم الحلقات</a>
       <a href="#channel">القناة</a>
       <a href="#rules">قوانين المقرأة</a>
       <a href="#register">التسجيل</a>
@@ -1542,8 +1549,8 @@ footer .fine{
 </header>
 
 <section class="hero">
-  <div class="blob blob-pink"></div>
   <div class="blob blob-blue"></div>
+  <div class="blob blob-lav"></div>
   <div class="wrap">
     <div class="hero-card">
       <div class="badge-circle">
@@ -1557,7 +1564,7 @@ footer .fine{
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#register">سجّلي الآن</a>
-        <a class="btn btn-outline" href="#fadwa-list">قائمة المعلمة فدوى</a>
+        <a class="btn btn-outline" href="#students-lists">قوائم الحلقات</a>
       </div>
     </div>
   </div>
@@ -1580,40 +1587,128 @@ footer .fine{
     <div class="section-head">
       <span class="eyebrow">برنامج الحلقات</span>
       <h2>اختاري حلقتكِ ومعلّمتكِ</h2>
-      <p>القفل المفتوح يعني أن الحلقة تستقبل تسجيلات جديدة حاليًا</p>
+      <p>القفل المفتوح یعنی أن الحلقة تستقبل تسجيلات جديدة حاليًا</p>
     </div>
     <div class="teacher-list" id="teacherList"></div>
   </div>
 </section>
 
-<!-- قسم قائمة طالبات المعلمة فدوى المضاف -->
-<section class="fadwa-students" id="fadwa-list">
+<!-- قسم قوائم الحلقات (جميع الحلقات بجانب بعضها حسب ترتيب الطلب) -->
+<section class="students-section" id="students-lists">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">قوائم الحلقات</span>
-      <h2>طالبات حلقة المعلمة فدوى</h2>
-      <p>الأسماء المسجلة رسمياً في الحلقة حسب الكشف المعتمد</p>
+      <h2>جداول طالبات الحلقات</h2>
+      <p>الأسماء المسجلة رسمياً في الحلقات حسب الكشف المعتمد</p>
     </div>
 
-    <div class="fadwa-board">
-      <div class="fadwa-title">
-        <h3>قائمة الطالبات</h3>
-        <span>المعلمة فدوى 🤍</span>
+    <div class="all-boards-container">
+      
+      <!-- 1. حلقة المعلمة شيماء -->
+      <div class="fadwa-board">
+        <div class="fadwa-title">
+          <h3>قائمة الطالبات</h3>
+          <span>المعلمة شيماء</span>
+        </div>
+        <div class="students-stack">
+          <div class="student-row"><span class="student-name">حيزية عقود</span><span class="student-num">01</span></div>
+          <div class="student-row"><span class="student-name">شيماء قداش</span><span class="student-num">02</span></div>
+          <div class="student-row"><span class="student-name">إيمان مصطَفاي</span><span class="student-num">03</span></div>
+          <div class="student-row"><span class="student-name">ياسمين مالجي</span><span class="student-num">04</span></div>
+          <div class="student-row"><span class="student-name">رحمة بوادي</span><span class="student-num">05</span></div>
+          <div class="student-row"><span class="student-name">شيماء أم خبيب</span><span class="student-num">06</span></div>
+          <div class="student-row"><span class="student-name">خولة خليفة</span><span class="student-num">07</span></div>
+          <div class="student-row"><span class="student-name">دارين خلفة</span><span class="student-num">08</span></div>
+          <div class="student-row"><span class="student-name">رزيقة قناني</span><span class="student-num">09</span></div>
+          <div class="student-row"><span class="student-name">شيماء جوفلكيت</span><span class="student-num">10</span></div>
+          <div class="student-row"><span class="student-name">سارة بن فرحة</span><span class="student-num">11</span></div>
+        </div>
       </div>
 
-      <div class="students-stack">
-        <div class="student-row"><span class="student-name">سلسبيلي طرشي</span><span class="student-num">01</span></div>
-        <div class="student-row"><span class="student-name">زهرة ياقوت دهماص</span><span class="student-num">02</span></div>
-        <div class="student-row"><span class="student-name">قندة فاطمة الزهراء</span><span class="student-num">03</span></div>
-        <div class="student-row"><span class="student-name">بن قطاية عبير</span><span class="student-num">04</span></div>
-        <div class="student-row"><span class="student-name">فلة بلمسعود</span><span class="student-num">05</span></div>
-        <div class="student-row"><span class="student-name">ماجن فرح</span><span class="student-num">06</span></div>
-        <div class="student-row"><span class="student-name">سعاد عطاب</span><span class="student-num">07</span></div>
-        <div class="student-row"><span class="student-name">دحماني اكرام</span><span class="student-num">08</span></div>
-        <div class="student-row"><span class="student-name">قريشي ياسمين</span><span class="student-num">09</span></div>
-        <div class="student-row"><span class="student-name">قرباي منى</span><span class="student-num">10</span></div>
-        <div class="student-row"><span class="student-name">سهام بوهراوة</span><span class="student-num">11</span></div>
+      <!-- 2. حلقة المعلمة فدوى -->
+      <div class="fadwa-board">
+        <div class="fadwa-title">
+          <h3>قائمة الطالبات</h3>
+          <span>المعلمة فدوى</span>
+        </div>
+        <div class="students-stack">
+          <div class="student-row"><span class="student-name">سلسبيلي طرشي</span><span class="student-num">01</span></div>
+          <div class="student-row"><span class="student-name">زهرة ياقوت دهماص</span><span class="student-num">02</span></div>
+          <div class="student-row"><span class="student-name">قندة فاطمة الزهراء</span><span class="student-num">03</span></div>
+          <div class="student-row"><span class="student-name">بن قطاية عبير</span><span class="student-num">04</span></div>
+          <div class="student-row"><span class="student-name">فلة بلمسعود</span><span class="student-num">05</span></div>
+          <div class="student-row"><span class="student-name">ماجن فرح</span><span class="student-num">06</span></div>
+          <div class="student-row"><span class="student-name">سعاد عطاب</span><span class="student-num">07</span></div>
+          <div class="student-row"><span class="student-name">دحماني اكرام</span><span class="student-num">08</span></div>
+          <div class="student-row"><span class="student-name">قريشي ياسمين</span><span class="student-num">09</span></div>
+          <div class="student-row"><span class="student-name">قرباي منى</span><span class="student-num">10</span></div>
+          <div class="student-row"><span class="student-name">سهام بوهراوة</span><span class="student-num">11</span></div>
+        </div>
       </div>
+
+      <!-- 3. حلقة المعلمة أم حفصة -->
+      <div class="fadwa-board">
+        <div class="fadwa-title">
+          <h3>قائمة الطالبات</h3>
+          <span>المعلمة أم حفصة</span>
+        </div>
+        <div class="students-stack">
+          <div class="student-row"><span class="student-name">هبة الرحمان</span><span class="student-num">01</span></div>
+          <div class="student-row"><span class="student-name">حضريّة بوعلام</span><span class="student-num">02</span></div>
+          <div class="student-row"><span class="student-name">فضيلة أبركان</span><span class="student-num">03</span></div>
+          <div class="student-row"><span class="student-name">آمنة ميلود بن شني</span><span class="student-num">04</span></div>
+          <div class="student-row"><span class="student-name">ربيعة بريخو</span><span class="student-num">05</span></div>
+          <div class="student-row"><span class="student-name">فردوس صليحة دحماني</span><span class="student-num">06</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
+        </div>
+      </div>
+
+      <!-- 4. حلقة المعلمة أم عبد الله -->
+      <div class="fadwa-board">
+        <div class="fadwa-title">
+          <h3>قائمة الطالبات</h3>
+          <span>المعلمة أم عبد الله</span>
+        </div>
+        <div class="students-stack">
+          <div class="student-row"><span class="student-name">عبير صوالح</span><span class="student-num">01</span></div>
+          <div class="student-row"><span class="student-name">إسراء رحمانية</span><span class="student-num">02</span></div>
+          <div class="student-row"><span class="student-name">زهرة قناني</span><span class="student-num">03</span></div>
+          <div class="student-row"><span class="student-name">مرام العيد رزقي</span><span class="student-num">04</span></div>
+          <div class="student-row"><span class="student-name">هديل زكراوي</span><span class="student-num">05</span></div>
+          <div class="student-row"><span class="student-name">شهد خلف علي</span><span class="student-num">06</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
+        </div>
+      </div>
+
+      <!-- 5. حلقة المعلمة سمية -->
+      <div class="fadwa-board">
+        <div class="fadwa-title">
+          <h3>قائمة الطالبات</h3>
+          <span>المعلمة سمية</span>
+        </div>
+        <div class="students-stack">
+          <div class="student-row"><span class="student-name">أنفال بن لخضر</span><span class="student-num">01</span></div>
+          <div class="student-row"><span class="student-name">فاطمة محمد الزوى</span><span class="student-num">02</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">03</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">04</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">05</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">06</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
+          <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1805,7 +1900,6 @@ const TEACHERS = [
   { id:"shaimaa", name:"المعلّمة شيماء", days:"يوميا عدا الثلاثاء/الجمعة", time:"19:00", open:false, group:WOMEN_GROUP_LINK },
   { id:"fadwa", name:"المعلّمة فدوى", days:"الأحد / الخميس", time:"17:00", open:false, group:WOMEN_GROUP_LINK },
   { id:"hafsa", name:"المعلّمة أمّ حفصة", days:"الجمعة / الثلاثاء", time:"فجراً 06:00", open:false, group:WOMEN_GROUP_LINK },
-  { id:"abdelmoez", name:"المعلّمة أمّ عبد المعزّ", days:"الاثنين", time:"21:00", open:true, group:WOMEN_GROUP_LINK },
   { id:"abdellah", name:"المعلّمة أمّ عبد الله (للمبتدئات فقط)", days:"الأحد / الخميس", time:"21:00", open:true, group:WOMEN_GROUP_LINK },
   { id:"soumia", name:"المعلّمة سمية", days:"الثلاثاء / الجمعة", time:"06:00 فجراً", open:true, group:WOMEN_GROUP_LINK }
 ];
@@ -1895,7 +1989,7 @@ function renderRules(){
 
 function renderChannelQr(){
   const url = "https://t.me/AlOtrodjah";
-  document.getElementById('channelQr').src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=D9636D&bgcolor=FFFDFB&data=" + encodeURIComponent(url);
+  document.getElementById('channelQr').src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=3A7BD5&bgcolor=FFFDFB&data=" + encodeURIComponent(url);
 }
 
 renderServices();
