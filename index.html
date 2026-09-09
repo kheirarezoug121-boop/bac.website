@@ -10,21 +10,21 @@
 
 <style>
 :root{
-  --bg:#fbf6f8;
-  --bg2:#f3e6ec;
-  --rose:#c25d80;
-  --rose2:#f9d7e3;
-  --rose3:#7a334d;
-  --mauve:#9c738c;
-  --mauve2:#e3c8d7;
-  --mint:#7bb29f;
-  --mint2:#d6ece3;
-  --gold:#c48b4f;
-  --gold2:#fdf3dc;
-  --text-dark:#3d2c35;
-  --text-muted:#6b5863;
+  --bg:#fbf9f7;
+  --bg2:#f2ede8;
+  --rose:#9e7b86;
+  --rose2:#eadef0;
+  --rose3:#5c464e;
+  --mauve:#8a7a85;
+  --mauve2:#e5e0e8;
+  --mint:#7a9a8c;
+  --mint2:#dbebe3;
+  --gold:#b89771;
+  --gold2:#f7f0e6;
+  --text-dark:#383236;
+  --text-muted:#6e656a;
   --white:#ffffff;
-  --shadow:0 18px 50px rgba(194,93,128,.12);
+  --shadow:0 12px 35px rgba(56,50,54,.07);
   --font-display:'Baloo Bhaijaan 2','Tajawal',Tahoma,Arial,sans-serif;
   --font-body:'Tajawal',Tahoma,Arial,sans-serif;
 }
@@ -39,8 +39,8 @@ body{
   margin:0;
   font-family:var(--font-body);
   background:
-    radial-gradient(circle at 8% 12%,rgba(194,93,128,.14),transparent 24%),
-    radial-gradient(circle at 92% 35%,rgba(156,115,140,.14),transparent 25%),
+    radial-gradient(circle at 10% 10%,rgba(222,218,225,.25),transparent 30%),
+    radial-gradient(circle at 90% 40%,rgba(219,235,227,.25),transparent 30%),
     var(--bg);
   color:var(--text-dark);
   overflow-x:hidden;
@@ -93,22 +93,22 @@ img{
 .motion-orb{
   position:absolute;
   border-radius:50%;
-  filter:blur(6px);
-  opacity:.18;
+  filter:blur(8px);
+  opacity:.12;
   animation:orbMove 16s ease-in-out infinite alternate;
 }
 
 .motion-orb.one{
-  width:230px;
-  height:230px;
+  width:240px;
+  height:240px;
   background:var(--rose);
   top:9%;
   right:-80px;
 }
 
 .motion-orb.two{
-  width:280px;
-  height:280px;
+  width:290px;
+  height:290px;
   background:var(--mauve);
   bottom:8%;
   left:-110px;
@@ -116,8 +116,8 @@ img{
 }
 
 .motion-orb.three{
-  width:130px;
-  height:130px;
+  width:140px;
+  height:140px;
   background:var(--mint);
   top:48%;
   right:8%;
@@ -131,7 +131,7 @@ img{
   display:flex;
   align-items:center;
   justify-content:center;
-  color:rgba(107,88,99,.25);
+  color:rgba(110,101,106,.2);
   animation:floatIcon 9s ease-in-out infinite;
 }
 
@@ -150,85 +150,25 @@ img{
   stroke:none;
 }
 
-.motion-icon.i1{
-  top:18%;
-  right:5%;
-  animation-duration:8s;
-}
-
-.motion-icon.i2{
-  top:39%;
-  left:4%;
-  animation-duration:11s;
-  animation-delay:-3s;
-}
-
-.motion-icon.i3{
-  top:62%;
-  right:7%;
-  animation-duration:10s;
-  animation-delay:-5s;
-}
-
-.motion-icon.i4{
-  top:78%;
-  left:9%;
-  animation-duration:9s;
-  animation-delay:-2s;
-}
-
-.motion-icon.i5{
-  top:27%;
-  left:22%;
-  width:24px;
-  height:24px;
-  animation-duration:7s;
-  animation-delay:-1s;
-}
-
-.motion-icon.i6{
-  top:72%;
-  right:21%;
-  width:28px;
-  height:28px;
-  animation-duration:12s;
-  animation-delay:-6s;
-}
-
-.motion-icon.i7{
-  top:51%;
-  left:44%;
-  width:20px;
-  height:20px;
-  animation-duration:6s;
-  animation-delay:-2s;
-}
+.motion-icon.i1{ top:18%; right:5%; animation-duration:8s; }
+.motion-icon.i2{ top:39%; left:4%; animation-duration:11s; animation-delay:-3s; }
+.motion-icon.i3{ top:62%; right:7%; animation-duration:10s; animation-delay:-5s; }
+.motion-icon.i4{ top:78%; left:9%; animation-duration:9s; animation-delay:-2s; }
+.motion-icon.i5{ top:27%; left:22%; width:24px; height:24px; animation-duration:7s; animation-delay:-1s; }
+.motion-icon.i6{ top:72%; right:21%; width:28px; height:28px; animation-duration:12s; animation-delay:-6s; }
+.motion-icon.i7{ top:51%; left:44%; width:20px; height:20px; animation-duration:6s; animation-delay:-2s; }
 
 @keyframes floatIcon{
-  0%,100%{
-    transform:translate3d(0,0,0) rotate(-4deg);
-  }
-  25%{
-    transform:translate3d(10px,-14px,0) rotate(5deg);
-  }
-  50%{
-    transform:translate3d(-5px,-26px,0) rotate(-3deg);
-  }
-  75%{
-    transform:translate3d(-13px,-9px,0) rotate(4deg);
-  }
+  0%,100%{ transform:translate3d(0,0,0) rotate(-4deg); }
+  25%{ transform:translate3d(10px,-14px,0) rotate(5deg); }
+  50%{ transform:translate3d(-5px,-26px,0) rotate(-3deg); }
+  75%{ transform:translate3d(-13px,-9px,0) rotate(4deg); }
 }
 
 @keyframes orbMove{
-  0%{
-    transform:translate3d(0,0,0) scale(1);
-  }
-  50%{
-    transform:translate3d(35px,-25px,0) scale(1.08);
-  }
-  100%{
-    transform:translate3d(-25px,25px,0) scale(.94);
-  }
+  0%{ transform:translate3d(0,0,0) scale(1); }
+  50%{ transform:translate3d(35px,-25px,0) scale(1.08); }
+  100%{ transform:translate3d(-25px,25px,0) scale(.94); }
 }
 
 /* =========================================================
@@ -244,7 +184,7 @@ img{
 }
 
 section{
-  padding:80px 0;
+  padding:70px 0;
   position:relative;
   z-index:1;
 }
@@ -257,42 +197,32 @@ section{
   animation:blobFloat 10s ease-in-out infinite alternate;
 }
 
-.blob-blue{
-  background:var(--rose2);
-}
-
-.blob-lav{
-  background:var(--mauve2);
-  animation-delay:-4s;
-}
+.blob-blue{ background:var(--rose2); }
+.blob-lav{ background:var(--mauve2); animation-delay:-4s; }
 
 @keyframes blobFloat{
-  from{
-    transform:translate3d(0,0,0) rotate(0deg);
-  }
-  to{
-    transform:translate3d(14px,-18px,0) rotate(7deg);
-  }
+  from{ transform:translate3d(0,0,0) rotate(0deg); }
+  to{ transform:translate3d(14px,-18px,0) rotate(7deg); }
 }
 
 /* =========================================================
-   TOPBAR
+   TOPBAR & STICKY SUB-NAV TABS
 ========================================================= */
 
 header.topbar{
   position:sticky;
   top:0;
   z-index:50;
-  background:rgba(251,246,248,.9);
+  background:rgba(251,249,247,.92);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(194,93,128,.18);
-  box-shadow:0 4px 24px rgba(61,44,53,.05);
+  border-bottom:1px solid rgba(158,123,134,.12);
+  box-shadow:0 4px 20px rgba(56,50,54,.03);
 }
 
 .topbar-inner{
   max-width:1240px;
   margin:0 auto;
-  padding:14px 24px;
+  padding:12px 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -312,12 +242,12 @@ header.topbar{
 .brand-mini .dot{
   width:36px;
   height:36px;
-  border-radius:13px;
+  border-radius:12px;
   background:linear-gradient(135deg,var(--rose),var(--rose3));
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 7px 18px rgba(194,93,128,.25);
+  box-shadow:0 5px 15px rgba(158,123,134,.2);
 }
 
 .brand-mini .dot svg{
@@ -328,22 +258,24 @@ header.topbar{
 
 nav.main-nav{
   display:flex;
-  gap:18px;
+  gap:8px;
   font-weight:700;
-  font-size:.92rem;
+  font-size:.88rem;
 }
 
 nav.main-nav a{
   color:var(--text-muted);
-  padding:7px 10px;
+  padding:6px 12px;
   border-radius:999px;
   transition:.25s;
+  background:rgba(234,222,240,.3);
 }
 
-nav.main-nav a:hover{
-  color:var(--text-dark);
+nav.main-nav a:hover,
+nav.main-nav a.active{
+  color:var(--rose3);
   background:var(--rose2);
-  transform:translateY(-2px);
+  transform:translateY(-1px);
 }
 
 .nav-toggle{
@@ -356,109 +288,78 @@ nav.main-nav a:hover{
 
 section.hero{
   position:relative;
-  padding:72px 0 95px;
+  padding:60px 0 85px;
   overflow:hidden;
   min-height:calc(100vh - 66px);
   display:flex;
   align-items:center;
 }
 
-section.hero .wrap{
-  width:100%;
-}
+section.hero .wrap{ width:100%; }
 
-.hero .blob-blue{
-  width:350px;
-  height:350px;
-  top:-150px;
-  right:-100px;
-  opacity:.7;
-}
-
-.hero .blob-lav{
-  width:300px;
-  height:300px;
-  top:90px;
-  left:-140px;
-  opacity:.75;
-}
+.hero .blob-blue{ width:330px; height:330px; top:-150px; right:-100px; opacity:.6; }
+.hero .blob-lav{ width:280px; height:280px; top:90px; left:-140px; opacity:.6; }
 
 .hero-card{
   position:relative;
   z-index:2;
-  max-width:760px;
+  max-width:740px;
   margin:0 auto;
   text-align:center;
-  background:rgba(255,255,255,.85);
-  border:1px solid rgba(255,255,255,.95);
-  border-radius:48px;
-  padding:55px 34px 44px;
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,1);
+  border-radius:40px;
+  padding:50px 30px 40px;
   box-shadow:var(--shadow);
   backdrop-filter:blur(8px);
   animation:heroCardIn .9s ease both;
 }
 
 @keyframes heroCardIn{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{ opacity:0; transform:translateY(25px); }
+  to{ opacity:1; transform:translateY(0); }
 }
 
 .badge-circle{
-  width:82px;
-  height:82px;
-  border-radius:28px;
-  margin:0 auto 20px;
+  width:78px;
+  height:78px;
+  border-radius:24px;
+  margin:0 auto 18px;
   background:linear-gradient(135deg,var(--rose),var(--rose3));
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 14px 30px rgba(194,93,128,.3);
+  box-shadow:0 10px 25px rgba(158,123,134,.25);
   animation:badgeFloat 4s ease-in-out infinite;
 }
 
-.badge-circle svg{
-  width:37px;
-  height:37px;
-  fill:#fff;
-}
+.badge-circle svg{ width:35px; height:35px; fill:#fff; }
 
 @keyframes badgeFloat{
-  0%,100%{
-    transform:translateY(0) rotate(0);
-  }
-  50%{
-    transform:translateY(-7px) rotate(3deg);
-  }
+  0%,100%{ transform:translateY(0) rotate(0); }
+  50%{ transform:translateY(-6px) rotate(2deg); }
 }
 
 .hero h1{
-  font-size:3.2rem;
+  font-size:3rem;
   line-height:1.35;
   font-weight:800;
   color:var(--text-dark);
 }
 
 .hero .quote{
-  margin:22px auto 0;
-  max-width:570px;
-  font-size:1.04rem;
+  margin:20px auto 0;
+  max-width:550px;
+  font-size:1.02rem;
   color:var(--text-muted);
   font-weight:500;
-  position:relative;
-  padding:0 8px;
 }
 
 .hero-ctas{
   display:flex;
-  gap:14px;
+  gap:12px;
   justify-content:center;
-  margin-top:32px;
+  margin-top:28px;
   flex-wrap:wrap;
 }
 
@@ -467,22 +368,22 @@ section.hero .wrap{
   align-items:center;
   justify-content:center;
   gap:8px;
-  padding:13px 27px;
+  padding:12px 26px;
   border-radius:999px;
   font-weight:800;
-  font-size:.96rem;
+  font-size:.94rem;
   transition:.25s;
 }
 
 .btn-primary{
   background:linear-gradient(135deg,var(--rose),var(--rose3));
   color:#fff;
-  box-shadow:0 10px 22px rgba(194,93,128,.3);
+  box-shadow:0 8px 20px rgba(158,123,134,.25);
 }
 
 .btn-primary:hover{
-  transform:translateY(-3px);
-  box-shadow:0 15px 28px rgba(194,93,128,.4);
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px rgba(158,123,134,.35);
 }
 
 .btn-outline{
@@ -492,7 +393,7 @@ section.hero .wrap{
 }
 
 .btn-outline:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
   background:var(--rose2);
 }
 
@@ -504,31 +405,31 @@ section.hero .wrap{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  background:var(--rose3);
-  color:#fff;
-  padding:8px 19px;
+  background:var(--rose2);
+  color:var(--rose3);
+  padding:7px 18px;
   border-radius:999px;
   font-weight:800;
-  font-size:.84rem;
-  margin-bottom:15px;
-  box-shadow:0 7px 18px rgba(122,51,77,.2);
+  font-size:.82rem;
+  margin-bottom:14px;
 }
 
 .section-head{
   text-align:center;
   max-width:680px;
-  margin:0 auto 42px;
+  margin:0 auto 38px;
 }
 
 .section-head h2{
-  font-size:2.15rem;
+  font-size:2.1rem;
   font-weight:800;
   color:var(--text-dark);
 }
 
 .section-head p{
   color:var(--text-muted);
-  margin-top:10px;
+  margin-top:8px;
+  font-size:.95rem;
 }
 
 /* =========================================================
@@ -536,7 +437,7 @@ section.hero .wrap{
 ========================================================= */
 
 section.services{
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.8);
 }
 
 .services-grid{
@@ -553,22 +454,22 @@ section.services{
   gap:16px;
   align-items:flex-start;
   background:#fff;
-  border:1px solid rgba(194,93,128,.18);
-  border-radius:22px;
-  box-shadow:0 9px 25px rgba(61,44,53,.06);
+  border:1px solid rgba(158,123,134,.12);
+  border-radius:20px;
+  box-shadow:0 6px 20px rgba(56,50,54,.04);
   transition:.3s;
 }
 
 .service-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 16px 32px rgba(61,44,53,.12);
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(56,50,54,.08);
 }
 
 .service-card .icon{
   flex:none;
-  width:45px;
-  height:45px;
-  border-radius:15px;
+  width:44px;
+  height:44px;
+  border-radius:14px;
   background:var(--rose2);
   display:flex;
   align-items:center;
@@ -577,33 +478,35 @@ section.services{
 }
 
 .service-card:hover .icon{
-  transform:rotate(-8deg) scale(1.06);
+  transform:rotate(-6deg) scale(1.05);
   background:var(--mauve2);
 }
 
 .service-card .icon svg{
-  width:21px;
-  height:21px;
-  fill:var(--rose3);
+  width:20px;
+  height:20px;
+  stroke:var(--rose3);
+  fill:none;
 }
 
 .service-card h4{
-  font-size:1.05rem;
+  font-size:1.04rem;
   margin-bottom:4px;
   color:var(--text-dark);
 }
 
 .service-card p{
-  font-size:.88rem;
+  font-size:.87rem;
   color:var(--text-muted);
   margin:0;
 }
 
 .dua-strip{
   text-align:center;
-  margin-top:30px;
+  margin-top:28px;
   color:var(--gold);
   font-weight:800;
+  font-size:.95rem;
 }
 
 /* =========================================================
@@ -611,47 +514,36 @@ section.services{
 ========================================================= */
 
 section.schedule{
-  background:
-    linear-gradient(135deg,rgba(249,215,227,.55),rgba(227,200,215,.55));
+  background:linear-gradient(135deg,rgba(234,222,240,.3),rgba(219,235,227,.3));
 }
 
 .teacher-list{
   display:flex;
-  gap:18px;
+  gap:16px;
   overflow-x:auto;
   overflow-y:visible;
-  padding:8px 4px 25px;
+  padding:8px 4px 22px;
   scroll-snap-type:x mandatory;
   scrollbar-width:thin;
   scrollbar-color:var(--rose) transparent;
 }
 
-.teacher-list::-webkit-scrollbar{
-  height:7px;
-}
-
-.teacher-list::-webkit-scrollbar-track{
-  background:rgba(255,255,255,.5);
-  border-radius:20px;
-}
-
-.teacher-list::-webkit-scrollbar-thumb{
-  background:var(--rose);
-  border-radius:20px;
-}
+.teacher-list::-webkit-scrollbar{ height:6px; }
+.teacher-list::-webkit-scrollbar-track{ background:rgba(255,255,255,.5); border-radius:20px; }
+.teacher-list::-webkit-scrollbar-thumb{ background:var(--rose); border-radius:20px; }
 
 .teacher-card{
-  min-width:330px;
-  max-width:330px;
+  min-width:320px;
+  max-width:320px;
   background:rgba(255,255,255,.95);
-  border-radius:27px;
+  border-radius:24px;
   padding:22px;
   display:flex;
   flex-direction:column;
   align-items:stretch;
-  gap:16px;
-  box-shadow:0 12px 32px rgba(61,44,53,.08);
-  border:1px solid rgba(255,255,255,.9);
+  gap:15px;
+  box-shadow:0 10px 28px rgba(56,50,54,.06);
+  border:1px solid rgba(255,255,255,1);
   scroll-snap-align:start;
   transition:.3s;
   position:relative;
@@ -661,51 +553,38 @@ section.schedule{
 .teacher-card::before{
   content:"";
   position:absolute;
-  width:100px;
-  height:100px;
+  width:90px;
+  height:90px;
   border-radius:50%;
   background:var(--rose2);
-  top:-55px;
-  left:-45px;
-  opacity:.6;
+  top:-50px;
+  left:-40px;
+  opacity:.5;
 }
 
 .teacher-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 20px 42px rgba(61,44,53,.14);
+  transform:translateY(-5px);
+  box-shadow:0 16px 36px rgba(56,50,54,.1);
 }
 
 .teacher-card .status{
   position:relative;
   z-index:1;
-  width:58px;
-  height:58px;
-  border-radius:18px;
+  width:54px;
+  height:54px;
+  border-radius:16px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-.teacher-card .status svg{
-  width:24px;
-  height:24px;
-}
+.teacher-card .status svg{ width:22px; height:22px; }
 
-.status.open{
-  background:var(--mint2);
-}
+.status.open{ background:var(--mint2); }
+.status.open svg{ fill:#3e6b56; }
 
-.status.open svg{
-  fill:#3f826d;
-}
-
-.status.closed{
-  background:var(--rose2);
-}
-
-.status.closed svg{
-  fill:var(--text-muted);
-}
+.status.closed{ background:var(--rose2); }
+.status.closed svg{ fill:var(--text-muted); }
 
 .teacher-info{
   flex:1;
@@ -715,86 +594,86 @@ section.schedule{
 }
 
 .teacher-info h4{
-  font-size:1.08rem;
+  font-size:1.06rem;
   color:var(--rose3);
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
 .teacher-info span{
   display:block;
-  font-size:.87rem;
+  font-size:.86rem;
   color:var(--text-muted);
-  margin-top:5px;
+  margin-top:4px;
 }
 
 .teacher-tag{
   flex:none;
-  font-size:.79rem;
+  font-size:.78rem;
   font-weight:800;
-  padding:8px 14px;
+  padding:7px 12px;
   border-radius:999px;
   text-align:center;
   position:relative;
   z-index:1;
 }
 
-.teacher-tag.open{
-  background:var(--mint2);
-  color:#2f6b57;
-}
-
-.teacher-tag.closed{
-  background:var(--rose2);
-  color:var(--text-muted);
-}
+.teacher-tag.open{ background:var(--mint2); color:#2f5443; }
+.teacher-tag.closed{ background:var(--rose2); color:var(--text-muted); }
 
 /* =========================================================
-   STUDENTS BOARDS SECTION
+   STUDENTS BOARDS SECTION (SLIDER CAROUSEL)
 ========================================================= */
 
 section.students-section{
-  background:rgba(255,255,255,0.92);
+  background:rgba(255,255,255,.9);
+}
+
+.students-slider-wrapper{
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .all-boards-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  justify-content: center;
-  align-items: stretch;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  scrollbar-width: none;
+  padding: 10px 5px 25px;
+}
+
+.all-boards-container::-webkit-scrollbar{
+  display: none;
 }
 
 .fadwa-board{
-  background: linear-gradient(135deg, #fbf0f4 0%, #f1dce5 100%);
-  border-radius: 35px;
-  padding: 35px 25px;
+  min-width: 100%;
+  scroll-snap-align: center;
+  background: linear-gradient(135deg, #f7f3f5 0%, #ede3e9 100%);
+  border-radius: 30px;
+  padding: 30px 22px;
   box-shadow: var(--shadow);
-  border: 2px solid rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,1);
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.fadwa-board:hover {
-  transform: translateY(-5px);
 }
 
 .fadwa-title{
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .fadwa-title h3{
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--rose3);
-  margin-bottom: 5px;
-  text-shadow: 0 2px 10px rgba(194,93,128,0.15);
+  margin-bottom: 4px;
 }
 
 .fadwa-title span{
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-dark);
 }
@@ -802,46 +681,103 @@ section.students-section{
 .students-stack{
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-left: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rose) transparent;
+}
+
+.students-stack::-webkit-scrollbar{
+  width: 5px;
+}
+.students-stack::-webkit-scrollbar-thumb{
+  background: var(--rose);
+  border-radius: 10px;
 }
 
 .student-row{
   background: #ffffff;
   border-radius: 999px;
-  padding: 10px 18px 10px 12px;
+  padding: 9px 16px 9px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 15px rgba(61,44,53,0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid rgba(194,93,128,0.2);
-}
-
-.student-row:hover{
-  transform: translateX(-4px);
-  box-shadow: 0 6px 20px rgba(61,44,53,0.1);
+  box-shadow: 0 3px 12px rgba(56,50,54,.04);
+  border: 1px solid rgba(158,123,134,.15);
 }
 
 .student-name{
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--text-dark);
-  padding-right: 8px;
+  padding-right: 6px;
 }
 
 .student-num{
   background: var(--rose3);
   color: #fff;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.95rem;
-  box-shadow: 0 3px 8px rgba(122,51,77,0.25);
+  font-size: 0.9rem;
+}
+
+/* Slider Controls Indicators & Buttons */
+.slider-nav-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.slider-btn{
+  background: var(--rose2);
+  color: var(--rose3);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  transition: .2s;
+  box-shadow: 0 4px 12px rgba(56,50,54,.08);
+}
+
+.slider-btn:hover{
+  background: var(--rose3);
+  color: #fff;
+}
+
+.slider-dots{
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.slider-dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--mauve2);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.slider-dot.active{
+  background: var(--rose3);
+  width: 22px;
+  border-radius: 99px;
 }
 
 /* =========================================================
@@ -853,23 +789,23 @@ section.channel{
 }
 
 .channel-box{
-  max-width:560px;
+  max-width:540px;
   margin:0 auto;
   text-align:center;
-  background:linear-gradient(145deg,#fbf0f4,#f1dce5);
-  border-radius:35px;
-  padding:38px 26px;
+  background:linear-gradient(145deg,#f7f3f5,#ede3e9);
+  border-radius:32px;
+  padding:35px 24px;
   box-shadow:var(--shadow);
 }
 
 .channel-box img{
-  width:190px;
-  height:190px;
-  margin:18px auto;
-  border-radius:25px;
+  width:180px;
+  height:180px;
+  margin:16px auto;
+  border-radius:22px;
   background:#fff;
   padding:10px;
-  box-shadow:0 12px 28px rgba(61,44,53,0.08);
+  box-shadow:0 10px 24px rgba(56,50,54,.06);
 }
 
 .channel-link{
@@ -878,23 +814,21 @@ section.channel{
   gap:10px;
   background:#fff;
   color:var(--text-dark);
-  padding:11px 18px;
+  padding:10px 16px;
   border-radius:999px;
   font-weight:800;
   margin-top:6px;
-  font-size:.9rem;
+  font-size:.88rem;
   word-break:break-all;
-  box-shadow:0 7px 18px rgba(61,44,53,0.06);
+  box-shadow:0 6px 16px rgba(56,50,54,.05);
   transition:.25s;
 }
 
-.channel-link:hover{
-  transform:translateY(-3px);
-}
+.channel-link:hover{ transform:translateY(-2px); }
 
 .telegram-icon{
-  width:23px;
-  height:23px;
+  width:22px;
+  height:22px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -908,25 +842,17 @@ section.channel{
 }
 
 @keyframes telegramSpin{
-  0%,100%{
-    transform:rotate(0deg) translateY(0);
-  }
-  25%{
-    transform:rotate(-10deg) translateY(-2px);
-  }
-  50%{
-    transform:rotate(10deg) translateY(-4px);
-  }
-  75%{
-    transform:rotate(-7deg) translateY(-2px);
-  }
+  0%,100%{ transform:rotate(0deg) translateY(0); }
+  25%{ transform:rotate(-10deg) translateY(-2px); }
+  50%{ transform:rotate(10deg) translateY(-4px); }
+  75%{ transform:rotate(-7deg) translateY(-2px); }
 }
 
 .copy-btn{
   background:none;
   color:var(--rose3);
   font-weight:800;
-  font-size:.85rem;
+  font-size:.84rem;
   margin-inline-start:10px;
   text-decoration:underline;
 }
@@ -936,41 +862,39 @@ section.channel{
 ========================================================= */
 
 section.rules{
-  background:rgba(249,215,227,.5);
+  background:rgba(234,222,240,.35);
 }
 
 .rules-list{
-  max-width:780px;
+  max-width:760px;
   margin:0 auto;
   background:#fff;
-  border-radius:28px;
-  padding:12px 28px;
-  box-shadow:0 12px 35px rgba(61,44,53,0.06);
+  border-radius:26px;
+  padding:10px 26px;
+  box-shadow:0 10px 30px rgba(56,50,54,.05);
 }
 
 .rule-item{
   display:flex;
   align-items:flex-start;
   gap:12px;
-  padding:15px 4px;
-  border-bottom:1.5px solid rgba(194,93,128,.15);
+  padding:14px 4px;
+  border-bottom:1.5px solid rgba(158,123,134,.12);
 }
 
-.rule-item:last-child{
-  border-bottom:none;
-}
+.rule-item:last-child{ border-bottom:none; }
 
 .rule-item svg{
   flex:none;
-  width:19px;
-  height:19px;
+  width:18px;
+  height:18px;
   fill:var(--rose);
   margin-top:5px;
 }
 
 .rule-item p{
   margin:0;
-  font-size:.94rem;
+  font-size:.93rem;
 }
 
 /* =========================================================
@@ -982,35 +906,35 @@ section.register{
 }
 
 form#regForm{
-  max-width:760px;
+  max-width:740px;
   margin:0 auto;
-  background:linear-gradient(145deg,#fbf0f4,#f1dce5);
-  border-radius:34px;
-  padding:40px 32px;
+  background:linear-gradient(145deg,#f7f3f5,#ede3e9);
+  border-radius:32px;
+  padding:38px 30px;
   box-shadow:var(--shadow);
-  border:1px solid rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,1);
 }
 
 .form-block{
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
 .form-block h3{
-  font-size:1.12rem;
+  font-size:1.1rem;
   color:var(--rose3);
-  margin-bottom:15px;
+  margin-bottom:14px;
   display:flex;
   align-items:center;
   gap:8px;
 }
 
 .form-block h3 .num{
-  width:29px;
-  height:29px;
-  border-radius:10px;
+  width:28px;
+  height:28px;
+  border-radius:9px;
   background:var(--rose);
   color:#fff;
-  font-size:.8rem;
+  font-size:.78rem;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1020,19 +944,19 @@ form#regForm{
 .grid-2{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px;
+  gap:15px;
 }
 
 .field{
-  margin-bottom:14px;
+  margin-bottom:13px;
 }
 
 .field label{
   display:block;
-  font-size:.88rem;
+  font-size:.87rem;
   font-weight:800;
   color:var(--text-dark);
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .field input[type=text],
@@ -1041,12 +965,12 @@ form#regForm{
 .field select,
 .field textarea{
   width:100%;
-  padding:13px 14px;
-  border-radius:15px;
+  padding:12px 14px;
+  border-radius:14px;
   border:1.5px solid var(--mauve2);
   background:#fff;
   font-family:var(--font-body);
-  font-size:.94rem;
+  font-size:.93rem;
   color:var(--text-dark);
   transition:.2s;
 }
@@ -1054,32 +978,25 @@ form#regForm{
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
-  outline:2px solid rgba(194,93,128,.3);
+  outline:2px solid rgba(158,123,134,.25);
   border-color:var(--rose);
 }
 
 .field textarea{
   resize:vertical;
-  min-height:80px;
+  min-height:78px;
 }
 
 .hint{
-  font-size:.78rem;
+  font-size:.77rem;
   color:var(--text-muted);
   margin-top:4px;
 }
 
-select option:disabled{
-  color:#bbb;
-}
+select option:disabled{ color:#bbb; }
 
-.voice-panel{
-  display:none;
-}
-
-.voice-panel.active{
-  display:block;
-}
+.voice-panel{ display:none; }
+.voice-panel.active{ display:block; }
 
 .rec-controls{
   display:flex;
@@ -1091,10 +1008,10 @@ select option:disabled{
 .rec-btn{
   background:var(--rose3);
   color:#fff;
-  padding:11px 19px;
+  padding:10px 18px;
   border-radius:999px;
   font-weight:800;
-  font-size:.88rem;
+  font-size:.87rem;
   display:flex;
   align-items:center;
   gap:6px;
@@ -1106,16 +1023,12 @@ select option:disabled{
 }
 
 @keyframes recordPulse{
-  0%,100%{
-    box-shadow:0 0 0 0 rgba(194,93,128,.3);
-  }
-  50%{
-    box-shadow:0 0 0 9px rgba(194,93,128,0);
-  }
+  0%,100%{ box-shadow:0 0 0 0 rgba(158,123,134,.25); }
+  50%{ box-shadow:0 0 0 8px rgba(158,123,134,0); }
 }
 
 .rec-status{
-  font-size:.85rem;
+  font-size:.84rem;
   color:var(--text-muted);
 }
 
@@ -1126,8 +1039,8 @@ audio{
 
 .pledge-box{
   background:#fff;
-  border-radius:17px;
-  padding:17px 18px;
+  border-radius:16px;
+  padding:16px 18px;
   display:flex;
   gap:10px;
   align-items:flex-start;
@@ -1135,83 +1048,74 @@ audio{
 }
 
 .pledge-box input{
-  margin-top:5px;
+  margin-top:4px;
   flex:none;
-  width:18px;
-  height:18px;
-  accent-color: var(--rose);
+  width:17px;
+  height:17px;
+  accent-color:var(--rose3);
 }
 
 .pledge-box label{
-  font-size:.9rem;
-  line-height:1.8;
+  font-size:.89rem;
+  line-height:1.75;
 }
 
 .submit-row{
   text-align:center;
-  margin-top:25px;
+  margin-top:24px;
 }
 
 #regMsg{
-  margin-top:16px;
+  margin-top:15px;
   text-align:center;
   font-weight:700;
-  padding:12px;
-  border-radius:14px;
+  padding:11px;
+  border-radius:12px;
   display:none;
 }
 
-#regMsg.ok{
-  display:block;
-  background:#d6ece3;
-  color:#225c45;
-}
-
-#regMsg.err{
-  display:block;
-  background:#f9d7e3;
-  color:#7a334d;
-}
+#regMsg.ok{ display:block; background:var(--mint2); color:#225c45; }
+#regMsg.err{ display:block; background:var(--rose2); color:var(--rose3); }
 
 /* =========================================================
    ADMIN
 ========================================================= */
 
 section.admin{
-  background:linear-gradient(135deg,#f1dce5,#fbf6f8);
+  background:linear-gradient(135deg,#ede3e9,#fbf9f7);
 }
 
 .admin-gate{
-  max-width:400px;
+  max-width:390px;
   margin:0 auto;
   background:#fff;
-  border-radius:28px;
-  padding:30px;
+  border-radius:26px;
+  padding:28px;
   text-align:center;
   box-shadow:var(--shadow);
 }
 
 .admin-gate input{
   width:100%;
-  padding:12px 14px;
-  border-radius:14px;
+  padding:11px 14px;
+  border-radius:12px;
   border:1.5px solid var(--mauve2);
-  margin:14px 0;
+  margin:12px 0;
   font-family:var(--font-body);
 }
 
 #adminDash{
   display:none;
-  max-width:920px;
+  max-width:900px;
   margin:0 auto;
 }
 
 .sub-card{
   background:#fff;
-  border-radius:24px;
-  padding:21px 22px;
-  margin-bottom:16px;
-  box-shadow:0 10px 27px rgba(61,44,53,.06);
+  border-radius:22px;
+  padding:20px 22px;
+  margin-bottom:15px;
+  box-shadow:0 8px 24px rgba(56,50,54,.05);
 }
 
 .sub-top{
@@ -1222,44 +1126,29 @@ section.admin{
   flex-wrap:wrap;
 }
 
-.sub-top h4{
-  font-size:1.05rem;
-}
+.sub-top h4{ font-size:1.04rem; }
 
 .pill{
-  font-size:.76rem;
+  font-size:.75rem;
   font-weight:800;
   padding:5px 12px;
   border-radius:999px;
 }
 
-.pill.pending{
-  background:var(--gold);
-  color:#fff;
-}
-
-.pill.accepted{
-  background:#3f826d;
-  color:#fff;
-}
-
-.pill.rejected{
-  background:#a34453;
-  color:#fff;
-}
+.pill.pending{ background:var(--gold); color:#fff; }
+.pill.accepted{ background:var(--mint); color:#fff; }
+.pill.rejected{ background:var(--rose); color:#fff; }
 
 .sub-meta{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:6px 16px;
   margin:12px 0;
-  font-size:.88rem;
+  font-size:.87rem;
   color:var(--text-dark);
 }
 
-.sub-meta b{
-  color:var(--rose3);
-}
+.sub-meta b{ color:var(--rose3); }
 
 .sub-actions{
   display:flex;
@@ -1269,33 +1158,22 @@ section.admin{
 }
 
 .sub-actions button{
-  padding:9px 16px;
+  padding:8px 15px;
   border-radius:999px;
   font-weight:800;
-  font-size:.85rem;
+  font-size:.84rem;
 }
 
-.btn-accept{
-  background:#3f826d;
-  color:#fff;
-}
-
-.btn-reject{
-  background:#a34453;
-  color:#fff;
-}
-
-.btn-copy{
-  background:var(--mauve2);
-  color:var(--text-dark);
-}
+.btn-accept{ background:var(--mint); color:#fff; }
+.btn-reject{ background:var(--rose); color:#fff; }
+.btn-copy{ background:var(--mauve2); color:var(--text-dark); }
 
 .reply-box{
   margin-top:12px;
   background:var(--bg);
-  border-radius:14px;
-  padding:14px;
-  font-size:.88rem;
+  border-radius:12px;
+  padding:12px;
+  font-size:.87rem;
   white-space:pre-wrap;
   display:none;
 }
@@ -1303,7 +1181,50 @@ section.admin{
 .empty-note{
   text-align:center;
   color:var(--text-muted);
-  padding:30px;
+  padding:28px;
+}
+
+/* =========================================================
+   BACK TO TOP FLOATING BUTTON
+========================================================= */
+
+.back-to-top{
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--rose3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(56,50,54,.2);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+}
+
+.back-to-top.show{
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover{
+  transform: translateY(-3px);
+  background: var(--rose);
+}
+
+.back-to-top svg{
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* =========================================================
@@ -1313,16 +1234,16 @@ section.admin{
 footer{
   background:var(--text-dark);
   color:#fff;
-  padding:38px 0;
+  padding:36px 0;
   text-align:center;
   position:relative;
   z-index:2;
 }
 
 footer .quote{
-  max-width:500px;
-  margin:0 auto 14px;
-  font-size:.92rem;
+  max-width:480px;
+  margin:0 auto 12px;
+  font-size:.91rem;
   opacity:.9;
 }
 
@@ -1332,13 +1253,13 @@ footer a.channel{
 }
 
 footer .fine{
-  margin-top:14px;
-  font-size:.78rem;
+  margin-top:12px;
+  font-size:.77rem;
   opacity:.65;
 }
 
 .admin-link{
-  font-size:.78rem;
+  font-size:.77rem;
   opacity:.7;
   display:inline-block;
   margin-top:10px;
@@ -1349,177 +1270,53 @@ footer .fine{
 ========================================================= */
 
 @media(max-width:760px){
-
   nav.main-nav{
     position:fixed;
-    inset:64px 0 auto 0;
-    background:rgba(251,246,248,.98);
-    flex-direction:column;
-    padding:18px 24px;
-    box-shadow:0 12px 20px rgba(0,0,0,.08);
-    transform:translateY(-140%);
-    transition:.25s;
-    gap:8px;
+    inset:62px 0 auto 0;
+    background:rgba(251,249,247,.98);
+    flex-direction:row;
+    overflow-x:auto;
+    padding:10px 16px;
+    box-shadow:0 8px 18px rgba(0,0,0,.06);
+    gap:6px;
+    white-space:nowrap;
   }
-
-  nav.main-nav.show{
-    transform:translateY(0);
+  nav.main-nav a{
+    font-size:.82rem;
+    padding:5px 10px;
   }
-
-  .nav-toggle{
-    display:block;
-    background:none;
-    font-size:1.6rem;
-    color:var(--text-dark);
-  }
-
-  .wrap{
-    padding:0 18px;
-  }
-
-  section{
-    padding:52px 0;
-  }
-
-  .hero{
-    min-height:auto !important;
-    padding:55px 0 70px !important;
-  }
-
-  .hero-card{
-    border-radius:32px;
-    padding:40px 20px 32px;
-  }
-
-  .hero h1{
-    font-size:2.15rem;
-  }
-
-  .hero .quote{
-    font-size:.94rem;
-  }
-
-  .eyebrow{
-    font-size:.78rem;
-    padding:7px 15px;
-  }
-
-  .section-head{
-    margin-bottom:30px;
-  }
-
-  .section-head h2{
-    font-size:1.5rem;
-    line-height:1.5;
-  }
-
-  .section-head p{
-    font-size:.87rem;
-  }
-
-  .services-grid{
-    grid-template-columns:1fr;
-  }
-
-  .service-card{
-    padding:18px;
-  }
-
-  .teacher-card{
-    min-width:290px;
-    max-width:290px;
-  }
-
-  .channel-box{
-    padding:27px 18px;
-    border-radius:27px;
-  }
-
-  .channel-box img{
-    width:155px;
-    height:155px;
-  }
-
-  .channel-link{
-    font-size:.8rem;
-    padding:9px 13px;
-  }
-
-  .rules-list{
-    padding:5px 17px;
-    border-radius:22px;
-  }
-
-  .rule-item{
-    padding:12px 2px;
-  }
-
-  .rule-item p{
-    font-size:.87rem;
-    line-height:1.8;
-  }
-
-  form#regForm{
-    padding:26px 17px;
-    border-radius:27px;
-  }
-
-  .grid-2{
-    grid-template-columns:1fr;
-    gap:12px;
-  }
-
-  .form-block h3{
-    font-size:1rem;
-  }
-
-  .field input,
-  .field select,
-  .field textarea{
-    font-size:.9rem;
-    padding:11px 12px;
-  }
-
-  .admin-gate{
-    padding:23px 18px;
-  }
-
-  .sub-card{
-    padding:17px;
-    border-radius:20px;
-  }
-
-  .sub-meta{
-    grid-template-columns:1fr;
-  }
-
-  .sub-actions{
-    gap:8px;
-  }
-
-  .sub-actions button,
-  .sub-actions a{
-    font-size:.8rem;
-    padding:8px 14px;
-  }
-
-  footer{
-    padding:28px 0;
-  }
-
-  footer .quote{
-    font-size:.85rem;
-  }
-
-  .motion-icon.i2,
-  .motion-icon.i4,
-  .motion-icon.i6{
-    display:none;
-  }
-
-  .motion-icon{
-    opacity:.5;
-  }
+  .wrap{ padding:0 16px; }
+  section{ padding:48px 0; }
+  .hero{ min-height:auto !important; padding:50px 0 65px !important; }
+  .hero-card{ border-radius:28px; padding:36px 18px 28px; }
+  .hero h1{ font-size:2.05rem; }
+  .hero .quote{ font-size:.92rem; }
+  .eyebrow{ font-size:.77rem; padding:6px 14px; }
+  .section-head{ margin-bottom:28px; }
+  .section-head h2{ font-size:1.45rem; line-height:1.4; }
+  .section-head p{ font-size:.85rem; }
+  .services-grid{ grid-template-columns:1fr; }
+  .service-card{ padding:16px; }
+  .teacher-card{ min-width:280px; max-width:280px; }
+  .channel-box{ padding:24px 16px; border-radius:26px; }
+  .channel-box img{ width:145px; height:145px; }
+  .channel-link{ font-size:.78rem; padding:8px 12px; }
+  .rules-list{ padding:4px 16px; border-radius:20px; }
+  .rule-item{ padding:11px 2px; }
+  .rule-item p{ font-size:.85rem; line-height:1.75; }
+  form#regForm{ padding:24px 16px; border-radius:26px; }
+  .grid-2{ grid-template-columns:1fr; gap:11px; }
+  .form-block h3{ font-size:.98rem; }
+  .field input, .field select, .field textarea{ font-size:.88rem; padding:10px 12px; }
+  .admin-gate{ padding:20px 16px; }
+  .sub-card{ padding:16px; border-radius:18px; }
+  .sub-meta{ grid-template-columns:1fr; }
+  .sub-actions{ gap:8px; }
+  .sub-actions button, .sub-actions a{ font-size:.78rem; padding:7px 12px; }
+  footer{ padding:26px 0; }
+  footer .quote{ font-size:.83rem; }
+  .motion-icon.i2, .motion-icon.i4, .motion-icon.i6{ display:none; }
+  .motion-icon{ opacity:.4; }
 }
 </style>
 </head>
@@ -1606,114 +1403,123 @@ footer .fine{
       <p>الأسماء المسجلة رسمياً في الحلقات حسب الكشف المعتمد</p>
     </div>
 
-    <div class="all-boards-container">
-      
-      <!-- 1. حلقة المعلمة شيماء -->
-      <div class="fadwa-board">
-        <div class="fadwa-title">
-          <h3>قائمة الطالبات</h3>
-          <span>المعلمة شيماء</span>
+    <div class="students-slider-wrapper">
+      <div class="all-boards-container" id="boardsContainer">
+        
+        <!-- 1. حلقة المعلمة شيماء -->
+        <div class="fadwa-board" id="board-0">
+          <div class="fadwa-title">
+            <h3>قائمة الطالبات</h3>
+            <span>المعلمة شيماء</span>
+          </div>
+          <div class="students-stack">
+            <div class="student-row"><span class="student-name">حيزية عقود</span><span class="student-num">01</span></div>
+            <div class="student-row"><span class="student-name">شيماء قداش</span><span class="student-num">02</span></div>
+            <div class="student-row"><span class="student-name">إيمان مصطَفاي</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">ياسمين مالجي</span><span class="student-num">04</span></div>
+            <div class="student-row"><span class="student-name">رحمة بوادي</span><span class="student-num">05</span></div>
+            <div class="student-row"><span class="student-name">شيماء أم خبيب</span><span class="student-num">06</span></div>
+            <div class="student-row"><span class="student-name">خولة خليفة</span><span class="student-num">07</span></div>
+            <div class="student-row"><span class="student-name">دارين خلفة</span><span class="student-num">08</span></div>
+            <div class="student-row"><span class="student-name">رزيقة قناني</span><span class="student-num">09</span></div>
+            <div class="student-row"><span class="student-name">شيماء جوفلكيت</span><span class="student-num">10</span></div>
+            <div class="student-row"><span class="student-name">سارة بن فرحة</span><span class="student-num">11</span></div>
+          </div>
         </div>
-        <div class="students-stack">
-          <div class="student-row"><span class="student-name">حيزية عقود</span><span class="student-num">01</span></div>
-          <div class="student-row"><span class="student-name">شيماء قداش</span><span class="student-num">02</span></div>
-          <div class="student-row"><span class="student-name">إيمان مصطَفاي</span><span class="student-num">03</span></div>
-          <div class="student-row"><span class="student-name">ياسمين مالجي</span><span class="student-num">04</span></div>
-          <div class="student-row"><span class="student-name">رحمة بوادي</span><span class="student-num">05</span></div>
-          <div class="student-row"><span class="student-name">شيماء أم خبيب</span><span class="student-num">06</span></div>
-          <div class="student-row"><span class="student-name">خولة خليفة</span><span class="student-num">07</span></div>
-          <div class="student-row"><span class="student-name">دارين خلفة</span><span class="student-num">08</span></div>
-          <div class="student-row"><span class="student-name">رزيقة قناني</span><span class="student-num">09</span></div>
-          <div class="student-row"><span class="student-name">شيماء جوفلكيت</span><span class="student-num">10</span></div>
-          <div class="student-row"><span class="student-name">سارة بن فرحة</span><span class="student-num">11</span></div>
+
+        <!-- 2. حلقة المعلمة فدوى -->
+        <div class="fadwa-board" id="board-1">
+          <div class="fadwa-title">
+            <h3>قائمة الطالبات</h3>
+            <span>المعلمة فدوى</span>
+          </div>
+          <div class="students-stack">
+            <div class="student-row"><span class="student-name">سلسبيلي طرشي</span><span class="student-num">01</span></div>
+            <div class="student-row"><span class="student-name">زهرة ياقوت دهماص</span><span class="student-num">02</span></div>
+            <div class="student-row"><span class="student-name">قندة فاطمة الزهراء</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">بن قطاية عبير</span><span class="student-num">04</span></div>
+            <div class="student-row"><span class="student-name">فلة بلمسعود</span><span class="student-num">05</span></div>
+            <div class="student-row"><span class="student-name">ماجن فرح</span><span class="student-num">06</span></div>
+            <div class="student-row"><span class="student-name">سعاد عطاب</span><span class="student-num">07</span></div>
+            <div class="student-row"><span class="student-name">دحماني اكرام</span><span class="student-num">08</span></div>
+            <div class="student-row"><span class="student-name">قريشي ياسمين</span><span class="student-num">09</span></div>
+            <div class="student-row"><span class="student-name">قرباي منى</span><span class="student-num">10</span></div>
+            <div class="student-row"><span class="student-name">سهام بوهراوة</span><span class="student-num">11</span></div>
+          </div>
         </div>
+
+        <!-- 3. حلقة المعلمة أم حفصة -->
+        <div class="fadwa-board" id="board-2">
+          <div class="fadwa-title">
+            <h3>قائمة الطالبات</h3>
+            <span>المعلمة أم حفصة</span>
+          </div>
+          <div class="students-stack">
+            <div class="student-row"><span class="student-name">هبة الرحمان</span><span class="student-num">01</span></div>
+            <div class="student-row"><span class="student-name">حضريّة بوعلام</span><span class="student-num">02</span></div>
+            <div class="student-row"><span class="student-name">فضيلة أبركان</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">آمنة ميلود بن شني</span><span class="student-num">04</span></div>
+            <div class="student-row"><span class="student-name">ربيعة بريخو</span><span class="student-num">05</span></div>
+            <div class="student-row"><span class="student-name">فردوس صليحة دحماني</span><span class="student-num">06</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
+          </div>
+        </div>
+
+        <!-- 4. حلقة المعلمة أم عبد الله -->
+        <div class="fadwa-board" id="board-3">
+          <div class="fadwa-title">
+            <h3>قائمة الطالبات</h3>
+            <span>المعلمة أم عبد الله</span>
+          </div>
+          <div class="students-stack">
+            <div class="student-row"><span class="student-name">عبير صوالح</span><span class="student-num">01</span></div>
+            <div class="student-row"><span class="student-name">إسراء رحمانية</span><span class="student-num">02</span></div>
+            <div class="student-row"><span class="student-name">زهرة قناني</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">مرام العيد رزقي</span><span class="student-num">04</span></div>
+            <div class="student-row"><span class="student-name">هديل زكراوي</span><span class="student-num">05</span></div>
+            <div class="student-row"><span class="student-name">شهد خلف علي</span><span class="student-num">06</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
+          </div>
+        </div>
+
+        <!-- 5. حلقة المعلمة سمية -->
+        <div class="fadwa-board" id="board-4">
+          <div class="fadwa-title">
+            <h3>قائمة الطالبات</h3>
+            <span>المعلمة سمية</span>
+          </div>
+          <div class="students-stack">
+            <div class="student-row"><span class="student-name">أنفال بن لخضر</span><span class="student-num">01</span></div>
+            <div class="student-row"><span class="student-name">فاطمة محمد الزوى</span><span class="student-num">02</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">04</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">05</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">06</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- 2. حلقة المعلمة فدوى -->
-      <div class="fadwa-board">
-        <div class="fadwa-title">
-          <h3>قائمة الطالبات</h3>
-          <span>المعلمة فدوى</span>
-        </div>
-        <div class="students-stack">
-          <div class="student-row"><span class="student-name">سلسبيلي طرشي</span><span class="student-num">01</span></div>
-          <div class="student-row"><span class="student-name">زهرة ياقوت دهماص</span><span class="student-num">02</span></div>
-          <div class="student-row"><span class="student-name">قندة فاطمة الزهراء</span><span class="student-num">03</span></div>
-          <div class="student-row"><span class="student-name">بن قطاية عبير</span><span class="student-num">04</span></div>
-          <div class="student-row"><span class="student-name">فلة بلمسعود</span><span class="student-num">05</span></div>
-          <div class="student-row"><span class="student-name">ماجن فرح</span><span class="student-num">06</span></div>
-          <div class="student-row"><span class="student-name">سعاد عطاب</span><span class="student-num">07</span></div>
-          <div class="student-row"><span class="student-name">دحماني اكرام</span><span class="student-num">08</span></div>
-          <div class="student-row"><span class="student-name">قريشي ياسمين</span><span class="student-num">09</span></div>
-          <div class="student-row"><span class="student-name">قرباي منى</span><span class="student-num">10</span></div>
-          <div class="student-row"><span class="student-name">سهام بوهراوة</span><span class="student-num">11</span></div>
-        </div>
+      <div class="slider-nav-btns">
+        <button class="slider-btn" id="prevSlide">❯</button>
+        <button class="slider-btn" id="nextSlide">❮</button>
       </div>
-
-      <!-- 3. حلقة المعلمة أم حفصة -->
-      <div class="fadwa-board">
-        <div class="fadwa-title">
-          <h3>قائمة الطالبات</h3>
-          <span>المعلمة أم حفصة</span>
-        </div>
-        <div class="students-stack">
-          <div class="student-row"><span class="student-name">هبة الرحمان</span><span class="student-num">01</span></div>
-          <div class="student-row"><span class="student-name">حضريّة بوعلام</span><span class="student-num">02</span></div>
-          <div class="student-row"><span class="student-name">فضيلة أبركان</span><span class="student-num">03</span></div>
-          <div class="student-row"><span class="student-name">آمنة ميلود بن شني</span><span class="student-num">04</span></div>
-          <div class="student-row"><span class="student-name">ربيعة بريخو</span><span class="student-num">05</span></div>
-          <div class="student-row"><span class="student-name">فردوس صليحة دحماني</span><span class="student-num">06</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
-        </div>
-      </div>
-
-      <!-- 4. حلقة المعلمة أم عبد الله -->
-      <div class="fadwa-board">
-        <div class="fadwa-title">
-          <h3>قائمة الطالبات</h3>
-          <span>المعلمة أم عبد الله</span>
-        </div>
-        <div class="students-stack">
-          <div class="student-row"><span class="student-name">عبير صوالح</span><span class="student-num">01</span></div>
-          <div class="student-row"><span class="student-name">إسراء رحمانية</span><span class="student-num">02</span></div>
-          <div class="student-row"><span class="student-name">زهرة قناني</span><span class="student-num">03</span></div>
-          <div class="student-row"><span class="student-name">مرام العيد رزقي</span><span class="student-num">04</span></div>
-          <div class="student-row"><span class="student-name">هديل زكراوي</span><span class="student-num">05</span></div>
-          <div class="student-row"><span class="student-name">شهد خلف علي</span><span class="student-num">06</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
-        </div>
-      </div>
-
-      <!-- 5. حلقة المعلمة سمية -->
-      <div class="fadwa-board">
-        <div class="fadwa-title">
-          <h3>قائمة الطالبات</h3>
-          <span>المعلمة سمية</span>
-        </div>
-        <div class="students-stack">
-          <div class="student-row"><span class="student-name">أنفال بن لخضر</span><span class="student-num">01</span></div>
-          <div class="student-row"><span class="student-name">فاطمة محمد الزوى</span><span class="student-num">02</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">03</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">04</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">05</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">06</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
-          <div class="student-row"><span class="student-name">-</span><span class="student-num">11</span></div>
-        </div>
-      </div>
-
+      <div class="slider-dots" id="sliderDots"></div>
     </div>
+
   </div>
 </section>
 
@@ -1726,7 +1532,7 @@ footer .fine{
     </div>
     <div class="channel-box">
       <a href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">
-        <img id="channelQr" alt="رمز QR لقناة مقرأة الأترجّة" width="190" height="190">
+        <img id="channelQr" alt="رمز QR لقناة مقرأة الأترجّة" width="180" height="180">
       </a>
       <div>
         <a class="channel-link" href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">
@@ -1888,6 +1694,10 @@ footer .fine{
   </div>
 </section>
 
+<a href="#" class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</a>
+
 <footer>
   <div class="wrap">
     <p class="quote">"مثل المؤمن الذي يقرأ القرآن كمَثَل الأترجّة، ريحها طيّب وطعمها طيّب"</p>
@@ -1993,7 +1803,7 @@ function renderRules(){
 
 function renderChannelQr(){
   const url = "https://t.me/AlOtrodjah";
-  document.getElementById('channelQr').src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=C25D80&bgcolor=FFFFFF&data=" + encodeURIComponent(url);
+  document.getElementById('channelQr').src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=8A7A85&bgcolor=FFFFFF&data=" + encodeURIComponent(url);
 }
 
 renderServices();
@@ -2001,6 +1811,73 @@ renderTeachers();
 renderCircleOptions();
 renderRules();
 renderChannelQr();
+
+/* Students Boards Slider Setup */
+const container = document.getElementById('boardsContainer');
+const boardsCount = 5;
+let currentSlide = 0;
+
+const dotsContainer = document.getElementById('sliderDots');
+for(let i=0; i<boardsCount; i++){
+  const dot = document.createElement('div');
+  dot.className = `slider-dot ${i===0?'active':''}`;
+  dot.addEventListener('click', ()=>scrollToBoard(i));
+  dotsContainer.appendChild(dot);
+}
+
+function updateDots(index){
+  const dots = dotsContainer.querySelectorAll('.slider-dot');
+  dots.forEach((d, idx)=>{
+    d.classList.toggle('active', idx === index);
+  });
+}
+
+function scrollToBoard(index){
+  currentSlide = index;
+  const boardWidth = container.querySelector('.fadwa-board').offsetWidth + 20;
+  container.scrollTo({ left: index * boardWidth, behavior: 'smooth' });
+  updateDots(index);
+}
+
+document.getElementById('nextSlide').addEventListener('click', ()=>{
+  currentSlide = (currentSlide > 0) ? currentSlide - 1 : boardsCount - 1;
+  scrollToBoard(currentSlide);
+});
+
+document.getElementById('prevSlide').addEventListener('click', ()=>{
+  currentSlide = (currentSlide < boardsCount - 1) ? currentSlide + 1 : 0;
+  scrollToBoard(currentSlide);
+});
+
+container.addEventListener('scroll', ()=>{
+  const boardWidth = container.querySelector('.fadwa-board').offsetWidth + 20;
+  const index = Math.round(container.scrollLeft / boardWidth);
+  if(index !== currentSlide && index >= 0 && index < boardsCount){
+    currentSlide = index;
+    updateDots(currentSlide);
+  }
+});
+
+/* Back to Top & Active Nav Highlight */
+const backToTopBtn = document.getElementById('backToTop');
+const navLinks = document.querySelectorAll('nav.main-nav a');
+
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 400){
+    backToTopBtn.classList.add('show');
+  }else{
+    backToTopBtn.classList.remove('show');
+  }
+
+  let fromTop = window.scrollY + 100;
+  navLinks.forEach(link=>{
+    let section = document.querySelector(link.hash);
+    if(section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+});
 
 const programSelect = document.getElementById('fprogram');
 const fixationField = document.getElementById('fixationField');
