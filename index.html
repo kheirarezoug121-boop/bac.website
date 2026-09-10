@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
- 
    :root {
     --bg: #fffbfd;
     --bg2: #fdf2f5;
@@ -21,7 +20,7 @@
     --mauve: #9a8cae;
     --mauve2: #f5f2f9;
 
-    --mint: #76ff03;       /* أخضر زمردي حيوي، بارز وواضح جداً للحلقات المفتوحة */
+    --mint: #00e676;       /* أخضر زمردي مضيء وبارز جداً للحلقات المفتوحة */
     --mint2: #e8f5e9;      /* خلفية خضراء فاتحة وناعمة تبرز اللون الأساسي */
 
     --gold: #c59b27;
@@ -36,9 +35,6 @@
     --font-body: 'Tajawal', Tahoma, sans-serif;
 }
 
-
-
-  
 *{box-sizing:border-box;}
 
 html{
@@ -183,11 +179,11 @@ img{
   100%{ transform:translate3d(-25px,25px,0) scale(.94); }
 }
 
-/* Scroll Reveal / Smooth Slide Animation Classes (Fade + Slide 10px) */
+/* Smooth Scroll Reveal / Slide Animation Classes */
 .reveal-up {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-up.active {
@@ -304,7 +300,7 @@ nav.main-nav a{
   color:var(--text-muted);
   padding:6px 12px;
   border-radius:999px;
-  transition:all .3s ease;
+  transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
   background:rgba(244,213,211,.3);
 }
 
@@ -424,7 +420,7 @@ section.hero .wrap{ width:100%; }
 }
 
 .btn-primary:hover{
-  transform:translateY(-2px) scale(1.02);
+  transform:translateY(-3px) scale(1.02);
   box-shadow:0 12px 28px rgba(194,120,122,.4);
 }
 
@@ -439,7 +435,7 @@ section.hero .wrap{ width:100%; }
 }
 
 .btn-outline:hover{
-  transform:translateY(-2px) scale(1.02);
+  transform:translateY(-3px) scale(1.02);
   background:var(--rose2);
   border-color:var(--rose);
 }
@@ -522,15 +518,6 @@ section.services{
   gap:18px;
 }
 
-/* Staggered delay for service cards */
-.service-card:nth-child(1) { transition-delay: 0.1s; }
-.service-card:nth-child(2) { transition-delay: 0.2s; }
-.service-card:nth-child(3) { transition-delay: 0.3s; }
-.service-card:nth-child(4) { transition-delay: 0.4s; }
-.service-card:nth-child(5) { transition-delay: 0.5s; }
-.service-card:nth-child(6) { transition-delay: 0.6s; }
-.service-card:nth-child(7) { transition-delay: 0.7s; }
-
 .service-card{
   padding:22px;
   display:flex;
@@ -544,8 +531,8 @@ section.services{
 }
 
 .service-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 28px rgba(194,120,122,.12);
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 14px 30px rgba(194,120,122,.15);
   border-color:var(--mauve2);
 }
 
@@ -562,7 +549,7 @@ section.services{
 }
 
 .service-card:hover .icon{
-  transform:rotate(-10deg) scale(1.1);
+  transform:rotate(-10deg) scale(1.12);
   background:var(--mauve2);
 }
 
@@ -600,7 +587,7 @@ section.services{
 }
 
 /* =========================================================
-   SCHEDULE - HORIZONTAL CARDS
+   SCHEDULE - HORIZONTAL CARDS WITH LOCK ANIMATION
 ========================================================= */
 
 section.schedule{
@@ -612,10 +599,11 @@ section.schedule{
   gap:16px;
   overflow-x:auto;
   overflow-y:visible;
-  padding:8px 4px 22px;
+  padding:12px 4px 22px;
   scroll-snap-type:x mandatory;
   scrollbar-width:thin;
   scrollbar-color:var(--rose) transparent;
+  scroll-behavior: smooth;
 }
 
 .teacher-list::-webkit-scrollbar{ height:6px; }
@@ -635,7 +623,7 @@ section.schedule{
   box-shadow:0 10px 28px rgba(90,42,45,.06);
   border:1px solid rgba(255,255,255,1);
   scroll-snap-align:start;
-  transition:all .35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;
   overflow:hidden;
 }
@@ -658,11 +646,12 @@ section.schedule{
 }
 
 .teacher-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 16px 34px rgba(194,120,122,.15);
+  transform:translateY(-6px);
+  box-shadow:0 16px 34px rgba(194,120,122,.18);
   border-color: var(--mauve2);
 }
 
+/* حركية خفيفة وناعمة لأيقونة القفل */
 .teacher-card .status{
   position:relative;
   z-index:1;
@@ -673,16 +662,31 @@ section.schedule{
   align-items:center;
   justify-content:center;
   transition: transform .3s ease;
+  animation: lockFloat 3s ease-in-out infinite;
+}
+
+@keyframes lockFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 .teacher-card:hover .status {
-  transform: scale(1.08);
+  transform: scale(1.1) rotate(5deg);
+  animation: none;
 }
 
-.teacher-card .status svg{ width:22px; height:22px; }
+.teacher-card .status svg{ width:24px; height:24px; }
 
-.status.open{ background:var(--mint2); }
-.status.open svg{ fill:var(--rose3); }
+/* إبراز اللون الأخضر المضيء للحلقات المتاحة */
+.status.open{ 
+  background: var(--mint2); 
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+.status.open svg{ 
+  fill: var(--mint); 
+  filter: drop-shadow(0 0 2px rgba(0, 180, 80, 0.5));
+}
 
 .status.closed{ background:var(--rose2); }
 .status.closed svg{ fill:var(--text-muted); }
@@ -716,13 +720,19 @@ section.schedule{
   text-align:center;
   position:relative;
   z-index:1;
+  transition: all .3s ease;
 }
 
-.teacher-tag.open{ background:var(--mint2); color:var(--rose3); }
+.teacher-tag.open{ 
+  background: var(--mint2); 
+  color: #007934; 
+  font-weight: 900;
+  box-shadow: 0 2px 8px rgba(0, 230, 118, 0.25);
+}
 .teacher-tag.closed{ background:var(--rose2); color:var(--text-muted); }
 
 /* =========================================================
-   STUDENTS BOARDS SECTION (SLIDER CAROUSEL)
+   STUDENTS BOARDS SECTION (SLIDER CAROUSEL WITH SMOOTH MOTION)
 ========================================================= */
 
 section.students-section{
@@ -758,11 +768,11 @@ section.students-section{
   box-shadow: var(--shadow);
   border: 1px solid rgba(255,255,255,1);
   position: relative;
-  transition: transform .4s ease;
+  transition: transform .4s cubic-bezier(0.4, 0, 0.2, 1), opacity .4s ease;
 }
 
 .fadwa-board:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .fadwa-title{
@@ -812,13 +822,13 @@ section.students-section{
   justify-content: space-between;
   box-shadow: 0 3px 12px rgba(90,42,45,.04);
   border: 1px solid rgba(227,168,166,.25);
-  transition: all .25s ease;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .student-row:hover{
-  transform: translateX(-4px);
+  transform: translateX(-6px) scale(1.01);
   background: #FFFBF7;
-  box-shadow: 0 5px 15px rgba(194,120,122,.12);
+  box-shadow: 0 6px 18px rgba(194,120,122,.15);
 }
 
 .student-name{
@@ -840,6 +850,11 @@ section.students-section{
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.9rem;
+  transition: transform .3s ease;
+}
+
+.student-row:hover .student-num {
+  transform: scale(1.1);
 }
 
 /* Slider Controls Indicators & Buttons */
@@ -854,22 +869,27 @@ section.students-section{
 .slider-btn{
   background: var(--rose2);
   color: var(--rose3);
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 1.1rem;
-  transition: all .3s ease;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 12px rgba(90,42,45,.08);
 }
 
 .slider-btn:hover{
   background: var(--rose3);
   color: #fff;
-  transform: scale(1.1);
+  transform: scale(1.15) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(194,120,122,.3);
+}
+
+.slider-btn:active{
+  transform: scale(0.95);
 }
 
 .slider-dots{
@@ -885,12 +905,12 @@ section.students-section{
   border-radius: 50%;
   background: var(--mauve2);
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slider-dot.active{
   background: var(--rose3);
-  width: 24px;
+  width: 28px;
   border-radius: 99px;
 }
 
@@ -914,7 +934,7 @@ section.channel{
 }
 
 .channel-box:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .channel-box img{
@@ -929,7 +949,7 @@ section.channel{
 }
 
 .channel-box img:hover {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .channel-link{
@@ -945,7 +965,7 @@ section.channel{
   font-size:.88rem;
   word-break:break-all;
   box-shadow:0 6px 16px rgba(90,42,45,.05);
-  transition:all .3s ease;
+  transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .channel-link:hover{ 
@@ -1014,13 +1034,14 @@ section.rules{
   gap:12px;
   padding:14px 4px;
   border-bottom:1.5px solid rgba(227,168,166,.25);
-  transition: transform .25s ease;
+  transition: all .3s ease;
 }
 
 .rule-item:hover {
-  transform: translateX(-4px);
-  background: rgba(255,251,247,0.5);
-  border-radius: 8px;
+  transform: translateX(-6px);
+  background: rgba(255,251,247,0.7);
+  border-radius: 12px;
+  padding-right: 8px;
 }
 
 .rule-item:last-child{ border-bottom:none; }
@@ -1113,14 +1134,14 @@ form#regForm{
   font-family:var(--font-body);
   font-size:.93rem;
   color:var(--text-dark);
-  transition:all .25s ease;
+  transition:all .3s ease;
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
   outline:none;
-  box-shadow:0 0 0 3px rgba(194,120,122,.2);
+  box-shadow:0 0 0 4px rgba(194,120,122,.2);
   border-color:var(--rose);
 }
 
@@ -1151,7 +1172,6 @@ select#fcircle option {
   background-color: #fff;
   color: #333;
 }
-
 
 .voice-panel{ display:none; }
 .voice-panel.active{ display:block; }
@@ -1237,7 +1257,7 @@ audio{
   display:none;
 }
 
-#regMsg.ok{ display:block; background:var(--mint2); color:var(--rose3); }
+#regMsg.ok{ display:block; background:var(--mint2); color:#007934; }
 #regMsg.err{ display:block; background:var(--rose2); color:var(--rose3); }
 
 /* =========================================================
@@ -1438,54 +1458,6 @@ footer .fine{
   opacity: 1;
 }
 
-
-
-/* تصميم قائمة اختيار المعلمات وتجنب اللون الأسود */
-select#fcircle {
-  background-color: var(--rose1, #fff);
-  color: var(--text-color, #333);
-  border: 1px solid var(--rose2, #ddd);
-  padding: 12px;
-  border-radius: 12px;
-  width: 100%;
-  font-family: inherit;
-}
-
-select#fcircle option {
-  background-color: #fff;
-  color: #333;
-}
-
-select option:disabled { 
-  color: #bbb; 
-}
-
-/* أنيماشن ظهور الفرايمز والبطاقات بسلاسة */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.teacher-card, .field, .rule-item {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-/* حركة التمرير الأفقي السلس للحلقات والقوائم */
-.teacher-list, .horizontal-container {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* انتقالات سلسة للوحات والتحكم */
-.voice-panel, #fixationField {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -1849,42 +1821,33 @@ select option:disabled {
       <div class="form-block">
         <h3><span class="num">3</span>اختيار الحلقة</h3>
 
-<div class="field">
-    <label for="fprogram">نوع التسجيل</label>
-    <select id="fprogram" onchange="toggleProgramFields()">
-        <option value="حلقات حفظ القرآن الكريم" selected>حلقات حفظ القرآن الكريم</option>
-        <option value="دورات التثبيت">دورات التثبيت</option>
-    </select>
-</div>
+        <div class="field">
+            <label for="fprogram">نوع التسجيل</label>
+            <select id="fprogram">
+                <option value="حلقات حفظ القرآن الكريم" selected>حلقات حفظ القرآن الكريم</option>
+                <option value="دورات التثبيت">دورات التثبيت</option>
+            </select>
+        </div>
 
-<!-- حقل اختيار المعلمة الخاص بالحفظ -->
-<div class="field" id="Field">
-    <label for="fcircle">* اختاري معلمتك</label>
-    <select id="fcircle" required>
-        <!-- خيارات المعلمات هنا -->
-    </select>
-    <p class="hint">الحلقات المقفلة غير متاحة للتسجيل حاليًا</p>
-</div>
+        <div class="field" id="circleField">
+            <label for="fcircle">* اختاري معلمتك</label>
+            <select id="fcircle" required>
+            </select>
+            <p class="hint">الحلقات المقفلة غير متاحة للتسجيل حاليًا</p>
+        </div>
 
-<!-- حقل اختيار دورة التثبيت -->
-<div class="field" id="fixationField" style="display:none;">
-    <label for="ffixation">اختيار دورة التثبيت</label>
-    <select id="ffixation">
-        <option value="" disabled selected>اختاري دورة التثبيت</option>
-        <option value="من ربع البقرة">من ربع البقرة</option>
-        <option value="من ربع الأعراف">من ربع الأعراف</option>
-        <option value="من ربع الكهف">من ربع الكهف</option>
-        <option value="من ربع ياسين">من ربع ياسين</option>
-    </select>
-</div>
+        <div class="field" id="fixationField" style="display:none;">
+            <label for="ffixation">اختيار دورة التثبيت</label>
+            <select id="ffixation">
+                <option value="" disabled selected>اختاري دورة التثبيت</option>
+                <option value="من ربع البقرة">من ربع البقرة</option>
+                <option value="من ربع الأعراف">من ربع الأعراف</option>
+                <option value="من ربع الكهف">من ربع الكهف</option>
+                <option value="من ربع ياسين">من ربع ياسين</option>
+            </select>
+        </div>
 
-
-
-      
-
-
-        <div class="field" id="Field">
-         
+        <div class="field">
           <label for="fnotes">ملاحظات إضافية</label>
           <textarea id="fnotes" placeholder="أي استفسار أو ما تودّين إضافته..."></textarea>
         </div>
@@ -1945,36 +1908,29 @@ select option:disabled {
     <p class="quote">"مثل المؤمن الذي يقرأ القرآن كمَثَل الأترجّة، ريحها طيّب وطعمها طيّب"</p>
     <a class="channel" href="https://t.me/AlOtrodjah" target="_blank" rel="noopener">https://t.me/AlOtrodjah</a>
     <div class="fine">© مقرأة الأترجّة — جميع الحقوق محفوظة</div>
-    <a class="admin-link" href="#admin">Designed & Developed by  kheira rezoug</a>
+    <a class="admin-link" href="#admin">Designed & Developed by kheira rezoug</a>
   </div>
 </footer>
 
 <script>
 const WOMEN_GROUP_LINK = "https://t.me/+8nkOo8Pfv4lkYzZk";
-
 const shaima_LINK = "https://t.me/+D62X6uLdttphZDlk";
-
 const fadwa_LINK = "https://t.me/+sEGd3cODGRM3ZGU8";
-
 const hafsa_LINK = "https://t.me/+szEtm4oGTahmZGJk";
-
 const soumia_LINK = "https://t.me/+DfG-hRCgVbI2MThk";
-
 const razika_LINK = "https://t.me/+8wfHUrUwK8tjOTVk";
 
-
-
 const TEACHERS = [
-  { id:"shaimaa", name:"المعلّمة شيماء", open:false, group:shaima_LINK },
-  { id:"fadwa", name:"المعلّمة فدوى", open:false, group:fadwa_LINK },
-  { id:"hafsa", name:"المعلّمة أمّ حفصة", open:false, group:hafsa_LINK },
-  { id:"abdellah", name:"المعلّمة أمّ عبد الله ", open:true, group:razika_LINK },
-  { id:"soumia", name:"المعلّمة سمية", open:true, group:soumia_LINK }
+  { id:"shaimaa", name:"المعلّمة شيماء", open:false, days:"الأحد والثلاثاء", time:"09:00 ص", group:shaima_LINK },
+  { id:"fadwa", name:"المعلّمة فدوى", open:false, days:"الإثنين والخميس", time:"10:00 ص", group:fadwa_LINK },
+  { id:"hafsa", name:"المعلّمة أمّ حفصة", open:false, days:"السبت والأربعاء", time:"03:00 زوالا", group:hafsa_LINK },
+  { id:"abdellah", name:"المعلّمة أمّ عبد الله", open:true, days:"الأحد والأربعاء", time:"04:00 زوالا", group:razika_LINK },
+  { id:"soumia", name:"المعلّمة سمية", open:true, days:"الإثنين والأربعاء", time:"05:00 مساء", group:soumia_LINK }
 ];
 
 const SERVICES = [
   { t:"حلقات حفظ القرآن الكريم", d:"حلقات لحفظ كتاب الله.", icon:'<path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>' },
-  { t:"دورات التثبيت  ", d:"دورات تثبيت السور المتفلتة.", icon:'<path d="M4 4h16v16H4z" fill="none" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5"/>' },
+  { t:"دورات التثبيت", d:"دورات تثبيت السور المتفلتة.", icon:'<path d="M4 4h16v16H4z" fill="none" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5"/>' },
   { t:"مخيّمات التثبيت الحرّ", d:"مخيمات الكترونية للمراجعة والتثبيت.", icon:'<path d="M12 3 2 21h20L12 3zm0 5 6 11H6l6-11z"/>' },
   { t:"حلقات تصحيح التلاوة", d:"تصحيح مخارج الحروف والأحكام مع المعلّمة مباشرة.", icon:'<path d="M12 2a5 5 0 0 1 5 5v4a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5zM5 11a7 7 0 0 0 14 0M12 18v4"/>' },
   { t:"مدارسة أحكام التجويد", d:"دروس نظرية وتطبيقية في أحكام التجويد.", icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/>' },
@@ -2003,7 +1959,6 @@ const RULES = [
   "الحفاظ على خصوصية الحلقة."
 ];
 
-const ADMIN_PASS = "otrodjah2026";
 const BUILD_STAMP = "2026-08-30-17:20";
 document.getElementById('buildStamp').textContent = BUILD_STAMP;
 
@@ -2022,8 +1977,6 @@ function renderServices(){
   `).join('');
 }
 
-
-
 function renderTeachers(){
   const list = document.getElementById('teacherList');
   list.innerHTML = TEACHERS.map(t=>`
@@ -2041,17 +1994,12 @@ function renderTeachers(){
   `).join('');
 }
 
-
 function renderCircleOptions(){
   const sel = document.getElementById('fcircle');
   sel.innerHTML = '<option value="" disabled selected>اختاري الحلقة المناسبة</option>' + TEACHERS.map(t=>`
     <option value="${t.id}" ${t.open?'':'disabled'}>${t.name} ${t.open?'':'(مغلقة حالياً)'}</option>
   `).join('');
 }
-
-
-
-
 
 function renderRules(){
   document.getElementById('rulesList').innerHTML = RULES.map(r=>`
@@ -2073,12 +2021,9 @@ renderCircleOptions();
 renderRules();
 renderChannelQr();
 
-/* Scroll Reveal Observer Animation (Fade + Slide 10px) */
-const observerOptions = {
-  threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
+/* Scroll Reveal Observer Animation */
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add('active');
@@ -2103,9 +2048,7 @@ document.querySelectorAll('.btn').forEach(button => {
     ripple.style.top = y + 'px';
     
     this.appendChild(ripple);
-    setTimeout(() => {
-      ripple.remove();
-    }, 600);
+    setTimeout(() => { ripple.remove(); }, 600);
   });
 });
 
@@ -2182,7 +2125,7 @@ const fixationSelect = document.getElementById('ffixation');
 const circleField = document.getElementById('circleField');
 
 programSelect.addEventListener('change', ()=>{
-  if(programSelect.value === 'دورات التثبيت '){
+  if(programSelect.value === 'دورات التثبيت'){
     fixationField.style.display = 'block';
     fixationSelect.required = true;
     circleField.style.display = 'none';
@@ -2245,7 +2188,7 @@ document.getElementById('recBtn').addEventListener('click', async ()=>{
     isRecording = false;
     btn.classList.remove('recording');
     btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9"/></svg> إعادة التسجيل';
-    status.textContent = "تم التسجيل ";
+    status.textContent = "تم التسجيل";
   }
 });
 
