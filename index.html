@@ -1819,7 +1819,7 @@ footer .fine{
         </div>
       </div>
       <div class="form-block">
-        <h3><span class="num">3</span>اختيار الحلقة</h3>
+        <h3><span class="num">3</span>اختيار الحلقة أو الدورة</h3>
 
         <div class="field">
             <label for="fprogram">نوع التسجيل</label>
@@ -1837,7 +1837,7 @@ footer .fine{
         </div>
 
         <div class="field" id="fixationField" style="display:none;">
-            <label for="ffixation">اختيار دورة التثبيت</label>
+            <label for="ffixation">اختيار دورة التثبيت *</label>
             <select id="ffixation">
                 <option value="" disabled selected>اختاري دورة التثبيت</option>
                 <option value="من ربع البقرة">من ربع البقرة</option>
@@ -2052,16 +2052,22 @@ document.querySelectorAll('.btn').forEach(button => {
   });
 });
 
-/* Students Boards Slider Setup */
+/* Students Boards Slider Setup with Continuous Auto-Scroll */
 const container = document.getElementById('boardsContainer');
 const boardsCount = 5;
 let currentSlide = 0;
+let autoScrollTimer = null;
+let isUserInteracting = false;
 
 const dotsContainer = document.getElementById('sliderDots');
 for(let i=0; i<boardsCount; i++){
   const dot = document.createElement('div');
   dot.className = `slider-dot ${i===0?'active':''}`;
-  dot.addEventListener('click', ()=>scrollToBoard(i));
+  dot.addEventListener('click', ()=>{
+    isUserInteracting = true;
+    scrollToBoard(i);
+    resetAutoScroll();
+  });
   dotsContainer.appendChild(dot);
 }
 
@@ -2080,13 +2086,17 @@ function scrollToBoard(index){
 }
 
 document.getElementById('nextSlide').addEventListener('click', ()=>{
+  isUserInteracting = true;
   currentSlide = (currentSlide > 0) ? currentSlide - 1 : boardsCount - 1;
   scrollToBoard(currentSlide);
+  resetAutoScroll();
 });
 
 document.getElementById('prevSlide').addEventListener('click', ()=>{
+  isUserInteracting = true;
   currentSlide = (currentSlide < boardsCount - 1) ? currentSlide + 1 : 0;
   scrollToBoard(currentSlide);
+  resetAutoScroll();
 });
 
 container.addEventListener('scroll', ()=>{
@@ -2097,6 +2107,26 @@ container.addEventListener('scroll', ()=>{
     updateDots(currentSlide);
   }
 });
+
+// تفعيل التمرير التلقائي المستمر
+function startAutoScroll() {
+  autoScrollTimer = setInterval(() => {
+    if (!isUserInteracting) {
+      currentSlide = (currentSlide < boardsCount - 1) ? currentSlide + 1 : 0;
+      scrollToBoard(currentSlide);
+    }
+  }, 4000);
+}
+
+function resetAutoScroll() {
+  clearInterval(autoScrollTimer);
+  setTimeout(() => {
+    isUserInteracting = false;
+    startAutoScroll();
+  }, 8000);
+}
+
+startAutoScroll();
 
 /* Back to Top & Active Nav Highlight */
 const backToTopBtn = document.getElementById('backToTop');
