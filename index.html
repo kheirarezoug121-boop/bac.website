@@ -175,15 +175,38 @@ img{
   100%{ transform:translate3d(-25px,25px,0) scale(.94); }
 }
 
+/* تحسينات الحركية Slide-in والظهور عند التمرير */
 .reveal-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-up.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-in-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-in-right.active {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .wrap{
@@ -325,11 +348,11 @@ section.hero .wrap{ width:100%; }
   padding:50px 30px 40px;
   box-shadow:var(--shadow);
   backdrop-filter:blur(8px);
-  animation:heroCardIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation:heroCardIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes heroCardIn{
-  from{ opacity:0; transform:translateY(15px) scale(0.97); }
+  from{ opacity:0; transform:translateY(30px) scale(0.95); }
   to{ opacity:1; transform:translateY(0) scale(1); }
 }
 
@@ -362,7 +385,7 @@ section.hero .wrap{ width:100%; }
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -758,7 +781,6 @@ section.students-section{
   color: var(--text-dark);
 }
 
-/* إصلاح مشكلة تمرير الطالبات داخل اللوحة عمودياً */
 .students-stack{
   display: flex;
   flex-direction: column;
@@ -1468,7 +1490,7 @@ footer .fine{
 
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand-mini">
+    <div class="brand-mini slide-in-right">
       <span class="dot">
         <svg viewBox="0 0 24 24">
           <path d="M22 2 2 10l6 2.5L19 6l-9 9v5l3-3 4 2 5-17z"/>
@@ -1476,7 +1498,7 @@ footer .fine{
       </span>
       مقرأة الأترجّة
     </div>
-    <nav class="main-nav" id="mainNav">
+    <nav class="main-nav slide-in-left" id="mainNav">
       <a href="#services">خدماتنا</a>
       <a href="#schedule">برنامج الحلقات</a>
       <a href="#students-lists">الأترجات </a>
@@ -1650,7 +1672,6 @@ footer .fine{
 
       </div>
 
-      <!-- تصحيح اتجاه أزرار التنقل لتتطابق مع لغة الموقع -->
       <div class="slider-nav-btns">
         <button class="slider-btn" id="prevSlide">❮</button>
         <button class="slider-btn" id="nextSlide">❯</button>
@@ -1968,7 +1989,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.reveal-up').forEach(section => {
+document.querySelectorAll('.reveal-up, .slide-in-left, .slide-in-right').forEach(section => {
   observer.observe(section);
 });
 
@@ -1988,7 +2009,7 @@ document.querySelectorAll('.btn').forEach(button => {
   });
 });
 
-/* التحكم في السلايدر والتنقل التلقائي التفاعلي */
+/* التمرير والعرض التلقائي والسحب التلقائي (Auto Slide & Scroll) */
 const container = document.getElementById('boardsContainer');
 const boardsCount = 5;
 let currentSlide = 0;
@@ -2021,7 +2042,6 @@ function scrollToBoard(index){
   updateDots(index);
 }
 
-/* تصحيح اتجاه الأزرار (السهم الأيمن يزيد والأيسر ينقص في الاتجاه العربي المعاكس) */
 document.getElementById('nextSlide').addEventListener('click', ()=>{
   isUserInteracting = true;
   currentSlide = (currentSlide < boardsCount - 1) ? currentSlide + 1 : 0;
@@ -2045,13 +2065,14 @@ container.addEventListener('scroll', ()=>{
   }
 });
 
+/* تفعيل التمرير التلقائي كل 4 ثوانٍ مع التوقف عند تفاعل المستخدم */
 function startAutoScroll() {
   autoScrollTimer = setInterval(() => {
     if (!isUserInteracting) {
       currentSlide = (currentSlide < boardsCount - 1) ? currentSlide + 1 : 0;
       scrollToBoard(currentSlide);
     }
-  }, 4500);
+  }, 4000);
 }
 
 function resetAutoScroll() {
@@ -2059,8 +2080,14 @@ function resetAutoScroll() {
   setTimeout(() => {
     isUserInteracting = false;
     startAutoScroll();
-  }, 9000);
+  }, 8000);
 }
+
+/* إيقاف التمرير التلقائي مؤقتاً عند وضع الماوس أو لمس السلايدر */
+container.addEventListener('mouseenter', () => { isUserInteracting = true; });
+container.addEventListener('mouseleave', () => { resetAutoScroll(); });
+container.addEventListener('touchstart', () => { isUserInteracting = true; });
+container.addEventListener('touchend', () => { resetAutoScroll(); });
 
 startAutoScroll();
 
@@ -2128,7 +2155,7 @@ document.getElementById('recBtn').addEventListener('click', async ()=>{
       mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.ondataavailable = e=>{ if(e.data.size > 0) recordedChunks.push(e.data); };
       mediaRecorder.onstop = ()=>{
-        const blob = new Blob(recordedChunks, { type:mediaRecorder.mimeType || 'audio/webm' });
+        const blob = newBlob(recordedChunks, { type:mediaRecorder.mimeType || 'audio/webm' });
         recordedType = blob.type;
         const reader = new FileReader();
         reader.onload = ()=>{
