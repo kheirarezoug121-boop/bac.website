@@ -21,7 +21,7 @@
     --mauve: #9a8cae;
     --mauve2: #f5f2f9;
 
-    --mint: #2e8b57;       /* أخضر زمردي حيوي، بارز وواضح جداً للحلقات المفتوحة */
+    --mint: #94bc48;       /* أخضر زمردي حيوي، بارز وواضح جداً للحلقات المفتوحة */
     --mint2: #e8f5e9;      /* خلفية خضراء فاتحة وناعمة تبرز اللون الأساسي */
 
     --gold: #c59b27;
@@ -1579,7 +1579,7 @@ footer .fine{
           <div class="students-stack">
             <div class="student-row"><span class="student-name">حيزية عقود</span><span class="student-num">01</span></div>
             <div class="student-row"><span class="student-name">شيماء قداش</span><span class="student-num">02</span></div>
-            <div class="student-row"><span class="student-name">إيمان مصطَفاي</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">إيمان مصطفاي</span><span class="student-num">03</span></div>
             <div class="student-row"><span class="student-name">ياسمين مالجي</span><span class="student-num">04</span></div>
             <div class="student-row"><span class="student-name">رحمة بوادي</span><span class="student-num">05</span></div>
             <div class="student-row"><span class="student-name">شيماء أم خبيب</span><span class="student-num">06</span></div>
@@ -1641,12 +1641,12 @@ footer .fine{
           </div>
           <div class="students-stack">
             <div class="student-row"><span class="student-name">عبير صوالح</span><span class="student-num">01</span></div>
-            <div class="student-row"><span class="student-name">إسراء رحمانية</span><span class="student-num">02</span></div>
-            <div class="student-row"><span class="student-name">زهرة قناني</span><span class="student-num">03</span></div>
-            <div class="student-row"><span class="student-name">مرام العيد رزقي</span><span class="student-num">04</span></div>
-            <div class="student-row"><span class="student-name">هديل زكراوي</span><span class="student-num">05</span></div>
-            <div class="student-row"><span class="student-name">شهد خلف علي</span><span class="student-num">06</span></div>
-            <div class="student-row"><span class="student-name">إيناس</span><span class="student-num">07</span></div>
+            <div class="student-row"><span class="student-name">زهرة قناني</span><span class="student-num">02</span></div>
+            <div class="student-row"><span class="student-name">مرام العيد رزقي قناني</span><span class="student-num">03</span></div>
+            <div class="student-row"><span class="student-name">هديل زكراوي</span><span class="student-num">04</span></div>
+            <div class="student-row"><span class="student-name">إيناس </span><span class="student-num">05</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">06</span></div>
+            <div class="student-row"><span class="student-name">-</span><span class="student-num">07</span></div>
             <div class="student-row"><span class="student-name">-</span><span class="student-num">08</span></div>
             <div class="student-row"><span class="student-name">-</span><span class="student-num">09</span></div>
             <div class="student-row"><span class="student-name">-</span><span class="student-num">10</span></div>
@@ -1784,31 +1784,43 @@ footer .fine{
       </div>
       <div class="form-block">
         <h3><span class="num">3</span>اختيار الحلقة</h3>
-        <div class="field">
-          <label for="fprogram">نوع التسجيل</label>
-          <select id="fprogram">
-            <option value="حلقات حفظ القرآن الكريم" selected>حلقات حفظ القرآن الكريم</option>
 
-            <option value="دورات التثبيت">دورات التثبيت </option>
+<div class="field">
+    <label for="fprogram">نوع التسجيل</label>
+    <select id="fprogram" onchange="toggleProgramFields()">
+        <option value="حلقات حفظ القرآن الكريم" selected>حلقات حفظ القرآن الكريم</option>
+        <option value="دورات التثبيت">دورات التثبيت</option>
+    </select>
+</div>
 
-          </select>
-        </div>
-        <div class="field" id="fixationField" style="display:none;">
-          <label for="ffixation">اختيار دورة التثبيت</label>
-          <select id="ffixation">
-            <option value="" disabled selected>اختاري دورة التثبيت</option>
-            <option value=" من ربع البقرة">من ربع  البقرة</option>
-            <option value="من ربع الأعراف">من ربع الأعراف</option>
-            <option value="من ربع الكهف ">من ربع الكهف</option>
-            <option value="من ربع ياسين">من ربع ياسين</option>
-          </select>
-        </div>
-        <div class="field" id="circleField">
-          <label for="fcircle">اختاري معلمتكِ *</label>
-          <select id="fcircle" required></select>
-          <p class="hint">الحلقات المقفلة غير متاحة للتسجيل حاليًا</p>
-        </div>
-        <div class="field">
+<!-- حقل اختيار المعلمة الخاص بالحفظ -->
+<div class="field" id="Field">
+    <label for="fcircle">* اختاري معلمتك</label>
+    <select id="fcircle" required>
+        <!-- خيارات المعلمات هنا -->
+    </select>
+    <p class="hint">الحلقات المقفلة غير متاحة للتسجيل حاليًا</p>
+</div>
+
+<!-- حقل اختيار دورة التثبيت -->
+<div class="field" id="fixationField" style="display:none;">
+    <label for="ffixation">اختيار دورة التثبيت</label>
+    <select id="ffixation">
+        <option value="" disabled selected>اختاري دورة التثبيت</option>
+        <option value="من ربع البقرة">من ربع البقرة</option>
+        <option value="من ربع الأعراف">من ربع الأعراف</option>
+        <option value="من ربع الكهف">من ربع الكهف</option>
+        <option value="من ربع ياسين">من ربع ياسين</option>
+    </select>
+</div>
+
+
+
+      
+
+
+        <div class="field" id="Field">
+         
           <label for="fnotes">ملاحظات إضافية</label>
           <textarea id="fnotes" placeholder="أي استفسار أو ما تودّين إضافته..."></textarea>
         </div>
