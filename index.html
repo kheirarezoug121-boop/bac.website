@@ -21,7 +21,7 @@
     --mauve: #9a8cae;
     --mauve2: #f5f2f9;
 
-    --mint: #94bc48;       /* أخضر زمردي حيوي، بارز وواضح جداً للحلقات المفتوحة */
+    --mint: #76ff03;       /* أخضر زمردي حيوي، بارز وواضح جداً للحلقات المفتوحة */
     --mint2: #e8f5e9;      /* خلفية خضراء فاتحة وناعمة تبرز اللون الأساسي */
 
     --gold: #c59b27;
@@ -1137,6 +1137,22 @@ form#regForm{
 
 select option:disabled{ color:#bbb; }
 
+select#fcircle {
+  background-color: var(--rose1, #fff);
+  color: var(--text-color, #333);
+  border: 1px solid var(--rose2, #ddd);
+  padding: 12px;
+  border-radius: 12px;
+  width: 100%;
+  font-family: inherit;
+}
+
+select#fcircle option {
+  background-color: #fff;
+  color: #333;
+}
+
+
 .voice-panel{ display:none; }
 .voice-panel.active{ display:block; }
 
@@ -1422,6 +1438,54 @@ footer .fine{
   opacity: 1;
 }
 
+
+
+/* تصميم قائمة اختيار المعلمات وتجنب اللون الأسود */
+select#fcircle {
+  background-color: var(--rose1, #fff);
+  color: var(--text-color, #333);
+  border: 1px solid var(--rose2, #ddd);
+  padding: 12px;
+  border-radius: 12px;
+  width: 100%;
+  font-family: inherit;
+}
+
+select#fcircle option {
+  background-color: #fff;
+  color: #333;
+}
+
+select option:disabled { 
+  color: #bbb; 
+}
+
+/* أنيماشن ظهور الفرايمز والبطاقات بسلاسة */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.teacher-card, .field, .rule-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* حركة التمرير الأفقي السلس للحلقات والقوائم */
+.teacher-list, .horizontal-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* انتقالات سلسة للوحات والتحكم */
+.voice-panel, #fixationField {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -1888,12 +1952,24 @@ footer .fine{
 <script>
 const WOMEN_GROUP_LINK = "https://t.me/+8nkOo8Pfv4lkYzZk";
 
+const shaima_LINK = "https://t.me/+D62X6uLdttphZDlk";
+
+const fadwa_LINK = "https://t.me/+sEGd3cODGRM3ZGU8";
+
+const hafsa_LINK = "https://t.me/+szEtm4oGTahmZGJk";
+
+const soumia_LINK = "https://t.me/+DfG-hRCgVbI2MThk";
+
+const razika_LINK = "https://t.me/+8wfHUrUwK8tjOTVk";
+
+
+
 const TEACHERS = [
-  { id:"shaimaa", name:"المعلّمة شيماء", open:false, group:WOMEN_GROUP_LINK },
-  { id:"fadwa", name:"المعلّمة فدوى", open:false, group:WOMEN_GROUP_LINK },
-  { id:"hafsa", name:"المعلّمة أمّ حفصة", open:false, group:WOMEN_GROUP_LINK },
-  { id:"abdellah", name:"المعلّمة أمّ عبد الله ", open:true, group:WOMEN_GROUP_LINK },
-  { id:"soumia", name:"المعلّمة سمية", open:true, group:WOMEN_GROUP_LINK }
+  { id:"shaimaa", name:"المعلّمة شيماء", open:false, group:shaima_LINK },
+  { id:"fadwa", name:"المعلّمة فدوى", open:false, group:fadwa_LINK },
+  { id:"hafsa", name:"المعلّمة أمّ حفصة", open:false, group:hafsa_LINK },
+  { id:"abdellah", name:"المعلّمة أمّ عبد الله ", open:true, group:razika_LINK },
+  { id:"soumia", name:"المعلّمة سمية", open:true, group:soumia_LINK }
 ];
 
 const SERVICES = [
@@ -1946,6 +2022,8 @@ function renderServices(){
   `).join('');
 }
 
+
+
 function renderTeachers(){
   const list = document.getElementById('teacherList');
   list.innerHTML = TEACHERS.map(t=>`
@@ -1963,12 +2041,17 @@ function renderTeachers(){
   `).join('');
 }
 
+
 function renderCircleOptions(){
   const sel = document.getElementById('fcircle');
   sel.innerHTML = '<option value="" disabled selected>اختاري الحلقة المناسبة</option>' + TEACHERS.map(t=>`
-    <option value="${t.id}" ${t.open?'':'disabled'}>${t.name} — ${t.days} — ${t.time} ${t.open?'':'(مغلقة حاليًا)'}</option>
+    <option value="${t.id}" ${t.open?'':'disabled'}>${t.name} ${t.open?'':'(مغلقة حالياً)'}</option>
   `).join('');
 }
+
+
+
+
 
 function renderRules(){
   document.getElementById('rulesList').innerHTML = RULES.map(r=>`
@@ -2099,7 +2182,7 @@ const fixationSelect = document.getElementById('ffixation');
 const circleField = document.getElementById('circleField');
 
 programSelect.addEventListener('change', ()=>{
-  if(programSelect.value === 'تثبيت دورة'){
+  if(programSelect.value === 'دورات التثبيت '){
     fixationField.style.display = 'block';
     fixationSelect.required = true;
     circleField.style.display = 'none';
@@ -2116,7 +2199,7 @@ document.getElementById('copyChannel').addEventListener('click', ()=>{
   navigator.clipboard.writeText("https://t.me/AlOtrodjah").then(()=>{
     const btn = document.getElementById('copyChannel');
     const old = btn.textContent;
-    btn.textContent = "تم النسخ ✓";
+    btn.textContent = "تم النسخ";
     setTimeout(()=>{ btn.textContent = old; },1800);
   });
 });
@@ -2162,7 +2245,7 @@ document.getElementById('recBtn').addEventListener('click', async ()=>{
     isRecording = false;
     btn.classList.remove('recording');
     btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9"/></svg> إعادة التسجيل';
-    status.textContent = "تم التسجيل، يمكنكِ الاستماع أدناه.";
+    status.textContent = "تم التسجيل ";
   }
 });
 
@@ -2176,7 +2259,7 @@ document.getElementById('regForm').addEventListener('submit', async (e)=>{
   }
   if(!document.getElementById('fpledge').checked){
     msg.className = 'err';
-    msg.textContent = 'الرجاء الموافقة على التعهّد.';
+    msg.textContent = 'الرجاء الموافقة على التعهد.';
     return;
   }
   msg.className = 'ok';
